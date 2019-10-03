@@ -1,0 +1,12 @@
+<%= simple_form_for @lab_forum, url: forum_lab911_index_path do |f| %>
+  <div class="col-md-4">
+    <div class="group"><%= f.input :question %></div>
+    <!-- text 大小：https://stackoverflow.com/questions/13556522/cant-change-the-height-of-a-text-field-in-simple-form -->
+    <div class="group"><%= f.input :description, as: :text, input_html: {rows: 5}%></div>
+    <div class="group"><%# f.input :is_solved, as: :radio_buttons %></div>
+    <div class="group"> <%= f.input :category, as: :radio_buttons, collection: ['專業問題', '閒聊']%></div>
+    
+    <%= f.submit "Submit", data: { disable_with: "Submitting..." } %>
+  </div>
+<% end %>
+<!--simple form 參考網址：http://simple-form-bootstrap.plataformatec.com.br/documentation-->
