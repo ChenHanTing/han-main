@@ -1,2 +1,3 @@
-//安裝bootstrap3：https://github.com/twbs/bootstrap-rubygem
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
 @import "bootstrap";

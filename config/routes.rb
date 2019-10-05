@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  # namespace :forum do
-  #   get 'lab911/index'
-  #   get 'lab911/show'
-  #   get 'lab911/edit'
-  # end
+  devise_for :users
 
   namespace :forum do
     resources :lab911
+    root "lab911#index"
   end
 
   get '/home', to: 'staticpages#home'

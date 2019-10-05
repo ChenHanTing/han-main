@@ -1,12 +1,39 @@
-<%= simple_form_for @lab_forum, url: forum_lab911_index_path do |f| %>
-  <div class="col-md-4">
-    <div class="group"><%= f.input :question %></div>
-    <!-- text 大小：https://stackoverflow.com/questions/13556522/cant-change-the-height-of-a-text-field-in-simple-form -->
-    <div class="group"><%= f.input :description, as: :text, input_html: {rows: 5}%></div>
-    <div class="group"><%# f.input :is_solved, as: :radio_buttons %></div>
-    <div class="group"> <%= f.input :category, as: :radio_buttons, collection: ['專業問題', '閒聊']%></div>
-    
-    <%= f.submit "Submit", data: { disable_with: "Submitting..." } %>
+  <div id="panel-row" class="en row" data-js="1">
+  <div class="col-sm-6">
+    <div class="panel panel-info">
+      <div class="panel-heading"><h3 class="panel-title">現在使用者為</h3></div>
+      <div class="panel-body"><%= current_user.nickname.capitalize %></div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">版主的聯絡方式</h3></div>
+        <div class="panel-body">
+          <span class="glyphicon glyphicon-earphone"></span> 0983-168-969&emsp;&emsp;
+          <span class="glyphicon glyphicon-envelope"></span> k445566778899k@gmail.com
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div  class="group"><h2><%= title %></h2></div>
+      <%= simple_form_for @lab_forum, url: forum_lab911_index_path do |f| %>
+        <div class="group"><%= f.input :question %></div>
+        <div class="group"><%= f.input :description, as: :text, input_html: {rows: 5}%></div>
+        <div class="group"><%= f.input :category, as: :radio_buttons, collection: LabForum::CATEGORY %></div>
+        <div class="group">
+        </div>
+        <br/>
+        <div class="group"><%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %></div>
+    </div>
+    <div class="col-sm-4">
+      <%= link_to 'index page' , forum_lab911_index_path %><br/><br/>
+    </div>
   </div>
 <% end %>
-<!--simple form 參考網址：http://simple-form-bootstrap.plataformatec.com.br/documentation-->
+
+<!-- text 大小參考網址：https://stackoverflow.com/questions/13556522/cant-change-the-height-of-a-text-field-in-simple-form -->
+<!-- simple-form 參考網址：http://simple-form-bootstrap.plataformatec.com.br/documentation -->

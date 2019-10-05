@@ -1,0 +1,16 @@
+current directory: /Users/hanting/google-drive/rails-project/diary-app/vendor/bundle/ruby/2.6.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+/Users/hanting/.rvm/rubies/ruby-2.6.4/bin/ruby -I /Users/hanting/.rvm/rubies/ruby-2.6.4/lib/ruby/site_ruby/2.6.0 -r ./siteconf20191005-92360-d1yzhq.rb extconf.rb
+
+current directory: /Users/hanting/google-drive/rails-project/diary-app/vendor/bundle/ruby/2.6.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+current directory: /Users/hanting/google-drive/rails-project/diary-app/vendor/bundle/ruby/2.6.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /Users/hanting/google-drive/rails-project/diary-app/vendor/bundle/ruby/2.6.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.
