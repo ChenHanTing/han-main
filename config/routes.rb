@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   namespace :forum do
     resources :lab911
-    root "lab911#index"
+    root 'lab911#index'
   end
 
+  root 'forum/lab911#index'
   get '/home', to: 'staticpages#home'
   get '/help', to: 'staticpages#help'
   get '/todo', to: 'staticpages#todo'

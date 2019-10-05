@@ -1,5 +1,30 @@
-<div class="container-fluid">  
-  <h1>Forum::Lab911#index</h1>
-  <p>Find me in app/views/forum/lab911/index.html.erb</p>
-  <%= link_to 'new' , new_forum_lab911_path, class: 'btn btn-primary'%><br/><br/>
+<div class="container container-fluid">
+  <h4><%= link_to '新問題' , new_forum_lab911_path %></h4>  
+  <h1>文章</h1>
+  <table class="table">
+  <thead>
+    <tr>
+      <td>解決與否</td>
+      <td>問題</td>
+      <td>作者</td>
+      <td>類別</td>
+      <td>選項</td>
+      <td>創建日期</td>
+      <td>更新日期</td>     
+    </tr>
+  </thead>
+  <tbody>
+    <% @lab_forums.each do |article| %>
+    <tr>
+      <td><%= article.is_solved? %></td>
+      <td><%= article.question %></td>
+      <td><%= User.find_by(id: article.user_id).nickname.capitalize %></td>
+      <td><%= article.category %></td>
+      <td><%= link_to "編輯", edit_forum_lab911_path(article) %> | 
+          <%= link_to "刪除", forum_lab911_index_path(article), method: "delete", data: { confirm: "確認刪除" }  %></td>
+      <td><%= article.created_at %></td>
+      <td><%= article.updated_at %></td>     
+    </tr>
+    <% end %>
+  </tbody>
 </div>

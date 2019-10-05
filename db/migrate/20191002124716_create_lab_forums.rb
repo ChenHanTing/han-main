@@ -1,10 +1,10 @@
 class CreateLabForums < ActiveRecord::Migration[5.2]
   def change
     create_table :lab_forums do |t|
-      t.string :question
-      t.string :description
+      t.string :question, presence: true
+      t.string :description, presence: true
       t.boolean :is_solved
-      t.string :category
+      t.string :category, presence: true
       
       t.references :user, foreign_key: true
       t.timestamps

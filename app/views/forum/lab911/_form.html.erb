@@ -1,8 +1,8 @@
-  <div id="panel-row" class="en row" data-js="1">
+<div id="panel-row" class="en row" data-js="1">
   <div class="col-sm-6">
     <div class="panel panel-info">
       <div class="panel-heading"><h3 class="panel-title">現在使用者為</h3></div>
-      <div class="panel-body"><%= current_user.nickname.capitalize %></div>
+      <div class="panel-body"><%= current_user ? current_user.nickname.capitalize : "VISITOR" %></div>
     </div>
   </div>
 
@@ -35,5 +35,5 @@
   </div>
 <% end %>
 
-<!-- text 大小參考網址：https://stackoverflow.com/questions/13556522/cant-change-the-height-of-a-text-field-in-simple-form -->
-<!-- simple-form 參考網址：http://simple-form-bootstrap.plataformatec.com.br/documentation -->
+<%# text 大小參考網址：https://stackoverflow.com/questions/13556522/cant-change-the-height-of-a-text-field-in-simple-form %>
+<%# simple-form 參考網址：http://simple-form-bootstrap.plataformatec.com.br/documentation %>
