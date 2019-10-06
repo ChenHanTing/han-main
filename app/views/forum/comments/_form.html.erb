@@ -1,0 +1,14 @@
+<div class="card my-4">
+  <h5 class="card-header">Leave a Comment:</h5>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <%= simple_form_for [:forum, @lab_forum, @lab_forum.comments.build] do |f| %>
+          <% binding.pry %>
+          <div class="group"><%= f.input :comment, as: :text, input_html: {rows: 5} %></div>
+          <div class="group"><%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %></div>
+        <% end %>
+      </div>
+    </form>
+  </div>
+</div>

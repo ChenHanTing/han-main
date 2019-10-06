@@ -3,18 +3,19 @@
   // 參考網址：https://fullstack.qzy.camp/posts/1296
   // 參考網址：https://engmeter.blogspot.com/2015/03/jqueryjquery.html
   $(document).ready(function(){
-    $("#renew-click").click(function(){
+    // $("#renew-click").click(function(){
       $("#which-weekly").html("第<%= weekly_num %>篇");
       $("#which-song").html("第<%= song_num %>首");
       $("#link-weekly").html("<a href='<%= weekly_link %>'><%= weekly_link %></a>");
       $("#link-song").html("<a href='<%= song_link %>'><%= song_link %></a>");
       $("#title-weekly").html("<%= weekly_title(weekly_link) %>");
       $("#title-song").html("<%= song_title(song_link) %>");
-    })
+    // })
   })
 </script>
 
-<!-- https://www.w3schools.com/bootstrap4/bootstrap_tables.asp -->
+<% content_for :page_title,  "Todo daily" %>
+<%# https://www.w3schools.com/bootstrap4/bootstrap_tables.asp %>
 <div class="container">
   <h2>每日必須做</h2>
   <p>明師在世的每一天都很幸福，因此依教奉行每天都很重要。請務必要好好依教奉行🙏</p>            

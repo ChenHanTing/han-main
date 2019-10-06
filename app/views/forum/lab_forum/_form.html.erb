@@ -20,17 +20,14 @@
   <div class="row">
     <div class="col-sm-8">
       <div  class="group"><h2><%= title %></h2></div>
-      <%= simple_form_for @lab_forum, url: forum_lab911_index_path do |f| %>
+      <%= simple_form_for @lab_forum, url: url do |f| %>
         <div class="group"><%= f.input :question %></div>
         <div class="group"><%= f.input :description, as: :text, input_html: {rows: 5}%></div>
         <div class="group"><%= f.input :category, as: :radio_buttons, collection: LabForum::CATEGORY %></div>
-        <div class="group">
-        </div>
-        <br/>
         <div class="group"><%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %></div>
     </div>
     <div class="col-sm-4">
-      <%= link_to 'index page' , forum_lab911_index_path %><br/><br/>
+      <%= link_to '回首頁' , forum_lab_forum_index_path %><br/><br/>
     </div>
   </div>
 <% end %>

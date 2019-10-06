@@ -1,0 +1,16 @@
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= User.find_by(id: @lab_forum.user_id).nickname.capitalize %>:</strong>
+          <%= comment.comment %>
+          Posted at <%= comment.created_at %>
+        </p>
+      </div>
+    </div>
+     <%= link_to 'Delete', '#',
+                  method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+  </article>
+
+</div>
