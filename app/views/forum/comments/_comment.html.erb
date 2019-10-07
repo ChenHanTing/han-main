@@ -3,9 +3,9 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= User.find_by(id: @lab_forum.user_id).nickname.capitalize %>:</strong>
-          <%= comment.comment %>
-          Posted at <%= comment.created_at %>
+          <strong><%= User.find_by(id: comment.user_id)&.nickname&.capitalize %></strong>
+          <%= comment.content %>
+           <%= "Posted at #{comment.created_at}" if comment.nil? %>
         </p>
       </div>
     </div>

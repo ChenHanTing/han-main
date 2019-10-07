@@ -32,7 +32,7 @@
         <!-- Single Comment -->
         <%# render "forum/comments/comment" %>
         <%# render @lab_forum.comments %>
-        <%= render :partial => 'forum/comments/comment', collection: @lab_forum.comments.reverse %>
+        <%= render :partial => @comment, collection: @lab_forum.comments.reverse %>
         
 
         <div class="media mb-4">
