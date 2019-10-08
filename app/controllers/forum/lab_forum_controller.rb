@@ -24,8 +24,8 @@ class Forum::LabForumController < ApplicationController
     @comment = Comment.new
     @comment.lab_forum_id = @lab_forum.id
     @comment.user_id = current_user.id
-    @comment.content = "123"
-    @comment.save
+    # @comment.content = "123"
+    # @comment.save
   end
 
   def edit 

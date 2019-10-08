@@ -3,14 +3,15 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= User.find_by(id: comment.user_id)&.nickname&.capitalize %></strong>
-          <%= comment.content %>
+          <strong><%= User.find_by(id: comment.user_id).nickname.capitalize %>: </strong>
+          <%= link_to 'Delete', forum_lab_forum_comment_path(@lab_forum),
+              method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+           <br/><%= comment.content %>
            <%= "Posted at #{comment.created_at}" if comment.nil? %>
         </p>
       </div>
     </div>
-     <%= link_to 'Delete', '#',
-                  method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+
   </article>
 
 </div>
