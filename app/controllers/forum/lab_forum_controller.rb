@@ -1,6 +1,7 @@
 class Forum::LabForumController < ApplicationController
   # layout "admin"              
   before_action :find_labforum, only: [:edit, :update, :destroy, :show]
+  before_action :authenticate_user!
   # before_action :admin_required # 若非後台人員，即會出現登入阻擋
   def index
     @lab_forums = LabForum.all

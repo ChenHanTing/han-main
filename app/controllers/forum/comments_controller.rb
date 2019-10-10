@@ -1,5 +1,5 @@
 class Forum::CommentsController < ApplicationController
-
+  before_action :authenticate_user!
   def new
     @lab_forum = LabForum.find_by(id: params[:lab_forum_id])
     @comment = Comment.new

@@ -22,9 +22,13 @@
         <td><%= article.question %></td>
         <td><%= User.find_by(id: article.user_id).nickname.capitalize %></td>
         <td><%= article.category %></td>
-        <td><%= link_to del_p_mark(fa_icon "eye"), forum_lab_forum_path(article) %> 
-            <%= link_to del_p_mark(fa_icon "edit"), edit_forum_lab_forum_path(article) %> 
-            <%= link_to del_p_mark(fa_icon "trash"), forum_lab_forum_path(article), method: "delete", data: { confirm: "!!!!!" }  %></td>
+        <td><% if user_signed_in? && ( article.user_id == current_user.id ) %>
+              <%= link_to del_p_mark(fa_icon "eye"), forum_lab_forum_path(article) %> 
+              <%= link_to del_p_mark(fa_icon "edit"), edit_forum_lab_forum_path(article) %> 
+              <%= link_to del_p_mark(fa_icon "trash"), forum_lab_forum_path(article), method: "delete", data: { confirm: "!!!!!" }  %></td>
+            <% else %>
+              <%= link_to del_p_mark(fa_icon "eye"), forum_lab_forum_path(article) %> 
+            <% end %>  
         <td><%= article.created_at.to_s[0..-4] %></td>
         <td><%= article.updated_at == article.created_at ? "---" : article.updated_at.to_s[0..-4] %></td>    
       </tr>

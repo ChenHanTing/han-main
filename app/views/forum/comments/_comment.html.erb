@@ -4,9 +4,9 @@
       <div class="content">
         <p>
           <hr>
-          <strong><%= User.find_by(id: comment.user_id).nickname.capitalize %>&emsp;&emsp;</strong>
           <%= link_to del_p_mark(fa_icon "trash"), forum_lab_forum_comment_path(@lab_forum),
-              method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+              method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>          
+          <strong><%= User.find_by(id: comment.user_id).nickname.capitalize %></strong>
            <br/><%= simple_format(comment.content) %>
            <p>Posted at <%= distance_of_time_in_words(comment.lab_forum.created_at, comment.created_at) %></p>
         </p>
