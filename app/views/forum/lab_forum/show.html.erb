@@ -14,14 +14,18 @@
         </p>
         <hr>
         <!-- Date/Time -->
-        <p>Posted on <%= @lab_forum.created_at %></p>
+        <p>Posted on <%= @lab_forum.created_at.to_s[0..-4] %></p>
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+          沒有功能
+        </button>
+        <!-- Default checked -->
         <hr>
         <!-- Post Content -->
         <p class="lead"><%= @lab_forum.description %></p>
 
         <blockquote class="blockquote">
-          <p class="mb-0">有努力就有收穫</p>
-          <footer class="blockquote-footer">真的喔
+          <p class="mb-0">No pain, no gain.</p>
+          <footer class="blockquote-footer">No money.
             <cite title="Source Title">～</cite>
           </footer>
         </blockquote>

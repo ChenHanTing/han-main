@@ -2,15 +2,16 @@
   // .ready or .click
   // 參考網址：https://fullstack.qzy.camp/posts/1296
   // 參考網址：https://engmeter.blogspot.com/2015/03/jqueryjquery.html
+  // $(document).ready(function(){...}); //寫法1，全稱 
+  // $(function(){...});                 //寫法2，簡寫 
+  // jQuery(function($){...});           //寫法3，簡寫    
   $(document).ready(function(){
-    // $("#renew-click").click(function(){
       $("#which-weekly").html("第<%= weekly_num %>篇");
       $("#which-song").html("第<%= song_num %>首");
       $("#link-weekly").html("<a href='<%= weekly_link %>'><%= weekly_link %></a>");
       $("#link-song").html("<a href='<%= song_link %>'><%= song_link %></a>");
       $("#title-weekly").html("<%= weekly_title(weekly_link) %>");
       $("#title-song").html("<%= song_title(song_link) %>");
-    // })
   })
 </script>
 
@@ -49,5 +50,5 @@
       </tr>
     </tbody>
   </table>
-  <button id="renew-click" type="button" class="btn btn-primary">請按</button>
+  <!-- <button id="renew-click" type="button" class="btn btn-primary">請按</button> -->
 </div>

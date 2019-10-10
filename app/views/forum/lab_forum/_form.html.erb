@@ -1,17 +1,16 @@
 <div id="panel-row" class="en row" data-js="1">
   <div class="col-sm-6">
     <div class="panel panel-info">
-      <div class="panel-heading"><h3 class="panel-title">現在使用者為</h3></div>
+      <div class="panel-heading"><h3 class="panel-title">You are</h3></div>
       <div class="panel-body"><%= current_user ? current_user.nickname.capitalize : "VISITOR" %></div>
     </div>
   </div>
 
   <div class="col-sm-6">
     <div class="panel panel-default">
-      <div class="panel-heading"><h3 class="panel-title">版主的聯絡方式</h3></div>
+      <div class="panel-heading"><h3 class="panel-title">I am</h3></div>
         <div class="panel-body">
-          <span class="glyphicon glyphicon-earphone"></span> 0983-168-969&emsp;&emsp;
-          <span class="glyphicon glyphicon-envelope"></span> k445566778899k@gmail.com
+          Han
         </div>
       </div>
     </div>
@@ -27,7 +26,7 @@
         <div class="group"><%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %></div>
     </div>
     <div class="col-sm-4">
-      <%= link_to '回首頁' , forum_lab_forum_index_path %><br/><br/>
+      <%= link_to 'Back' , forum_lab_forum_index_path %><br/><br/>
     </div>
   </div>
 <% end %>

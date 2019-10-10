@@ -1,33 +1,37 @@
 <% content_for :page_title,  "lab_forum" %>
 
 <div class="container-fluid">
-  <h4><%= link_to '新問題' , new_forum_lab_forum_path %></h4>  
-  <h1>文章</h1>
+  <h4><%= link_to 'Add new question' , new_forum_lab_forum_path %></h4>  
+  <h1>All questions</h1>
   <table class="table">
-  <thead>
-    <tr>
-      <td>解決與否</td>
-      <td>問題</td>
-      <td>作者</td>
-      <td>類別</td>
-      <td>選項</td>
-      <td>創建日期</td>
-      <td>更新日期</td>     
-    </tr>
-  </thead>
-  <tbody>
-    <% @lab_forums.each do |article| %>
-    <tr>
-      <td><%= article.is_solved %></td>
-      <td><%= article.question %></td>
-      <td><%= User.find_by(id: article.user_id).nickname.capitalize %></td>
-      <td><%= article.category %></td>
-      <td><%= link_to "檢視", forum_lab_forum_path(article) %> |
-          <%= link_to "編輯", edit_forum_lab_forum_path(article) %> | 
-          <%= link_to "刪除", forum_lab_forum_path(article), method: "delete", data: { confirm: "確認刪除" }  %></td>
-      <td><%= article.created_at %></td>
-      <td><%= article.updated_at %></td>     
-    </tr>
-    <% end %>
-  </tbody>
+    <thead>
+      <tr>
+        <td>solved?</td>
+        <td>problem</td>
+        <td>author</td>
+        <td>category</td>
+        <td>options</td>
+        <td>create time</td>
+        <td>update time</td>     
+      </tr>
+    </thead>
+    <tbody>
+      <% @lab_forums.each do |article| %>
+      <tr>
+        <td><%= solved_monitor(article.is_solved) %></td>
+        <td><%= article.question %></td>
+        <td><%= User.find_by(id: article.user_id).nickname.capitalize %></td>
+        <td><%= article.category %></td>
+        <td><%= link_to del_p_mark(fa_icon "eye"), forum_lab_forum_path(article) %> 
+            <%= link_to del_p_mark(fa_icon "edit"), edit_forum_lab_forum_path(article) %> 
+            <%= link_to del_p_mark(fa_icon "trash"), forum_lab_forum_path(article), method: "delete", data: { confirm: "!!!!!" }  %></td>
+        <td><%= article.created_at.to_s[0..-4] %></td>
+        <td><%= article.updated_at == article.created_at ? "---" : article.updated_at.to_s[0..-4] %></td>    
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <script>
+  
+  </script>
 </div>

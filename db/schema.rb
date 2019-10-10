@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_10_04_164554) do
   create_table "lab_forums", force: :cascade do |t|
     t.string "question"
     t.string "description"
-    t.boolean "is_solved"
+    t.boolean "is_solved", default: false
     t.string "category"
     t.integer "user_id"
     t.datetime "created_at", null: false
