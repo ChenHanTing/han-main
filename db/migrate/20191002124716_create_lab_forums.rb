@@ -6,7 +6,8 @@ class CreateLabForums < ActiveRecord::Migration[5.2]
       t.boolean :is_solved, default: false
       t.string :category, presence: true
       
-      t.references :user, foreign_key: true
+      t.integer :user_id, foreign_key: true
+      # t.references :user, foreign_key: true
       t.timestamps
     end
   end
