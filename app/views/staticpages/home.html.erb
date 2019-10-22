@@ -1,2 +1,14 @@
-<h1>Staticpages#home</h1>
-<p>Find me in app/views/staticpages/home.html.erb</p>
+<script src="js/scripts.js"></script>
+<div class="container">
+  <h1>給元柏的一段話</h1>
+  <button onclick="generate()">Try it</button>
+  <div class="container"><p id="demo"></p></div>
+  <script> 
+      function generate() {
+        document.getElementById("demo").innerHTML = "元柏竟然給我退平台<br />  師父要帶領弟子成佛！<br />不能缺你<br />王八蛋！<br />快點回來";
+        var fontSize = parseInt($("body").css("font-size"));
+        fontSize = fontSize + 80 + "px";
+        $('#demo').css({'font-size':fontSize});
+      }
+  </script>
+</div>
