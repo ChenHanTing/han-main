@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>給自己的一段話</h1>
+  <button onclick="generate()">Try it</button>
+  <div class="container"><p id="demo"></p></div>
+  <script> 
+      function generate() {
+        document.getElementById("demo").innerHTML = "加油";
+        var fontSize = parseInt($("body").css("font-size"));
+        fontSize = fontSize + 80 + "px";
+        $('#demo').css({'font-size':fontSize});
+      }
+  </script>
+</div>

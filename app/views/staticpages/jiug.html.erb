@@ -1,0 +1,176 @@
+<% content_for :page_title, '九宮格' %>
+<div class='container'>
+  <h2>九宮格拼盤遊戲</h2>
+  <hr>
+  <div class="row">
+    <div class="col-sm-6">
+      <p>遊戲規則：空中間，外圍以順時針或逆時針排列<p>
+      <table class="grid-container">
+        <tr>
+        <td id='td1' class="grid-item" onclick='TD1()'>1</td>
+        <td id='td2' class="grid-item" onclick='TD2()'>2</td>
+        <td id='td3' class="grid-item" onclick='TD3()'>3</td>
+        </tr>
+        <tr>
+        <td id='td4' class="grid-item" onclick='TD4()'>4</td>
+        <td id='td5' class="grid-item" onclick='TD5()'>5</td>
+        <td id='td6' class="grid-item" onclick='TD6()'>6</td>
+        </tr>
+        <tr>
+        <td id='td7' class="grid-item" onclick='TD7()'>7</td>
+        <td id='td8' class="grid-item" onclick='TD8()'>8</td>
+        <td id='td9' class="grid-item" onclick='TD9()'></td>
+        </tr>
+      </table>    
+    </div>
+    <div class="col-sm-6">
+      <a class="btn btn-primary" 
+         onclick="force_clockwise(td5, td1, td2, td3, td4, td6, td7, td8, td9)" role="button">逆時針</a>
+      &#12288;
+      <a class="btn btn-primary" 
+         onclick="force_counter_clockwise(td5, td1, td2, td3, td4, td6, td7, td8, td9)" role="button">順時針</a>
+      <br /><br /><br />
+      <p id="message"></p>
+    </div>
+  </div>
+  
+  <script>
+    var td1, td2, td3, td4, td5, td6, td7, td8, td9;
+    $(function() {
+      td1 = $('#td1')[0]; td2 = $('#td2')[0]; td3 = $('#td3')[0]; 
+      td4 = $('#td4')[0]; td5 = $('#td5')[0]; td6 = $('#td6')[0];
+      td7 = $('#td7')[0]; td8 = $('#td8')[0]; td9 = $('#td9')[0];
+    });
+
+    // 重複部分（refactor）
+    function common(...args) {
+      console.log(typeof args);
+      console.log(args);
+
+      if(args[0].innerHTML == '') return;
+
+      if(args[1].innerHTML == '') {
+        args[1].innerHTML = args[0].innerHTML;
+        args[0].innerHTML = '';
+      }
+      
+      if(args[2].innerHTML == '') {
+          args[2].innerHTML = args[0].innerHTML;
+          args[0].innerHTML = '';
+      }
+      
+
+      if(typeof args[3] != "undefined") {
+        if(args[3].innerHTML == '') {
+          args[3].innerHTML = args[0].innerHTML;
+          args[0].innerHTML = '';
+        }		
+      }
+
+      if(typeof args[4] != "undefined") {
+        if(args[4].innerHTML == '') {
+          args[4].innerHTML = args[0].innerHTML;
+          args[0].innerHTML = '';
+        }		
+      } 
+      trigger(td1,td2,td3,td4,td5,td6,td7,td8,td9)
+    }
+    
+    // 強迫順時針(測試用)
+    function force_clockwise(center, ...args){
+      for (i = 0; i < args.length; i++) {
+        args[i].innerHTML = (i + 1)
+      }			
+      center.innerHTML = ''
+      $('#message').html( "這是順時針的範例！" );
+      trigger(td1,td2,td3,td4,td5,td6,td7,td8,td9)
+    }
+
+    // 強迫逆時針(測試用)
+    function force_counter_clockwise(center, ...args){
+      for (i = 0; i < args.length; i++) {
+        args[i].innerHTML = (args.length - i )
+      }			
+      center.innerHTML = ''
+      $('#message').html( "這是逆時針的範例！" );
+      trigger(td1,td2,td3,td4,td5,td6,td7,td8,td9)
+    }
+
+    function trigger(...args) {
+      // var args = Array.prototype.slice.call(arguments);
+      // var args = [].slice.call(arguments);
+
+      for (i = 0; i < args.length; i++) {
+        args[i] = args[i].innerHTML;
+      }
+
+      var pivot = args.indexOf('1');
+      console.log(pivot);
+      
+      if(args[4] == ''){
+        args.splice(4, 1);
+        rot('left', args, pivot);
+        rot('right', args, pivot);
+      }
+    }
+
+    function rot(type, array, index){
+      var counter = 0
+
+      if(type == 'left') {
+        for	(i = 0; i < index; i++) {
+          first = array.shift();
+          array.push(first);
+        }
+
+        for	(i = 0; i < array.length; i++) {
+          if(array[i] == (i + 1)) counter++ ;
+        }	
+        if(counter == 8) alert('clockwise'); 		
+      } 
+
+      if(type == 'right') {	
+        var times = array.length - index - 1;
+        for	(i = 0; i < times; i++) {
+          last = array.pop();
+          array.unshift(last);
+        }
+        console.log(array);
+        for	(i = 0; i < array.length; i++) {
+          if(array[i] == (array.length - i)) counter++ ;
+        }	
+        if(counter == 8) alert('counter clockwise'); 
+      }
+    }
+
+    function TD1() {
+      console.log(td1); 
+      common(td1, td2, td4); 
+      // force_clockwise(td5, td1, td2, td3, td4, td6, td7, td8, td9); 
+    }
+    function TD2() { common(td2, td1, td3, td5); }
+    function TD3() { common(td3, td2, td6); }
+    function TD4() { common(td4, td1, td5, td7); }
+    function TD5() { common(td5, td2, td4, td8, td6); }
+    function TD6() { common(td6, td3, td5, td9); }
+    function TD7() { common(td7, td4, td8); }			
+    function TD8() { common(td8, td5, td7, td9); }		
+    function TD9() { common(td9, td6, td8); }
+  </script>
+  <style>
+    .grid-container {
+      // display: grid;
+      // grid 為切版工具
+      grid-template-columns: auto auto auto;
+      background-color: #2196F3;
+      padding: 20px;
+    }
+    .grid-item {
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      font-size: 30px;
+      text-align: center;
+    }
+</style>
+</div>

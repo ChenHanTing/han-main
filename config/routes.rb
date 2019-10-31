@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   get '/home', to: 'staticpages#home'
   get '/help', to: 'staticpages#help'
   get '/todo', to: 'staticpages#todo'
+  get '/jiug', to: 'staticpages#jiug'
+  get '/lotto', to: 'staticpages#lotto'
+  get '/jsbasic', to: 'staticpages#jsbasic'
   # 基本routes應用：https://railsbook.tw/chapters/11-routes.html
 end

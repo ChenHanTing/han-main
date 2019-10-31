@@ -7,4 +7,13 @@ class StaticpagesController < ApplicationController
 
   def todo
   end
+
+  def jsbasic
+  end
+
+  def jiug
+  end
+
+  def lotto
+  end
 end
