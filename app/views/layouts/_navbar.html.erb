@@ -4,18 +4,18 @@
       <a class="navbar-brand" href="<%= forum_lab_forum_index_path %>">HanTing's website</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="<%= help_path %>">Home</a></li>
+      <li class="active"><a href="<%= page_path('home') %>">Home</a></li>
       <li><a href="<%= forum_lab_forum_index_path %>">lab_forum</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Static Pages
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="<%= todo_path %>">TODO Daily</a></li>
-          <li><a href="<%= home_path %>">HOME</a></li>
-          <li><a href="<%= help_path %>">HELP</a></li>
-          <li><a href="<%= jsbasic_path %>">jsbasic</a></li>
-          <li><a href="<%= lotto_path %>">lotto</a></li>
-          <li><a href="<%= jiug_path %>">Jiugongge</a></li>
+          <li><a href="<%= page_path('todo') %>">TODO Daily</a></li>
+          <li><a href="<%= page_path('home') %>">HOME</a></li>
+          <li><a href="<%= page_path('help') %>">HELP</a></li>
+          <li><a href="<%= page_path('jsbasic') %>">jsbasic</a></li>
+          <li><a href="<%= page_path('lotto') %>">lotto</a></li>
+          <li><a href="<%= page_path('jiug') %>">Jiugongge</a></li>
         </ul>
       </li>
     </ul>
