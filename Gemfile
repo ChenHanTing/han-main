@@ -43,13 +43,28 @@ gem 'devise'
 gem 'ahoy_matey'
 gem 'font-awesome-rails'
 
+gem 'mysql2'
+
+# ckeditor 相關套件
+gem 'ckeditor', github: 'galetahub/ckeditor'
+# gem 'ckeditor', '4.2.4'
+gem 'mini_magick'
+
+# 提示窗套件
+# https://github.com/CodeSeven/toastr
+gem 'toastr-rails'
+
+# 處理 file 相關的驗證
+gem 'file_validators'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'pry-nav'
+  gem 'pry-rails'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 
 group :development do
@@ -76,8 +91,8 @@ end
 # 參考網址：https://medium.com/@hidayatabisena/solving-issues-could-not-find-gem-pg-0-18-when-creating-postgresql-db-in-macosx-high-sierra-2efed94db48e
 # brew install postgres
 # bundle install
-group :production do
-  gem 'pg' 
-end
+# group :production do
+#   gem 'pg'
+# end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
