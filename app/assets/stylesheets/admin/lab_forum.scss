@@ -1,3 +1,11 @@
 // Place all the styles related to the forum/lab_forum controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 縮排
+.q, .nick, .category, .create, .update {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 0;
+}

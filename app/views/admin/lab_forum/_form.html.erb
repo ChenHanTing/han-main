@@ -20,14 +20,13 @@
     <div class="col-sm-8">
       <div  class="group"><h2><%= title %></h2></div>
       <%= simple_form_for @lab_forum, url: url do |f| %>
-        <div class="group"><%= f.input :question %></div>
-        <div class="group"><%# f.input :description, as: :text, input_html: {rows: 5} %></div>
-        <div class="group"><%= f.input :description, as: :ckeditor, input_html: { ckeditor: { height: 400 } } %></div>
-        <div class="group"><%= f.input :category, as: :radio_buttons, collection: LabForum::CATEGORY %></div>
-        <div class="group"><%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %></div>
+        <%= f.input :question %>
+        <%= f.input :description, as: :ckeditor, input_html: { ckeditor: { height: 400 } } %>
+        <%= f.input :category, as: :radio_buttons, collection: LabForum::CATEGORY, wrapper: :horizontal_collection_inline %>
+        <%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %>
     </div>
     <div class="col-sm-4">
-      <%= link_to 'Back' , forum_lab_forum_index_path %><br/><br/>
+      <%= link_to 'Back' , admin_lab_forum_index_path %><br/><br/>
     </div>
   </div>
 <% end %>

@@ -15,9 +15,11 @@
         <hr>
         <!-- Date/Time -->
         <p>Posted on <%= @lab_forum.created_at.to_s[0..-4] %></p>
-        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-          沒有功能
-        </button>
+        <% if @lab_forum.is_solved == false %>
+          <%= link_to 'Open', status_admin_lab_forum_path(@lab_forum), remote: true, class: 'btn btn-success', id: "btn-#{@lab_forum.id}" %>
+        <% else %>
+          <%= link_to 'Closed', status_admin_lab_forum_path(@lab_forum), remote: true, class: 'btn btn-danger', id: "btn-#{@lab_forum.id}" %>
+        <% end %>
         <!-- Default checked -->
         <hr>
         <!-- Post Content -->
@@ -30,7 +32,7 @@
           </footer>
         </blockquote>
         <hr>
-        <%= render "forum/comments/form" %>
+        <%= render "admin/comments/form" %>
         <%= render :partial => @comment, collection: @lab_forum.comments.reverse %>
 
 

@@ -1,6 +1,6 @@
-class Forum::LabForumController < ApplicationController
-  # layout "admin"              
-  before_action :find_labforum, only: [:edit, :update, :destroy, :show]
+class Admin::LabForumController < ApplicationController
+  # layout "admin"
+  before_action :find_labforum, only: [:edit, :update, :destroy, :show, :status]
   before_action :authenticate_user!
   # before_action :admin_required # 若非後台人員，即會出現登入阻擋
   def index
@@ -15,7 +15,7 @@ class Forum::LabForumController < ApplicationController
     @lab_forum = LabForum.new(labforum_params)
     @lab_forum.user = current_user  # 如果沒有這行，會有:user=>["must exist"]的錯誤提示
     if @lab_forum.save
-      redirect_to forum_lab_forum_index_path, notice: "新增成功!"
+      redirect_to admin_lab_forum_index_path, notice: "新增成功!"
     else
       render :new
     end
@@ -29,19 +29,33 @@ class Forum::LabForumController < ApplicationController
     # @comment.save
   end
 
-  def edit 
+  def edit
   end
 
   def destroy
     @lab_forum.destroy if @lab_forum
-    redirect_to forum_lab_forum_index_path, notice: "已刪除!"
+    redirect_to admin_lab_forum_index_path, notice: "已刪除!"
   end
 
   def update
     if @lab_forum.update(labforum_params) # 成功
-      redirect_to forum_lab_forum_index_path, notice: "更新成功!"
+      redirect_to admin_lab_forum_index_path, notice: "更新成功!"
     else
       render :edit # 失敗
+    end
+  end
+
+  def status
+    @id = params[:id]
+
+    if @lab_forum.is_solved.eql? false
+      @lab_forum.update(is_solved: true)
+    elsif
+      @lab_forum.update(is_solved: false)
+    end
+
+    respond_to do |format|
+      format.js {render 'status'}
     end
   end
 

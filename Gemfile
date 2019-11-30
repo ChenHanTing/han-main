@@ -43,8 +43,6 @@ gem 'devise'
 gem 'ahoy_matey'
 gem 'font-awesome-rails'
 
-gem 'mysql2'
-
 # ckeditor 相關套件
 gem 'ckeditor', github: 'galetahub/ckeditor'
 # gem 'ckeditor', '4.2.4'
@@ -65,6 +63,7 @@ group :development, :test do
   gem 'pry-rails'
   # Use sqlite3 as the database for Active Record
   # gem 'sqlite3'
+  gem 'mysql2'
 end
 
 group :development do
@@ -91,8 +90,8 @@ end
 # 參考網址：https://medium.com/@hidayatabisena/solving-issues-could-not-find-gem-pg-0-18-when-creating-postgresql-db-in-macosx-high-sierra-2efed94db48e
 # brew install postgres
 # bundle install
-# group :production do
-#   gem 'pg'
-# end
+group :production do
+  gem 'pg'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

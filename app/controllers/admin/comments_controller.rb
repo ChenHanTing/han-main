@@ -1,4 +1,4 @@
-class Forum::CommentsController < ApplicationController
+class Admin::CommentsController < ApplicationController
   before_action :authenticate_user!
   def new
     @lab_forum = LabForum.find_by(id: params[:lab_forum_id])
@@ -11,7 +11,7 @@ class Forum::CommentsController < ApplicationController
     @comment.user = current_user
     @comment.save
     if @comment.save
-      redirect_to forum_lab_forum_path(@lab_forum)
+      redirect_to admin_lab_forum_path(@lab_forum)
     else
       flash.now[:danger] = "error"
     end
@@ -21,11 +21,11 @@ class Forum::CommentsController < ApplicationController
     @lab_forum = LabForum.find_by(id: params[:id])
     @comment = @lab_forum.comments.find_by(lab_forum_id: params[:id])
     @comment.destroy
-    redirect_to forum_lab_forum_path
-  end 
+    redirect_to admin_lab_forum_path
+  end
 
   private
   def comment_params
-    params[:comment].permit(:content)
+    params[:comment].permit(:content, :cover)
   end
 end

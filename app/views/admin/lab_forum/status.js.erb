@@ -1,0 +1,17 @@
+var status = "<%= @lab_forum.is_solved %>";
+var auth = "<%= user_signed_in? && ( @lab_forum.user_id == current_user.id ) %>";
+
+if( auth == 'true' ){
+  if( status == 'false' ){
+    $("#btn-<%= @id %>")[0].innerHTML = ('Open');
+    $("#btn-<%= @id %>").removeClass('btn-danger');
+    $("#btn-<%= @id %>").addClass('btn-success');
+  }else{
+    $("#btn-<%= @id %>")[0].innerHTML = ('Closed');
+    $("#btn-<%= @id %>").removeClass('btn-success');
+    $("#btn-<%= @id %>").addClass('btn-danger');
+  }
+}
+
+
+
