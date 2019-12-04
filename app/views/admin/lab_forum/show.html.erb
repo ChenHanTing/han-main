@@ -16,9 +16,9 @@
         <!-- Date/Time -->
         <p>Posted on <%= @lab_forum.created_at.to_s[0..-4] %></p>
         <% if @lab_forum.is_solved == false %>
-          <%= link_to 'Open', status_admin_lab_forum_path(@lab_forum), remote: true, class: 'btn btn-success', id: "btn-#{@lab_forum.id}" %>
+          <%= link_to 'Open', status_lab_forum_path(@lab_forum), remote: true, class: 'btn btn-success', id: "btn-#{@lab_forum.id}" %>
         <% else %>
-          <%= link_to 'Closed', status_admin_lab_forum_path(@lab_forum), remote: true, class: 'btn btn-danger', id: "btn-#{@lab_forum.id}" %>
+          <%= link_to 'Closed', status_lab_forum_path(@lab_forum), remote: true, class: 'btn btn-danger', id: "btn-#{@lab_forum.id}" %>
         <% end %>
         <!-- Default checked -->
         <hr>

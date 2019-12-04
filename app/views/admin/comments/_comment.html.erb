@@ -4,7 +4,7 @@
       <div class="content">
         <p>
           <hr>
-          <%= link_to del_p_mark(fa_icon "trash"), admin_lab_forum_comment_path(@lab_forum),
+          <%= link_to del_p_mark(fa_icon "trash"), lab_forum_comment_path(@lab_forum),
               method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
           <strong><%= User.find_by(id: comment.user_id).nickname.capitalize %></strong>
            <br/><%= simple_format(comment.content) %>

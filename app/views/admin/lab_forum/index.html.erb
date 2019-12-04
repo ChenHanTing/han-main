@@ -1,7 +1,7 @@
 <% content_for :page_title,  "lab_forum" %>
 
 <div class="container-fluid">
-  <h4><%= link_to 'Add Q' , new_admin_lab_forum_path %></h4>
+  <h4><%= link_to 'Add Q' , new_lab_forum_path %></h4>
   <h1>All Qs</h1>
   <table class="table">
     <thead>
@@ -23,21 +23,21 @@
         <td class="category"><%= article.category %></td>
         <td>
           <% if user_signed_in? && ( article.user_id == current_user.id ) %>
-            <%= link_to del_p_mark(fa_icon "eye"), admin_lab_forum_path(article), class: 'btn btn-primary' %>
-            <%= link_to del_p_mark(fa_icon "edit"), edit_admin_lab_forum_path(article), class: 'btn btn-primary' %>
-            <%= link_to del_p_mark(fa_icon "trash"), admin_lab_forum_path(article),
+            <%= link_to del_p_mark(fa_icon "eye"), lab_forum_path(article), class: 'btn btn-primary' %>
+            <%= link_to del_p_mark(fa_icon "edit"), edit_lab_forum_path(article), class: 'btn btn-primary' %>
+            <%= link_to del_p_mark(fa_icon "trash"), lab_forum_path(article),
                   method: "delete", data: { confirm: "Are you sure?" }, class: 'btn btn-primary'  %>
           <% else %>
-            <%= link_to del_p_mark(fa_icon "eye"), admin_lab_forum_path(article), class: 'btn btn-primary' %>
+            <%= link_to del_p_mark(fa_icon "eye"), lab_forum_path(article), class: 'btn btn-primary' %>
           <% end %>
         </td>
         <td class="create"><%= article.created_at.to_s[0..-4] %></td>
         <td class="update"><%= article.updated_at == article.created_at ? "---" : article.updated_at.to_s[0..-4] %></td>
         <td>
           <% if article.is_solved == false %>
-            <%= link_to 'Open', status_admin_lab_forum_path(article), remote: true, class: 'btn btn-success', id: "btn-#{article.id}" %>
+            <%= link_to 'Open', status_lab_forum_path(article), remote: true, class: 'btn btn-success', id: "btn-#{article.id}" %>
           <% else %>
-            <%= link_to 'Closed', status_admin_lab_forum_path(article), remote: true, class: 'btn btn-danger', id: "btn-#{article.id}" %>
+            <%= link_to 'Closed', status_lab_forum_path(article), remote: true, class: 'btn btn-danger', id: "btn-#{article.id}" %>
           <% end %>
         </td>
       </tr>

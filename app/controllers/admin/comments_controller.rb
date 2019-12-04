@@ -13,10 +13,10 @@ class Admin::CommentsController < ApplicationController
     if @comment.save
       # 問題：按鈕處於submitting...狀態
       # redirect_back(fallback_location: fallback_location)
-      redirect_to admin_lab_forum_path(@lab_forum)
+      redirect_to lab_forum_path(@lab_forum)
     else
       flash.now[:danger] = "error"
-      redirect_back(fallback_location: admin_lab_forum_path(@lab_forum))
+      redirect_back(fallback_location: lab_forum_path(@lab_forum))
     end
   end
 
@@ -24,7 +24,7 @@ class Admin::CommentsController < ApplicationController
     @lab_forum = LabForum.find_by(id: params[:id])
     @comment = @lab_forum.comments.find_by(lab_forum_id: params[:id])
     @comment.destroy
-    redirect_to admin_lab_forum_path
+    redirect_to lab_forum_path
   end
 
   private
