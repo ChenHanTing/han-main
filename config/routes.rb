@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   #   root 'lab_forum#index'
   # end
 
+  # namespace :assignment do
+  #   get 'todos/index'
+  #   get 'todos/new'
+  #   get 'todos/show'
+  # end
+
   constraints subdomain: 'admin' do
     scope module: 'admin' do
       resources :lab_forum do
@@ -17,6 +23,13 @@ Rails.application.routes.draw do
         get 'status', on: :member
       end
       root 'lab_forum#index'
+    end
+  end
+
+  constraints subdomain: 'assignment' do
+    scope module: 'assignment' do
+      resources :todolists
+      root 'todolists#index'
     end
   end
 

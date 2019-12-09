@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_161452) do
+ActiveRecord::Schema.define(version: 2019_12_09_081018) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(version: 2019_11_29_161452) do
     t.boolean "is_solved", default: false
     t.string "category"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "todos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content"
+    t.datetime "complete_time"
+    t.boolean "status", default: false
+    t.integer "priority", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
