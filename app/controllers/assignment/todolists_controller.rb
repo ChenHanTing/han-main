@@ -16,7 +16,7 @@ class Assignment::TodolistsController < ApplicationController
     # @todo.user = current_user
     # 如果沒有這行，會有:user=>["must exist"]的錯誤提示
     if @todo.save
-      redirect_to lab_forum_index_path, notice: "新增成功!"
+      redirect_to todolists_path, notice: "新增成功!"
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Assignment::TodolistsController < ApplicationController
 
   def destroy
     @todo.destroy if @todo
-    redirect_to lab_forum_index_path, notice: "已刪除!"
+    redirect_to todolists_path, notice: "已刪除!"
   end
 
   def update

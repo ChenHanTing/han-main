@@ -6,9 +6,9 @@
   <table class="table">
     <thead>
       <tr>
+        <td>status</td>
         <td>content</td>
         <td>complete time</td>
-        <td>status</td>
         <td>priority</td>
         <td>action</td>
       </tr>
@@ -16,14 +16,14 @@
     <tbody>
       <% @todos.each do |todo| %>
       <tr>
-        <td><%= todo.content %></td>
-        <td><%= todo.complete_time %></td>
         <td><%= todo.status %></td>
+        <td><%= todo.content %></td>
+        <td><%= complete_time(todo.complete_time) %></td>
         <td><%= todo.priority %></td>
         <td>
           <%= link_to (fa_icon "eye"), todolist_path(todo), class: 'btn' %>
           <%= link_to (fa_icon "edit"), edit_todolist_path(todo), class: 'btn' %>
-          <%= link_to (fa_icon "trash"), todolist_path(todo), class: 'btn' %>
+          <%= link_to (fa_icon "trash"), todolist_path(todo), class: 'btn', method: :delete %>
         </td>
       </tr>
       <% end %>

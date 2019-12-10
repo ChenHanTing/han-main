@@ -58,6 +58,9 @@ gem 'file_validators'
 # 國際化
 gem 'rails-i18n'
 
+# simple form 月曆
+gem 'datetime_picker_input'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -16,4 +16,5 @@
 //= require jquery3
 //= require jquery
 //= require bootstrap-sprockets
+//= require datetime_picker_input
 //= require_tree .
