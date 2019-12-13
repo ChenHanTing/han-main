@@ -1,6 +1,6 @@
 class Assignment::TodolistsController < ApplicationController
   # layout "admin"
-  before_action :find_todos, only: [:edit, :update, :destroy, :show]
+  before_action :find_todos, only: [:edit, :update, :destroy, :show, :status]
   # before_action :authenticate_user!
   # before_action :required # 若非後台人員，即會出現登入阻擋
   def index
@@ -55,7 +55,22 @@ class Assignment::TodolistsController < ApplicationController
   #   end
   # end
 
+  def status
+    @id = params[:id]
+
+    if @todo.status.eql? false
+      @todo.update(status: true)
+    elsif
+      @todo.update(status: false)
+    end
+
+    respond_to do |format|
+      format.js {render 'status'}
+    end
+  end
+
   private
+
   def todo_params
     params.require(:todo).permit(:content, :complete_time, :status, :priority)
   end

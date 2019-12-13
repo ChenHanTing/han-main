@@ -15,5 +15,12 @@ module DiaryApp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # 設定載入路徑
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    # 預設語系
+    config.i18n.default_locale = "zh-TW"
+    # use default locale when translation missing
+    # config.i18n.fallbacks = "zh-TW"
   end
 end

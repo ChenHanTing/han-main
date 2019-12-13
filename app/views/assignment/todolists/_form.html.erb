@@ -7,7 +7,7 @@
       <%= f.input :priority, collection: Todo.priorities, prompt: true %>
       <%= f.input :complete_time, as: :date_time_picker %>
 
-      <%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %>
+      <%= f.submit 'Submit', data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %>
       <%= link_to 'Back', todolists_path, class: 'btn' %>
     <% end %>
   </div>

@@ -31,3 +31,46 @@
 
 en:
   hello: "Hello world"
+  lab_forum:
+    hans_web: "HanTing's Website"
+    home: Home
+    lab_forum: Forum
+    todo: TODO
+    pages: Pages
+    action: Action
+    todo_daily: Todo Daily
+    ajax_basic: Basic Ajax
+    status: Status
+    new_question: "New Q"
+  lab_forum:
+    add_q: "Add Q"
+    all_qs: "All Qs"
+    problem: Problem
+    author: Author
+    category: Category
+    action: Aciton
+    create_time: "Create Time"
+    update_time: "Update Time"
+    status: Status
+    new_question: "New Q"
+  todolist:
+    new_todo: "New TODO"
+    add_todo: "Add TODO"
+    all_todo: "All TODO"
+    status: Status
+    content: Content
+    complete_time: "Complete time"
+    priority: Priority
+    action: Action
+    undone: Undone
+    done: Done
+  simple_form:
+    labels:
+      lab_forum:
+        question: Q
+        description: Description
+        category: Category
+      todolists:
+        content: Content
+        priority: Priority
+        complete_time: "Complete Time"

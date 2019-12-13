@@ -1,0 +1,45 @@
+zh-TW:
+  hello: 哈囉
+  lab_forum:
+    hans_web: 漢庭的網站
+    home: 首頁
+    lab_forum: 討論版
+    todo: 清單
+    pages: 靜態網站
+    action: 動作
+    todo_daily: 每天要做
+    ajax_basic: 基本Ajax
+    status: 狀態
+    new_question: 新問題
+  lab_forum:
+    add_q: 新增問題
+    all_qs: 所有問題
+    problem: 問題
+    author: 作者
+    category: 種類
+    action: 動作
+    create_time: 建立時間
+    update_time: 更新時間
+    status: 狀態
+    new_question: 新問題
+  todolist:
+    new_todo: 建立新清單
+    add_todo: 新增清單
+    all_todo: 所有清單
+    status: 狀態
+    content: 內容
+    complete_time: 完成時間
+    priority: 優先順序
+    action: 動作
+    undone: 未完成
+    done: 完成
+  simple_form:
+    labels:
+      lab_forum:
+        question: 問題
+        description: 詳述
+        category: 種類
+      todolists:
+        content: 內容
+        priority: 優先順序
+        complete_time: 完成時間
