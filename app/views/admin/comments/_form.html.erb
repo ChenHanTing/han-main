@@ -5,8 +5,9 @@
         <%= form_for @comment, url: lab_forum_comments_path(@lab_forum), html: {method: "post"} do |f| %>
           <div class="group">
             <%= f.text_area :content, size: "50x5", placeholder: "Make an offer ", :maxlength=>"254" %><br />
-            <%= f.label :cover %>
-            <%= f.file_field :cover %>
+            <p><%= f.label 'Image' %>&nbsp;&nbsp;
+               <br/><%= f.file_field(:cover, accept: 'image/png,image/gif,image/jpeg') %>
+            </p>
           </div>
           <div class="group"><%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %></div>
         <% end %>

@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   # get, post自己寫
   get 'name', to: "name#index"
   post 'name', to: "name#post_result"
-  get 'nickname', to: "name#get_result"
+  get 'username', to: "name#get_result"
 
   # 寫在最後一行
   # 基本routes應用：https://railsbook.tw/chapters/11-routes.html

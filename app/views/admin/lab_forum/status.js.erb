@@ -1,4 +1,4 @@
-var status = "<%= @lab_forum.is_solved %>";
+var status = "<%= @lab_forum.solved %>";
 var auth = "<%= user_signed_in? && ( @lab_forum.user_id == current_user.id ) %>";
 
 if( auth == 'true' ){

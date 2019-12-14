@@ -10,12 +10,12 @@
         <!-- Author -->
         <p class="lead">
           by
-          <a href="#"><%= User.find_by(id: @lab_forum.user_id).nickname.capitalize %></a>
+          <a href="#"><%= User.find_by(id: @lab_forum.user_id).username.capitalize %></a>
         </p>
         <hr>
         <!-- Date/Time -->
         <p>Posted on <%= @lab_forum.created_at.to_s[0..-4] %></p>
-        <% if @lab_forum.is_solved == false %>
+        <% if @lab_forum.solved == false %>
           <%= link_to 'Open', status_lab_forum_path(@lab_forum), remote: true, class: 'btn btn-success', id: "btn-#{@lab_forum.id}" %>
         <% else %>
           <%= link_to 'Closed', status_lab_forum_path(@lab_forum), remote: true, class: 'btn btn-danger', id: "btn-#{@lab_forum.id}" %>

@@ -44,10 +44,10 @@ class Assignment::TodolistsController < ApplicationController
   # def status
   #   @id = params[:id]
 
-  #   if @todo.is_solved.eql? false
-  #     @todo.update(is_solved: true)
+  #   if @todo.solved.eql? false
+  #     @todo.update(solved: true)
   #   elsif
-  #     @todo.update(is_solved: false)
+  #     @todo.update(solved: false)
   #   end
 
   #   respond_to do |format|

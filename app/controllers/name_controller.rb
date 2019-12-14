@@ -6,7 +6,7 @@ class NameController < ApplicationController
   end
 
   def get_result
-    @nickname = "#{params[:nickname]}"
+    @username = "#{params[:username]}"
 
     respond_to do |format|
       format.html { render 'get_result' }

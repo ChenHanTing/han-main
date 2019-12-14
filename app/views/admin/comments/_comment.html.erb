@@ -6,10 +6,11 @@
           <hr>
           <%= link_to del_p_mark(fa_icon "trash"), lab_forum_comment_path(@lab_forum),
               method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
-          <strong><%= User.find_by(id: comment.user_id).nickname.capitalize %></strong>
+          <strong><%= User.find_by(id: comment.user_id).username.capitalize %></strong>
+            &nbsp;&nbsp;&nbsp;
+            Posted at <%= distance_of_time_in_words(comment.commentable.created_at, comment.created_at) %>
            <br/><%= simple_format(comment.content) %>
            <br/><%= image_tag comment.cover if comment.cover.attached? %>
-           <p>Posted at <%= distance_of_time_in_words(comment.lab_forum.created_at, comment.created_at) %></p>
         </p>
       </div>
     </div>

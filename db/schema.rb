@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_081018) do
+ActiveRecord::Schema.define(version: 2019_12_14_125119) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -87,29 +87,46 @@ ActiveRecord::Schema.define(version: 2019_12_09_081018) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
-    t.integer "lab_forum_id"
-    t.integer "user_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "lab_forums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "question"
     t.text "description"
-    t.boolean "is_solved", default: false
+    t.boolean "solved", default: false
     t.string "category"
     t.integer "user_id"
+    t.integer "click", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "todos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "content"
-    t.datetime "complete_time"
-    t.boolean "status", default: false
-    t.integer "priority", default: 0
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "expression"
+    t.string "expressable_type"
+    t.bigint "expressable_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["expressable_type", "expressable_id"], name: "index_likes_on_expressable_type_and_expressable_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "todos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content"
+    t.integer "priority", default: 0
+    t.boolean "status", default: false
+    t.bigint "user_id"
+    t.datetime "complete_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_todos_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -120,10 +137,13 @@ ActiveRecord::Schema.define(version: 2019_12_09_081018) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "users"
+  add_foreign_key "todos", "users"
 end

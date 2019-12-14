@@ -23,8 +23,8 @@ class Admin::LabForumController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comment.lab_forum_id = @lab_forum.id
-    @comment.user_id = current_user.id
+    @comment.commentable = @lab_forum
+    @comment.user = current_user
     # @comment.content = "123"
     # @comment.save
   end
@@ -48,10 +48,10 @@ class Admin::LabForumController < ApplicationController
   def status
     @id = params[:id]
 
-    if @lab_forum.is_solved.eql? false
-      @lab_forum.update(is_solved: true)
+    if @lab_forum.solved.eql? false
+      @lab_forum.update(solved: true)
     elsif
-      @lab_forum.update(is_solved: false)
+      @lab_forum.update(solved: false)
     end
 
     respond_to do |format|
@@ -61,7 +61,7 @@ class Admin::LabForumController < ApplicationController
 
   private
   def labforum_params
-    params.require(:lab_forum).permit(:question, :description, :category, :is_solved)
+    params.require(:lab_forum).permit(:question, :description, :category, :solved)
   end
 
   def find_labforum

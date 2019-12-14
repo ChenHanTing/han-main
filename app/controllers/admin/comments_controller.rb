@@ -22,7 +22,7 @@ class Admin::CommentsController < ApplicationController
 
   def destroy
     @lab_forum = LabForum.find_by(id: params[:id])
-    @comment = @lab_forum.comments.find_by(lab_forum_id: params[:id])
+    @comment = @lab_forum.comments.find_by(commentable_id: params[:id])
     @comment.destroy
     redirect_to lab_forum_path
   end

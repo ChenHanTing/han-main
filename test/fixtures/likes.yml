@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expression: 1
+  user: one
+  likeable: one
+  likeable_type: Likeable
+
+two:
+  expression: 1
+  user: two
+  likeable: two
+  likeable_type: Likeable

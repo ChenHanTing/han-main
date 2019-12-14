@@ -1,16 +1,10 @@
 class Comment < ApplicationRecord
-  belongs_to :lab_forum
+  belongs_to :commentable, polymorphic: true
   belongs_to :user
 
+  # 非多型的寫法
+  # belongs_to :lab_forum
+
   has_one_attached :cover
-
-  validate :image_type
-
-  def image_type
-    if cover.attached? == false
-      errors.add(:cover, 'required')
-    elsif !cover.content_type.in? ['image/jpeg', 'image/png']
-      errors.add(:cover, 'not supported')
-    end
-  end
+  has_many :likes
 end
