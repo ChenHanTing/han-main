@@ -21,23 +21,23 @@
         <td id='td8' class="grid-item" onclick='TD8()'>8</td>
         <td id='td9' class="grid-item" onclick='TD9()'></td>
         </tr>
-      </table>    
+      </table>
     </div>
     <div class="col-sm-6">
-      <a class="btn btn-primary" 
-         onclick="force_clockwise(td5, td1, td2, td3, td4, td6, td7, td8, td9)" role="button">逆時針</a>
+      <a class="btn btn-light"
+         onclick="force_clockwise(td5, td1, td2, td3, td6, td9, td8, td7, td4)">順時針</a>
       &#12288;
-      <a class="btn btn-primary" 
-         onclick="force_counter_clockwise(td5, td1, td2, td3, td4, td6, td7, td8, td9)" role="button">順時針</a>
+      <a class="btn btn-light"
+         onclick="force_counter_clockwise(td5, td1, td2, td3, td6, td9, td8, td7, td4)">逆時針</a>
       <br /><br /><br />
       <p id="message"></p>
     </div>
   </div>
-  
+
   <script>
     var td1, td2, td3, td4, td5, td6, td7, td8, td9;
     $(function() {
-      td1 = $('#td1')[0]; td2 = $('#td2')[0]; td3 = $('#td3')[0]; 
+      td1 = $('#td1')[0]; td2 = $('#td2')[0]; td3 = $('#td3')[0];
       td4 = $('#td4')[0]; td5 = $('#td5')[0]; td6 = $('#td6')[0];
       td7 = $('#td7')[0]; td8 = $('#td8')[0]; td9 = $('#td9')[0];
     });
@@ -53,34 +53,34 @@
         args[1].innerHTML = args[0].innerHTML;
         args[0].innerHTML = '';
       }
-      
+
       if(args[2].innerHTML == '') {
           args[2].innerHTML = args[0].innerHTML;
           args[0].innerHTML = '';
       }
-      
+
 
       if(typeof args[3] != "undefined") {
         if(args[3].innerHTML == '') {
           args[3].innerHTML = args[0].innerHTML;
           args[0].innerHTML = '';
-        }		
+        }
       }
 
       if(typeof args[4] != "undefined") {
         if(args[4].innerHTML == '') {
           args[4].innerHTML = args[0].innerHTML;
           args[0].innerHTML = '';
-        }		
-      } 
+        }
+      }
       trigger(td1,td2,td3,td4,td5,td6,td7,td8,td9)
     }
-    
+
     // 強迫順時針(測試用)
     function force_clockwise(center, ...args){
       for (i = 0; i < args.length; i++) {
         args[i].innerHTML = (i + 1)
-      }			
+      }
       center.innerHTML = ''
       $('#message').html( "這是順時針的範例！" );
       trigger(td1,td2,td3,td4,td5,td6,td7,td8,td9)
@@ -90,7 +90,7 @@
     function force_counter_clockwise(center, ...args){
       for (i = 0; i < args.length; i++) {
         args[i].innerHTML = (args.length - i )
-      }			
+      }
       center.innerHTML = ''
       $('#message').html( "這是逆時針的範例！" );
       trigger(td1,td2,td3,td4,td5,td6,td7,td8,td9)
@@ -106,7 +106,7 @@
 
       var pivot = args.indexOf('1');
       console.log(pivot);
-      
+
       if(args[4] == ''){
         args.splice(4, 1);
         rot('left', args, pivot);
@@ -125,11 +125,11 @@
 
         for	(i = 0; i < array.length; i++) {
           if(array[i] == (i + 1)) counter++ ;
-        }	
-        if(counter == 8) alert('clockwise'); 		
-      } 
+        }
+        if(counter == 8) alert('clockwise');
+      }
 
-      if(type == 'right') {	
+      if(type == 'right') {
         var times = array.length - index - 1;
         for	(i = 0; i < times; i++) {
           last = array.pop();
@@ -138,23 +138,23 @@
         console.log(array);
         for	(i = 0; i < array.length; i++) {
           if(array[i] == (array.length - i)) counter++ ;
-        }	
-        if(counter == 8) alert('counter clockwise'); 
+        }
+        if(counter == 8) alert('counter clockwise');
       }
     }
 
     function TD1() {
-      console.log(td1); 
-      common(td1, td2, td4); 
-      // force_clockwise(td5, td1, td2, td3, td4, td6, td7, td8, td9); 
+      console.log(td1);
+      common(td1, td2, td4);
+      // force_clockwise(td5, td1, td2, td3, td4, td6, td7, td8, td9);
     }
     function TD2() { common(td2, td1, td3, td5); }
     function TD3() { common(td3, td2, td6); }
     function TD4() { common(td4, td1, td5, td7); }
     function TD5() { common(td5, td2, td4, td8, td6); }
     function TD6() { common(td6, td3, td5, td9); }
-    function TD7() { common(td7, td4, td8); }			
-    function TD8() { common(td8, td5, td7, td9); }		
+    function TD7() { common(td7, td4, td8); }
+    function TD8() { common(td8, td5, td7, td9); }
     function TD9() { common(td9, td6, td8); }
   </script>
   <style>

@@ -1,16 +1,23 @@
 zh-TW:
   hello: 哈囉
-  lab_forum:
+  navbar:
     hans_web: 漢庭的網站
     home: 首頁
     lab_forum: 討論版
     todo: 清單
     pages: 靜態網站
     action: 動作
-    todo_daily: 每天要做
+    todo_daily: 依教奉行
     ajax_basic: 基本Ajax
-    status: 狀態
-    new_question: 新問題
+    squared_up: 九宮格
+    bmi_cal: "BMI 計算機"
+    name_form: "名字表單"
+    lotto: 樂透
+    help: Help
+    account: 帳密
+    login: 登入
+    signup: 註冊
+    logout: 登出
   lab_forum:
     add_q: 新增問題
     all_qs: 所有問題

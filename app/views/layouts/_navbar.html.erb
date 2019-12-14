@@ -1,26 +1,26 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" href="<%= lab_forum_index_path %>">HanTing's website</a>
+  <a class="navbar-brand" href="<%= lab_forum_index_path %>"><%= t('navbar.hans_web') %></a>
 
   <!-- Links -->
   <ul class="navbar-nav">
-    <li class="nav-item"><a class="nav-link" href="<%= page_path('home') %>">HOME</a></li>
-    <li class="nav-item"><a class="nav-link" href="<%= lab_forum_index_path %>">Lab Forum</a></li>
-    <li class="nav-item"><a class="nav-link" href="<%= todolists_path %>">TODO</a></li>
+    <li class="nav-item"><a class="nav-link" href="<%= page_path('home') %>"><%= t('navbar.home') %></a></li>
+    <li class="nav-item"><a class="nav-link" href="<%= lab_forum_index_path %>"><%= t('navbar.lab_forum') %></a></li>
+    <li class="nav-item"><a class="nav-link" href="<%= todolists_path %>"><%= t('navbar.todo') %></a></li>
 
     <!-- Dropdown -->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Pages
+        <%= t('navbar.pages') %>
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="<%= page_path('todo') %>">TODO Daily</a>
-        <a class="dropdown-item" href="<%= page_path('jsbasic') %>">Ajax Basic</a>
-        <a class="dropdown-item" href="<%= page_path('lotto') %>">Lotto</a>
-        <a class="dropdown-item" href="<%= page_path('jiug') %>">Squared Up</a>
-        <a class="dropdown-item" href="<%= bmi_path %>">BMI calculator</a>
-        <a class="dropdown-item" href="<%= name_path %>">HTML Forms</a>
-        <a class="dropdown-item" href="<%= page_path('help') %>">Help</a>
+        <a class="dropdown-item" href="<%= page_path('todo') %>"><%= t('navbar.todo_daily') %></a>
+        <a class="dropdown-item" href="<%= page_path('jsbasic') %>"><%= t('navbar.ajax_basic') %></a>
+        <a class="dropdown-item" href="<%= page_path('lotto') %>"><%= t('navbar.lotto') %></a>
+        <a class="dropdown-item" href="<%= page_path('squared') %>"><%= t('navbar.squared_up') %></a>
+        <a class="dropdown-item" href="<%= bmi_path %>"><%= t('navbar.bmi_cal') %></a>
+        <a class="dropdown-item" href="<%= name_path %>"><%= t('navbar.name_form') %></a>
+        <a class="dropdown-item" href="<%= page_path('help') %>"><%= t('navbar.help') %></a>
       </div>
     </li>
   </ul>
@@ -29,14 +29,14 @@
     <%#= link_to "中文版", action: :set_locale, locale: "zh-TW" %>
     <%#= link_to "English", action: set_locale, locale: "en" %>
     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-      Account
+      <%= t('navbar.account') %>
     </a>
     <div class="dropdown-menu  dropdown-menu-right">
       <% if current_user %>
-        <%= link_to simple_format('<i class="fa fa-log-out"></i> log out') , destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        <%= link_to t('navbar.logout'), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       <% else %>
-        <a class="dropdown-item" href="<%= new_user_registration_path %>"><span class="fa fa-user"></span> Sign Up</a>
-        <a class="dropdown-item" href="<%= new_user_session_path %>"><span class="fa fa-sign-in"></span> Login</a>
+        <a class="dropdown-item" href="<%= new_user_registration_path %>"><span class="fa fa-user"></span><%= t('navbar.signup') %></a>
+        <a class="dropdown-item" href="<%= new_user_session_path %>"><span class="fa fa-sign-in"></span><%= t('navbar.login') %></a>
       <% end %>
     </div>
   </ul>

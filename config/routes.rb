@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
 
+  # 慣例：名字後須 +s
   scope module: 'admin' do
     resources :lab_forum do
       resources :comments
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
     root 'lab_forum#index'
   end
 
-  scope module: :assignment do
+  scope module: 'assignment' do
     resources :todolists do
       get 'status', on: :member
     end
