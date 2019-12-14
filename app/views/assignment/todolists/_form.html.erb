@@ -1,3 +1,11 @@
+<script>
+  $(function () {
+    $('.datepicker').datetimepicker({
+      format: 'YYYY-MM-DD HH:mm:ss'
+    });
+  });
+</script>
+
 <div class="row">
 
   <div class="col-sm-6">
@@ -6,6 +14,12 @@
       <%= f.input :content, input_html: {value: f.object.content || 'Default Content'} %>
       <%= f.input :priority, collection: Todo.priorities, prompt: true %>
       <%= f.input :complete_time, as: :date_time_picker %>
+      <div class="input-group" data-target-input="nearest">
+          <%= f.text_field :complete_time, id: "complete_time", class: "form-control datepicker", data: { target: '#complete_time'} %>
+          <div class="input-group-append" data-target="#complete_time" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+      </div>
 
       <%= f.submit 'Submit', data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %>
       <%= link_to 'Back', todolists_path, class: 'btn' %>

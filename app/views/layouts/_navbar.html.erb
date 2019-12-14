@@ -1,37 +1,45 @@
-<nav class="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="<%= lab_forum_index_path %>">HanTing's website</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="<%= page_path('home') %>">Home</a></li>
-      <li><a href="<%= lab_forum_index_path %>">Lab Forum</a></li>
-      <li><a href="<%= todolists_path %>">TODO</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pages
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="<%= page_path('todo') %>">TODO Daily</a></li>
-          <li><a href="<%= page_path('jsbasic') %>">Ajax Basic</a></li>
-          <li><a href="<%= page_path('lotto') %>">Lotto</a></li>
-          <li><a href="<%= page_path('jiug') %>">Squared Up</a></li>
-          <li><a href="<%= bmi_path %>">BMI calculator</a></li>
-          <li><a href="<%= name_path %>">HTML Forms</a></li>
-          <li><a href="<%= page_path('help') %>">Help</a></li>
-        </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <%#= link_to "中文版", action: :set_locale, locale: "zh-TW" %>
-      <%#= link_to "English", action: set_locale, locale: "en" %>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="<%= lab_forum_index_path %>">HanTing's website</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" href="<%= page_path('home') %>">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" href="<%= lab_forum_index_path %>">Lab Forum</a></li>
+    <li class="nav-item"><a class="nav-link" href="<%= todolists_path %>">TODO</a></li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Pages
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="<%= page_path('todo') %>">TODO Daily</a>
+        <a class="dropdown-item" href="<%= page_path('jsbasic') %>">Ajax Basic</a>
+        <a class="dropdown-item" href="<%= page_path('lotto') %>">Lotto</a>
+        <a class="dropdown-item" href="<%= page_path('jiug') %>">Squared Up</a>
+        <a class="dropdown-item" href="<%= bmi_path %>">BMI calculator</a>
+        <a class="dropdown-item" href="<%= name_path %>">HTML Forms</a>
+        <a class="dropdown-item" href="<%= page_path('help') %>">Help</a>
+      </div>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav ml-auto">
+    <%#= link_to "中文版", action: :set_locale, locale: "zh-TW" %>
+    <%#= link_to "English", action: set_locale, locale: "en" %>
+    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+      Account
+    </a>
+    <div class="dropdown-menu  dropdown-menu-right">
       <% if current_user %>
-        <li>
-          <%= link_to simple_format('<i class="glyphicon glyphicon-log-out"></i> log out') , destroy_user_session_path, method: :delete %>
-        </li>
+        <%= link_to simple_format('<i class="fa fa-log-out"></i> log out') , destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       <% else %>
-        <li><a href="<%= new_user_registration_path %>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="<%= new_user_session_path %>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <a class="dropdown-item" href="<%= new_user_registration_path %>"><span class="fa fa-user"></span> Sign Up</a>
+        <a class="dropdown-item" href="<%= new_user_session_path %>"><span class="fa fa-sign-in"></span> Login</a>
       <% end %>
-    </ul>
-  </div>
+    </div>
+  </ul>
 </nav>
+
+

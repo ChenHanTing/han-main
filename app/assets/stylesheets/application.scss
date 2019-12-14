@@ -1,6 +1,6 @@
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 @import "admin/lab_forum";
-@import 'datetime_picker_input';
+
+// for TempusDominus
+@import "tempusdominus-bootstrap-4.css";

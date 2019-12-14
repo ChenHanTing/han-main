@@ -35,13 +35,20 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # 安裝bootstrap
-gem 'bootstrap-sass', '~> 3.4.1'
-gem 'sassc-rails', '>= 2.1.0'
+# gem 'bootstrap-sass', '~> 3.4.1'
+# gem 'sassc-rails', '>= 2.1.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'ahoy_matey'
 gem 'font-awesome-rails'
+
+# 下列為 datetime-picker
+# moment.js
+gem 'momentjs-rails'
+# Tempus Dominus
+gem 'bootstrap4-datetime-picker-rails'
 
 # ckeditor 相關套件
 gem 'ckeditor', github: 'galetahub/ckeditor'

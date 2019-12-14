@@ -16,5 +16,8 @@
 //= require jquery3
 //= require jquery
 //= require bootstrap-sprockets
-//= require datetime_picker_input
+//= require popper
+//= require moment
+//= require moment/ja.js
+//= require tempusdominus-bootstrap-4.js
 //= require_tree .
