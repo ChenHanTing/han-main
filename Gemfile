@@ -35,9 +35,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # 安裝bootstrap
+
+# bootstrap 3
 # gem 'bootstrap-sass', '~> 3.4.1'
 # gem 'sassc-rails', '>= 2.1.0'
-gem 'bootstrap', '~> 4.3.1'
+
+# bootstrap 4
+gem 'bootstrap', '~> 4.4.1'
+
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise'
@@ -45,10 +50,8 @@ gem 'ahoy_matey'
 gem 'font-awesome-rails'
 
 # 下列為 datetime-picker
-# moment.js
-gem 'momentjs-rails'
-# Tempus Dominus
-gem 'bootstrap4-datetime-picker-rails'
+gem 'momentjs-rails'                    # moment.js
+gem 'bootstrap4-datetime-picker-rails'  # Tempus Dominus
 
 # ckeditor 相關套件
 gem 'ckeditor', github: 'galetahub/ckeditor'
@@ -65,8 +68,8 @@ gem 'file_validators'
 # 國際化
 gem 'rails-i18n'
 
-# simple form 月曆
-gem 'datetime_picker_input'
+# 在 rails 使用 sinatra
+gem 'sinatra'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

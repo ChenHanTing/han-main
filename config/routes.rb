@@ -12,10 +12,21 @@ Rails.application.routes.draw do
   end
 
   scope module: 'assignment' do
-    resources :todolists do
-      get 'status', on: :member
-    end
-    root 'todolists#index'
+    # resources :todolists do
+    #   get 'status', on: :member
+    # end
+
+    # https://stackoverflow.com/questions/19189415/how-may-two-routes-with-different-http-request-types-share-the-same-name
+    get "/todolists/:id/status", to: "todolists#status", as: "status_todolist"
+    get  "/todolists", to: "todolists#index", as: "todolists"
+    post "/todolists", to: "todolists#create"
+    get  "/todolists/new", to: "todolists#new", as: "new_todolist"
+    get  "/todolists/:id/edit", to: "todolists#edit", as: "edit_todolist"
+    get  "/todolists/:id", to: "todolists#show", as: "todolist"
+    patch "/todolists/:id", to: "todolists#update"
+    delete "/todolists/:id", to: "todolists#destroy"
+
+    root 'todolists#index', to: ""
   end
 
   # constraints subdomain: 'admin' do
@@ -43,6 +54,9 @@ Rails.application.routes.draw do
   get 'name', to: "name#index"
   post 'name', to: "name#post_result"
   get 'username', to: "name#get_result"
+
+  # sinatra (先放著)
+  # mount Api::Ping => '/api/ping'
 
   # 寫在最後一行
   # 基本routes應用：https://railsbook.tw/chapters/11-routes.html

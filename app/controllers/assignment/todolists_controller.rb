@@ -1,8 +1,12 @@
 class Assignment::TodolistsController < ApplicationController
   # layout "admin"
+
   before_action :find_todos, only: [:edit, :update, :destroy, :show, :status]
   # before_action :authenticate_user!
-  # before_action :required # 若非後台人員，即會出現登入阻擋
+
+  # 若非後台人員，即會出現登入阻擋
+  # before_action :required
+
   def index
     @todos = Todo.all
   end

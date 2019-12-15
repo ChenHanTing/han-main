@@ -48,10 +48,9 @@ class Admin::LabForumController < ApplicationController
   def status
     @id = params[:id]
 
-    if @lab_forum.solved.eql? false
-      @lab_forum.update(solved: true)
-    elsif
-      @lab_forum.update(solved: false)
+    if user_signed_in? && (@lab_forum.user == current_user)
+      status = @lab_forum.solved.eql?(false) ? true : false
+      @lab_forum.update(solved: status)
     end
 
     respond_to do |format|

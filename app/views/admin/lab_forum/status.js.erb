@@ -1,5 +1,5 @@
 var status = "<%= @lab_forum.solved %>";
-var auth = "<%= user_signed_in? && ( @lab_forum.user_id == current_user.id ) %>";
+var auth = "<%= user_signed_in? && ( @lab_forum.user == current_user ) %>";
 
 if( auth == 'true' ){
   if( status == 'false' ){
@@ -11,6 +11,8 @@ if( auth == 'true' ){
     $("#btn-<%= @id %>").removeClass('btn-success');
     $("#btn-<%= @id %>").addClass('btn-danger');
   }
+}else{
+  alert("This is not your question.\nYou don't have permission.");
 }
 
 

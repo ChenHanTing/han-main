@@ -1,11 +1,11 @@
 var status = "<%= @todo.status %>";
 
 if( status == 'false' ){
-  $("#btn-<%= @id %>")[0].innerHTML = ('Unfinished');
+  $("#btn-<%= @id %>")[0].innerHTML = ("<%= t('todolist.undone') %>");
   $("#btn-<%= @id %>").removeClass('btn-success');
   $("#btn-<%= @id %>").addClass('btn-danger');
 }else{
-  $("#btn-<%= @id %>")[0].innerHTML = ('Done');
+  $("#btn-<%= @id %>")[0].innerHTML = ("<%= t('todolist.done') %>");
   $("#btn-<%= @id %>").removeClass('btn-danger');
   $("#btn-<%= @id %>").addClass('btn-success');
 }
