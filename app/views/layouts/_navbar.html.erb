@@ -26,6 +26,14 @@
   </ul>
 
   <ul class="navbar-nav ml-auto">
+    <%#= content_tag :li do %>
+      <%#= link_to 'Switch to English', locale: :en %>
+    <%# end unless current_page?(locale: :en) %>
+
+    <%#= content_tag :li do %>
+      <%#= link_to 'Switch to Taiwanese', locale: :"zh-TW" %>
+    <%# end unless current_page?(locale: :"zh-TW") %>
+
     <%#= link_to "中文版", action: :set_locale, locale: "zh-TW" %>
     <%#= link_to "English", action: set_locale, locale: "en" %>
     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -39,6 +47,15 @@
         <a class="dropdown-item" href="<%= new_user_session_path %>"><span class="fa fa-sign-in"></span><%= t('navbar.login') %></a>
       <% end %>
     </div>
+  </ul>
+
+  <ul class="navbar-nav text-right">
+    <%= content_tag :li do %>
+      <li class="nav-item"><%= link_to 'English', { locale: :en }, class: "nav-link" %></li>
+    <% end unless current_page?(locale: :en) %>
+    <%= content_tag :li do %>
+      <li class="nav-item"><%= link_to '繁體中文', { locale: :"zh-TW" }, class: "nav-link" %></li>
+    <% end unless current_page?(locale: :"zh-TW") %>
   </ul>
 </nav>
 
