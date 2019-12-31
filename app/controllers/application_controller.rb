@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
 
   # track events with ahoy_matey gem.
   def track_action
-    ahoy.track "Viewed #{controller_name}##{action_name}", request.filtered_parameters
+    info = request.filtered_parameters
+    info[:ip] = request.remote_ip
+    ahoy.track "Viewed #{controller_name}##{action_name}", info
   end
 
   protected
