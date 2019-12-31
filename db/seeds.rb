@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(username:"chenruru", password:"1234567890", email: "qwertyuiop@example.com")
-User.create(username:"chenhanhan", password:"1234567890", email: "asdfghjkl@example.com")
+User.create(username:"chenruru", password:"1234567890", email: "wss200086@gmail.com")
+User.create(username:"chenhanhan", password:"1234567890", email: "han@jvdiamondtech.com")
 
-LabForum.create(question: "First Q", description: "Default Description", category: "others", user: User.first)
-LabForum.create(question: "Second Q", description: "Default Description", category: "others", user: User.second)
+LabForum.create(question: "First Question", description: "Default Description", category: "others", user: User.first)
+LabForum.create(question: "Second Question", description: "Default Description", category: "others", user: User.second)
 
 Comment.create(content: "First Content", commentable: LabForum.first, user: User.first)
 Comment.create(content: "Second Content", commentable: LabForum.first, user: User.second)
