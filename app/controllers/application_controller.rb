@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::Base
+  include Error::Handler
+  after_action :track_action
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
 
+  # track events with ahoy_matey gem.
+  def track_action
+    ahoy.track "Viewed #{controller_name}##{action_name}", request.filtered_parameters
   end
 
   protected
