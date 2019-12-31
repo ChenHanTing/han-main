@@ -19,8 +19,8 @@ en:
     signup: "Sign Up"
     logout: "Log out"
   lab_forum:
-    add_q: "Add Q"
-    all_qs: "All Qs"
+    add_q: "Add Question"
+    all_qs: "All Questions"
     problem: Problem
     author: Author
     category: Category
@@ -28,7 +28,7 @@ en:
     create_time: "Create Time"
     update_time: "Update Time"
     status: Status
-    new_question: "New Q"
+    new_question: "New Question"
   todolist:
     new_todo: "New TODO"
     add_todo: "Add TODO"
@@ -43,7 +43,7 @@ en:
   simple_form:
     labels:
       lab_forum:
-        question: Q
+        question: Question
         description: Description
         category: Category
       todolists:
