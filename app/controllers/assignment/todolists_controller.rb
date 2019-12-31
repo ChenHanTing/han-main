@@ -8,7 +8,7 @@ class Assignment::TodolistsController < ApplicationController
   # before_action :required
 
   def index
-    @todos = Todo.all
+    @todos = Todo.all.order(id: :desc)
   end
 
   def new
