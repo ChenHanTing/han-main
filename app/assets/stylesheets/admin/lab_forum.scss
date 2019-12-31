@@ -3,9 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // 縮排
-.q, .user, .category, .create, .update {
+.q, .d, .user, .category, .create, .update {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 0;
+}
+
+// bootstrap
+.card {
+  margin: 5px;
+}
+
+.thumb{
+  background:#fff;
+  color: black;
+}
+
+.thumb_clicked{
+  background:#fff;
+  color: blue;
+}
+
+.heart_clicked{
+  background:#fff;
+  color: rgb(255, 0, 0);
 }

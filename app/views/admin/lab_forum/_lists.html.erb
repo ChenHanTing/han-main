@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td><%= t('lab_forum.status') %></td>
+      <td><%= t('lab_forum.problem') %></td>
+      <td><%= t('lab_forum.author') %></td>
+      <td><%= t('lab_forum.category') %></td>
+      <td><%= t('lab_forum.action') %></td>
+      <td><%= t('lab_forum.create_time') %></td>
+      <td><%= t('lab_forum.update_time') %></td>
+    </tr>
+  </thead>
+  <tbody id='lab_forums'>
+    <% @lab_forums.each do |article| %>
+      <%= render 'list', article: article %>
+    <% end %>
+  </tbody>
+</table>

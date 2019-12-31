@@ -1,47 +1,11 @@
 <% content_for :page_title,  "lab_forum" %>
 
 <div class="container">
-  <h4><%= link_to t('lab_forum.add_q'), new_lab_forum_path %></h4>
   <h1><%= t('lab_forum.all_qs') %></h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <td><%= t('lab_forum.status') %></td>
-        <td><%= t('lab_forum.problem') %></td>
-        <td><%= t('lab_forum.author') %></td>
-        <td><%= t('lab_forum.category') %></td>
-        <td><%= t('lab_forum.action') %></td>
-        <td><%= t('lab_forum.create_time') %></td>
-        <td><%= t('lab_forum.update_time') %></td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @lab_forums.each do |article| %>
-      <tr>
-        <td>
-          <% if article.solved == false %>
-            <%= link_to 'Open', status_lab_forum_path(article), remote: true, class: 'btn btn-success', id: "btn-#{article.id}" %>
-          <% else %>
-            <%= link_to 'Closed', status_lab_forum_path(article), remote: true, class: 'btn btn-danger', id: "btn-#{article.id}" %>
-          <% end %>
-        </td>
-        <td class="q"><%= article.question %></td>
-        <td class="user"><%= User.find_by(id: article.user_id).username.capitalize %></td>
-        <td class="category"><%= article.category %></td>
-        <td>
-          <% if user_signed_in? && ( article.user == current_user ) %>
-            <%= link_to (fa_icon "eye"), lab_forum_path(article), class: 'btn btn-primary' %>
-            <%= link_to (fa_icon "edit"), edit_lab_forum_path(article), class: 'btn btn-primary' %>
-            <%= link_to (fa_icon "trash"), lab_forum_path(article),
-                  method: "delete", data: { confirm: "Are you sure?" }, class: 'btn btn-primary'  %>
-          <% else %>
-            <%= link_to (fa_icon "eye"), lab_forum_path(article), class: 'btn btn-primary' %>
-          <% end %>
-        </td>
-        <td class="create"><%= article.created_at.to_s[0..-4] %></td>
-        <td class="update"><%= article.updated_at == article.created_at ? "---" : article.updated_at.to_s[0..-4] %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <h4><%= link_to t('lab_forum.add_q'), '#forum-modal', data: {toggle: 'modal'}, class: 'btn btn-link' %></h4>
+  <%= render 'cards' %>
+</div>
+
+<div class="modal fade" id="forum-modal">
+  <%= render 'modal', form_type: LabForum.new, url: lab_forum_index_path %>
 </div>

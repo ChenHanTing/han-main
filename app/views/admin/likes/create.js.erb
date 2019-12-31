@@ -1,0 +1,19 @@
+$("#like-num-<%= @id %>")[0].innerHTML = <%= LabForum.find_by(id: @id).click %>
+
+if($("#like-btn-<%= @id %>")[0].className == "thumb"){
+  $("#like-btn-<%= @id %>").toggleClass("thumb_clicked")
+}else{
+  $("#like-btn-<%= @id %>").toggleClass("thumb")
+}
+
+thumb = document.getElementById("heart-<%= @id %>");
+thumb.classList.toggle("heart_clicked");
+
+// Another Methods
+// var thumb = $("#like-btn-<%= @id %>")[0]
+// var thumb_prop = window.getComputedStyle(thumb, null).getPropertyValue('color');
+// if(thumb_prop=="rgb(0, 86, 179)"){
+//   thumb.style.color="blue"
+// }else{
+//   thumb.style.color="rgb(0, 86, 179)"
+// }

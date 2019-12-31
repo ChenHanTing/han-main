@@ -4,7 +4,7 @@ class Admin::LabForumController < ApplicationController
   before_action :authenticate_user!
   # before_action :required # 若非後台人員，即會出現登入阻擋
   def index
-    @lab_forums = LabForum.all
+    @lab_forums = LabForum.all.order(id: :desc)
   end
 
   def new
@@ -15,7 +15,8 @@ class Admin::LabForumController < ApplicationController
     @lab_forum = LabForum.new(labforum_params)
     @lab_forum.user = current_user  # 如果沒有這行，會有:user=>["must exist"]的錯誤提示
     if @lab_forum.save
-      redirect_to lab_forum_index_path, notice: "新增成功!"
+      respond_to :js
+      # redirect_to lab_forum_index_path, notice: "新增成功!"
     else
       render :new
     end
@@ -25,6 +26,7 @@ class Admin::LabForumController < ApplicationController
     @comment = Comment.new
     @comment.commentable = @lab_forum
     @comment.user = current_user
+
     # @comment.content = "123"
     # @comment.save
   end
@@ -33,8 +35,16 @@ class Admin::LabForumController < ApplicationController
   end
 
   def destroy
+    @lab_forum_id = @lab_forum.id
     @lab_forum.destroy if @lab_forum
-    redirect_to lab_forum_index_path, notice: "已刪除!"
+
+    # 會自動找 destroy.js.erb
+    # respond_to do |format|
+    #   format.js
+    # end
+
+    # 舊 code
+    # redirect_to lab_forum_index_path, notice: "已刪除!"
   end
 
   def update

@@ -24,23 +24,46 @@ class Like < ApplicationRecord
   belongs_to :expressable, polymorphic: true
   belongs_to :user
 
-  after_save :multiple_click
-  after_save :like_counter
+  after_save :addition_counter
+  after_destroy :substraction_counter
 
-  def like_counter
-    if expressable.respond_to?('like') && self.expression.positive?
-      expressable.increment!('like'.to_sym)
-    end
+  def addition_counter
+    expressable.increment!('click'.to_sym) if expressable.respond_to?('click')
   end
 
-  def multiple_click
-    click_data = expressable.likes.where(user_id: user.id)
-    if click_data.count > 1
-      first = click_data.first
-      last = click_data.last
-      click_data.delete_all if last.expression.eql? first.expression
-
-      first.delete
-    end
+  def substraction_counter
+    expressable.decrement!('click'.to_sym) if expressable.respond_to?('click')
   end
+
+  # 收回讚（建議從controller做）
+  # after_save :multiple_click
+  #
+  # def multiple_click
+  #   click_data = expressable.likes.where(user_id: user.id)
+  #   if click_data.count > 1
+  #     first = click_data.first
+  #     last = click_data.last
+  #     click_data.delete_all if last.expression.eql? first.expression
+
+  #     first.delete
+  #   end
+  # end
+
+  # def addition_counter
+  #   counter_adj(:increment!)
+  # end
+
+  # def substraction_counter
+  #   counter_adj(:decrement!)
+  # end
+
+  # def counter_adj(method_adj)
+  #   {click: :like, dislike: :dislike}.each do |k, v|
+  #     expressable.send(method_adj, k) if check_respond_to?(k, v)
+  #   end
+  # end
+
+  # def check_respond_to?(column_name, exp)
+  #   expressable.respond_to?(column_name) && expression == exp.to_s
+  # end
 end

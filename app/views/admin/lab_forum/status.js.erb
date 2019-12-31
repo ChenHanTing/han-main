@@ -3,13 +3,19 @@ var auth = "<%= user_signed_in? && ( @lab_forum.user == current_user ) %>";
 
 if( auth == 'true' ){
   if( status == 'false' ){
-    $("#btn-<%= @id %>")[0].innerHTML = ('Open');
-    $("#btn-<%= @id %>").removeClass('btn-danger');
-    $("#btn-<%= @id %>").addClass('btn-success');
+    // $("#btn-<%= @id %>")[0].innerHTML = ('Open');
+    // $("#btn-<%= @id %>").removeClass('btn-danger');
+    // $("#btn-<%= @id %>").addClass('btn-success');
+    $("#card-btn-<%= @id %>")[0].innerHTML = ('Open');
+    $("#card-btn-<%= @id %>").removeClass('btn-danger');
+    $("#card-btn-<%= @id %>").addClass('btn-success');
   }else{
-    $("#btn-<%= @id %>")[0].innerHTML = ('Closed');
-    $("#btn-<%= @id %>").removeClass('btn-success');
-    $("#btn-<%= @id %>").addClass('btn-danger');
+    // $("#btn-<%= @id %>")[0].innerHTML = ('Closed');
+    // $("#btn-<%= @id %>").removeClass('btn-success');
+    // $("#btn-<%= @id %>").addClass('btn-danger');
+    $("#card-btn-<%= @id %>")[0].innerHTML = ('Closed');
+    $("#card-btn-<%= @id %>").removeClass('btn-success');
+    $("#card-btn-<%= @id %>").addClass('btn-danger');
   }
 }else{
   alert("This is not your question.\nYou don't have permission.");
