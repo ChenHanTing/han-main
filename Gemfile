@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.4'
+ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -45,7 +45,6 @@ gem 'bootstrap', '~> 4.4.1'
 
 gem 'jquery-rails'
 gem 'simple_form'
-gem 'devise'
 gem 'ahoy_matey'
 gem 'font-awesome-rails'
 
@@ -70,6 +69,19 @@ gem 'rails-i18n'
 
 # 在 rails 使用 sinatra
 gem 'sinatra'
+
+# devise 相關套件
+gem 'devise'
+gem 'devise-i18n'
+
+# models 加註解
+gem 'annotate'
+
+# Explore your data with SQL.
+# Easily create charts and dashboards, and share them with your team.
+# https://github.com/ankane/blazer
+gem 'blazer'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -108,6 +120,15 @@ end
 # bundle install
 group :production do
   gem 'pg'
+  gem 'capistrano', '~> 3.7', '>= 3.7.1'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-passenger', '~> 0.2.0'
+
+  # Add this if you're using rbenv
+  gem 'capistrano-rbenv', '~> 2.1'
+
+  # Add this if you're using rvm
+  # gem 'capistrano-rvm'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
