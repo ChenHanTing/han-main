@@ -14,9 +14,25 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+  # end
+
+  # 如何客製化自己的參數
+  # def configure_permitted_parameters
+  #   added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
+  #   devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+  #   devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+  # end
+
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_up,
+      keys: [:username, :name, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_in,
+      keys: [:login, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update,
+      keys: [:username, :name, :email, :password_confirmation, :current_password])
   end
 
   private

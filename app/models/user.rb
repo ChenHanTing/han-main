@@ -31,4 +31,48 @@ class User < ApplicationRecord
 
   has_many :visits, class_name: "Ahoy::Visit"
   has_many :events, class_name: "Ahoy::Event"
+
+
+  # 賦值(set)
+  attr_writer :login
+
+  # Username or Email
+  class << self
+    def find_for_database_authentication(warden_conditions)
+      conditions = warden_conditions.dup
+      if login = conditions.delete(:login)
+        where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }]).first
+      elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+        where(conditions.to_h).first
+      end
+    end
+  end
+
+  # 取值(get)
+  def login
+    @login || username || email
+  end
+
+  def email_required?
+    false
+  end
+
+  def email_present?
+    email.present?
+  end
+
+  def build_auth_token(token = nil)
+
+    token = Devise.friendly_token(32) if token.blank?
+
+    Rails.cache.write(
+      token,
+      {
+        user_id: id,
+      },
+      expires_in: 6.hours
+    )
+
+    token
+  end
 end
