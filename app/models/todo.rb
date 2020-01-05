@@ -5,7 +5,7 @@
 #  id            :bigint           not null, primary key
 #  complete_time :datetime
 #  content       :text(65535)
-#  priority      :integer          default(0)
+#  priority      :integer          default("low")
 #  status        :boolean          default(FALSE)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -21,7 +21,9 @@
 #
 
 class Todo < ApplicationRecord
-  enum priorities: {low: 0, medium: 1, high: 2, urgent: 3}
+  enum priority: {low: 0, medium: 1, high: 2, urgent: 3}
 
-  validates :content, presence: true
+  validates_presence_of :priority, :content
+
+  belongs_to :user
 end

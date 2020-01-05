@@ -1,7 +1,15 @@
 @import "bootstrap";
 @import "font-awesome";
+
+@import "resume";
 @import "staticpages";
+@import "assignment/todos";
 @import "admin/lab_forum";
 
 // for TempusDominus
 @import "tempusdominus-bootstrap-4.css";
+
+.navbar {
+    margin-bottom: 20px;
+  }
+

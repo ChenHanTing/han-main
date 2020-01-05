@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  admin                  :boolean          default(FALSE)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  remember_created_at    :datetime
@@ -29,8 +30,12 @@ class User < ApplicationRecord
   has_many :likes
   has_many :todos
 
-  has_many :visits, class_name: "Ahoy::Visit"
-  has_many :events, class_name: "Ahoy::Event"
+  has_many :visits, class_name: 'Ahoy::Visit'
+  has_many :events, class_name: 'Ahoy::Event'
+
+  validates_presence_of :username
+  validates_uniqueness_of :email, :username
+  validates_format_of :email, :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
 
 
   # 賦值(set)

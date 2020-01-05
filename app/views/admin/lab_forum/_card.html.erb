@@ -1,3 +1,11 @@
+<script>
+  $(function(){
+    $('.fa').tooltip({
+      placement : 'top'
+    });
+  })
+</script>
+
 <div class="col-6 col-md-4 col-sm-12" id="card_<%= article.id %>">
     <div class="card">
       <img class="card-img-top" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
@@ -66,12 +74,12 @@
         </small><br/>
         <small class="text-muted">
           <% if user_signed_in? && ( article.user == current_user ) %>
-            <%= link_to (fa_icon "eye"), lab_forum_path(article) %>&emsp;
-            <%= link_to (fa_icon "edit"), edit_lab_forum_path(article) %>&emsp;
+            <%= link_to (fa_icon "eye"), lab_forum_path(article), title: t('lab_forum.inspect') %>&emsp;
+            <%= link_to (fa_icon "edit"), edit_lab_forum_path(article), title: t('lab_forum.edit') %>&emsp;
             <%= link_to (fa_icon "trash"), lab_forum_path(article), remote: true,
-                  method: "delete", data: { confirm: "Are you sure?" } %>
+                  method: "delete", data: { confirm: "Are you sure?" }, title: t('lab_forum.delete') %>
           <% else %>
-            <%= link_to (fa_icon "eye"), lab_forum_path(article) %>
+            <%= link_to (fa_icon "eye"), lab_forum_path(article), title: t('lab_forum.inspect') %>
           <% end %>
         </small>
       </div>

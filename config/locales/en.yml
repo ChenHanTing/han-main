@@ -1,5 +1,9 @@
 en:
   hello: "Hello world"
+  notice:
+    update_success: "Update successfully!"
+    create_success: "Create successfully!"
+    deleted: Deleted!
   devise:
       username: Username
       signup: Sign up
@@ -24,6 +28,7 @@ en:
     login: Login
     signup: "Sign Up"
     logout: "Log out"
+    resume: Resume
   lab_forum:
     add_q: "Add Question"
     all_qs: "All Questions"
@@ -35,6 +40,10 @@ en:
     update_time: "Update Time"
     status: Status
     new_question: "New Question"
+    new: New
+    edit: Edit
+    delete: Delete
+    inspect: Inspect
   todolist:
     new_todo: "New TODO"
     add_todo: "Add TODO"
@@ -46,6 +55,10 @@ en:
     action: Action
     undone: Undone
     done: Done
+    new: New
+    edit: Edit
+    delete: Delete
+    inspect: Inspect
   simple_form:
     labels:
       lab_forum:

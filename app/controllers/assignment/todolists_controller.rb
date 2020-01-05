@@ -1,14 +1,15 @@
 class Assignment::TodolistsController < ApplicationController
   # layout "admin"
 
-  before_action :find_todos, only: [:edit, :update, :destroy, :show, :status]
+  before_action :find_todos, only: %i[edit update destroy show status]
   # before_action :authenticate_user!
 
   # 若非後台人員，即會出現登入阻擋
   # before_action :required
 
   def index
-    @todos = Todo.all.order(id: :desc)
+    # @todos = current_user.todos.all.order(id: :desc) unless current_user.todos
+    @todos = Todo.where(user: current_user).order(id: :desc)
   end
 
   def new
@@ -17,10 +18,10 @@ class Assignment::TodolistsController < ApplicationController
 
   def create
     @todo = Todo.new(todo_params)
-    # @todo.user = current_user
-    # 如果沒有這行，會有:user=>["must exist"]的錯誤提示
+    @todo.user = current_user
+
     if @todo.save
-      redirect_to todolists_path, notice: "新增成功!"
+      redirect_to todolists_path, notice: I18n.t('notice.create_success')
     else
       render :new
     end
@@ -34,42 +35,28 @@ class Assignment::TodolistsController < ApplicationController
 
   def destroy
     @todo.destroy if @todo
-    redirect_to todolists_path, notice: "已刪除!"
+    redirect_to todolists_path, notice: I18n.t('notice.deleted')
   end
 
   def update
-    if @todo.update(todo_params) # 成功
-      redirect_to todolists_path, notice: "更新成功!"
+    if @todo.update(todo_params)
+      redirect_to todolists_path, notice: I18n.t('notice.update_success')
     else
-      render :edit # 失敗
+      render :edit
     end
   end
-
-  # def status
-  #   @id = params[:id]
-
-  #   if @todo.solved.eql? false
-  #     @todo.update(solved: true)
-  #   elsif
-  #     @todo.update(solved: false)
-  #   end
-
-  #   respond_to do |format|
-  #     format.js {render 'status'}
-  #   end
-  # end
 
   def status
     @id = params[:id]
 
     if @todo.status.eql? false
       @todo.update(status: true)
-    elsif
+    else
       @todo.update(status: false)
     end
 
     respond_to do |format|
-      format.js {render 'status'}
+      format.js { render 'status' }
     end
   end
 

@@ -9,8 +9,10 @@
     });
   </script>
 
+<div class="container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-3"><span></span></div>
+    <div class="col-sm-6"><span>
       <div class="group"><h2>Edit Question</h2></div>
 
       <form class="simple_form edit_todo" id="edit_todo" novalidate="novalidate" action="<%= "/todolists/#{params[:id]}" %>" accept-charset="UTF-8" method="post">
@@ -24,10 +26,10 @@
         <div class="form-group select optional todo_priority form-group-valid">
           <label class="select optional" for="todo_priority">Priority</label>
           <select class="form-control is-valid select optional" name="todo[priority]" id="todo_priority">
-            <option selected="selected" value="0">low</option>
-            <option value="1">medium</option>
-            <option value="2">high</option>
-            <option value="3">urgent</option>
+            <option selected="selected" value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+            <option value="urgent">urgent</option>
           </select>
         </div>
 
@@ -42,7 +44,6 @@
         <a class="btn" href="/todolists">Back</a>
       </form>
     </div>
-
-    <div class="col-sm-6"></div>
-  </div>
+    </span></div>
+  <div class="col-3"><span></span></div>
 </div>

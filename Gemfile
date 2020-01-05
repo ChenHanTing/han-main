@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'rubocop'
+
 # 安裝bootstrap
 
 # bootstrap 3
@@ -91,7 +93,7 @@ group :development, :test do
   gem 'pry-rails'
   # Use sqlite3 as the database for Active Record
   # gem 'sqlite3'
-  gem 'mysql2'
+  gem 'mysql2', '0.5.2'
 end
 
 group :development do
