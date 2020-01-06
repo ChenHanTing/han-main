@@ -29,6 +29,7 @@ en:
     signup: "Sign Up"
     logout: "Log out"
     resume: Resume
+    chatroom: Chatroom
   lab_forum:
     add_q: "Add Question"
     all_qs: "All Questions"

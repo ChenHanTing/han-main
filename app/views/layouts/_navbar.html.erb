@@ -8,11 +8,12 @@
 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        <%= "CRUD" %>
+        CRUD
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="<%= lab_forum_index_path %>"><%= t('navbar.lab_forum') %></a>
         <a class="dropdown-item" href="<%= todolists_path %>"><%= t('navbar.todo') %></a>
+        <a class="dropdown-item" href="<%= rooms_path %>"><%= t('navbar.chatroom') %></a>
       </div>
     </li>
     <!-- Dropdown -->
@@ -38,10 +39,15 @@
       <li class="nav-item"><%= link_to '繁體中文', { locale: :"zh-TW" }, class: "nav-link" %></li>
     <% end unless current_page?(locale: :"zh-TW") %>
   </ul>
-  
+
   <ul class="navbar-nav text-right">
-    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-      <%= t('navbar.account') %>
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <% if current_user %>
+        <img class="avatar" src="<%= current_user.gravatar_url %>">
+        <%= current_user.username %>
+      <% else %>
+        <%= t('navbar.account') %>
+      <% end %>
     </a>
     <div class="dropdown-menu  dropdown-menu-right">
       <% if current_user %>
@@ -51,6 +57,6 @@
         <a class="dropdown-item" href="<%= new_user_session_path %>"><span class="fa fa-sign-in"></span><%= t('navbar.login') %></a>
       <% end %>
     </div>
-  </ul>  
+  </ul>
 </nav>
 

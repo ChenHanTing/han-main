@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     mount Blazer::Engine, at: 'blazer'
   end
 
+  # 聊天室
+  resources :room_messages
+  resources :rooms
+
   root 'admin/lab_forum#index'
 
   namespace :api do

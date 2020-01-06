@@ -1,6 +1,9 @@
 @import "bootstrap";
 @import "font-awesome";
 
+@import "rooms";
+@import "room_messages";
+
 @import "resume";
 @import "staticpages";
 @import "assignment/todos";
@@ -13,3 +16,9 @@
     margin-bottom: 20px;
   }
 
+.avatar {
+  max-height:30px;
+  border-radius: 15px;
+  width:auto;
+  vertical-align:middle;
+}

@@ -79,6 +79,8 @@ gem 'devise-i18n'
 # models 加註解
 gem 'annotate'
 
+gem 'redis'
+
 # Explore your data with SQL.
 # Easily create charts and dashboards, and share them with your team.
 # https://github.com/ankane/blazer
