@@ -1,24 +1,52 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 履歷
 
-Things you may want to cover:
+- 內含筆記連結
 
-* Ruby version
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/resume.jpg)
 
-* System dependencies
+### 實驗室討論版
 
-* Configuration
+- 功能：發文、按讚、留言、開放/關閉討論
+- 目的：給研究所同學用
 
-* Database creation
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/lab_forum.jpg)
 
-* Database initialization
+### 待辦清單
 
-* How to run the test suite
+- 功能：只能看自己發文、解決/未解決狀態切換
 
-* Services (job queues, cache servers, search engines, etc.)
+- 目的：練習原生`html`表單、RESTful
 
-* Deployment instructions
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/todolists.jpg)
 
-* ...
+### Ahoy Event
+
+- 目的：紀錄使用者進行的行為
+
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/ahoy_events.jpg)
+
+### Blazer
+
+- 功能：最高權限使用者能使用Blazer，透過query指令查看資料庫
+- 目的：查看資料庫、將ahoy所記錄資訊畫成圖表
+- 規劃：加入排程執行動作
+
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/blazer.jpg)
+
+### API
+
+- 功能：將姓與名拼起來，若錯誤則吐出錯誤訊息及伺服器錯誤
+- 規劃：將Token概念加入並實作
+
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/api_failure.jpg)
+
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/api_success.jpg)
+
+### 聊天室（未完）
+
+- 目的：練習websocket、Redis快取
+
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/chatroom.jpg)
+
