@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1, defaults: { format: :json } do
       resources :names, only: [:create]
+
+      get 'ping', to: 'base#ping'
+      get 'ping_auth', to: 'base#ping_auth'
+      get 'info', to: 'base#info'
     end
   end
 
@@ -24,10 +28,10 @@ Rails.application.routes.draw do
   get 'card', to: 'card#show'
 
   # 基本routes應用：https://railsbook.tw/chapters/11-routes.html
-  get '/:single_page' , to: 'staticpages#show', as: 'page'
+  get '/:single_page', to: 'staticpages#show', as: 'page'
 
   scope '(:locale)', locale: /en|zh-TW/ do
-    devise_for :users
+    devise_for :users, module: 'auth'
 
     # 慣例：名字後須 +s
     scope module: 'admin' do

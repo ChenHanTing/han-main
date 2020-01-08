@@ -67,7 +67,6 @@ class User < ApplicationRecord
   end
 
   def build_auth_token(token = nil)
-
     token = Devise.friendly_token(32) if token.blank?
 
     Rails.cache.write(

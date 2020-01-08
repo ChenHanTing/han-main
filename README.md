@@ -44,7 +44,17 @@
 
 ![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/api_success.jpg)
 
-### 聊天室（未完）
+- Ping
+
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/ping.jpg)
+
+- 使用`Token`辨識devise user
+
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/sign_in.jpg)
+
+![image](https://github.com/ChenHanTing/side-project/blob/master/note-pic/ping_auth.jpg)
+
+### 聊天室
 
 - 目的：練習websocket、Redis快取
 
