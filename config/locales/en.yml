@@ -12,7 +12,7 @@ en:
       userlogin: Login account (username or email)
   navbar:
     hans_web: "HanTing's Website"
-    home: Home
+    blog: Blog
     lab_forum: Forum
     todo: TODO
     pages: Pages
@@ -30,6 +30,9 @@ en:
     logout: "Log out"
     resume: Resume
     chatroom: Chatroom
+    template: Template
+    card: Card
+    testimonial: Testimonial
   lab_forum:
     add_q: "Add Question"
     all_qs: "All Questions"

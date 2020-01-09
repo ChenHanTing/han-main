@@ -12,7 +12,7 @@ zh-TW:
     userlogin: 登入帳號（使用者或電子信箱）
   navbar:
     hans_web: 漢庭的網站
-    home: 首頁
+    blog: 部落格
     lab_forum: 討論版
     todo: 清單
     pages: 靜態網站
@@ -30,6 +30,9 @@ zh-TW:
     logout: 登出
     resume: 履歷
     chatroom: 聊天室
+    template: 版型
+    card: Card
+    testimonial: 推薦書
   lab_forum:
     add_q: 新增問題
     all_qs: 所有問題

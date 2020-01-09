@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   # 版型收編
   get 'card', to: 'card#show'
+  get 'testimonial', to: 'testimonial#show'
 
   # 基本routes應用：https://railsbook.tw/chapters/11-routes.html
   get '/:single_page', to: 'staticpages#show', as: 'page'

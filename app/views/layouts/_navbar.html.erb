@@ -6,6 +6,7 @@
   <ul class="navbar-nav">
     <li class="nav-item"><a class="nav-link" href="<%= resume_path %>"><%= t('navbar.resume') %></a></li>
 
+    <!-- Dropdown -->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         CRUD
@@ -16,6 +17,7 @@
         <a class="dropdown-item" href="<%= rooms_path %>"><%= t('navbar.chatroom') %></a>
       </div>
     </li>
+
     <!-- Dropdown -->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -27,6 +29,18 @@
         <a class="dropdown-item" href="<%= page_path('todo') %>"><%= t('navbar.todo_daily') %></a>
         <a class="dropdown-item" href="<%= bmi_path %>"><%= t('navbar.bmi_cal') %></a>
         <a class="dropdown-item" href="<%= name_path %>"><%= t('navbar.name_form') %></a>
+      </div>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        <%= t('navbar.template') %>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="<%= card_path %>"><%= t('navbar.card') %></a>
+        <a class="dropdown-item" href="<%= testimonial_path %>"><%= t('navbar.testimonial') %></a>
+        <a class="dropdown-item" href="<%= page_path('blog') %>"><%= t('navbar.blog') %></a>
       </div>
     </li>
   </ul>
