@@ -1,75 +1,259 @@
 <%#= render 'layouts/carousel' %>
+<%= stylesheet_link_tag 'resume' %>
 
-<div class="site-section">
-    <div class="container">
-    <div class="row align-items-center">
+<!-- about section
+================================================== -->
+<section id="about">
 
-        <div class="col-md-4">
-        <h2 class="h4 mb-4">About Me</h2>
-        <p>
-          I was graduated from NTPU for my bachelor degree, and NCHU for my master degree. I majored in EE, but I love software more.
-        </p>
-        <p>I learned Ruby on Rails since January 2019. Ruby on Rails is the first backend framework I learned.</p>
-        <p>I have an work experience for about 4 months.</p>
-        <p><a href="https://github.com/ChenHanTing/note" class="btn btn-primary text-white px-5">My notes</a></p>
-        </div>
+<div class="row section-intro">
+  <div class="col-twelve">
 
-        <div class="col-md-4">
-        <h2 class="h4 mb-4">My expertise and skills</h2>
+    <h5>About</h5>
+    <h1>Let me introduce myself.</h1>
 
-        <div class="progress-wrap mb-4">
-            <div class="d-flex">
-            <span>Html, CSS, Bootstrap</span>
-            <span class="ml-auto">5%</span>
-            </div>
-            <div class="progress rounded-0" style="height: 7px;">
-            <div class="progress-bar" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
+    <div class="intro-info">
 
-        <div class="progress-wrap mb-4">
-            <div class="d-flex">
-            <span>javascript, jQuery</span>
-            <span class="ml-auto">20%</span>
-            </div>
-            <div class="progress rounded-0" style="height: 7px;">
-            <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
+      <%= image_tag("model.jpg", alt: "Profile Picture") %>
 
-        <div class="progress-wrap mb-4">
-            <div class="d-flex">
-            <span>Git, Source Tree</span>
-            <span class="ml-auto">37%</span>
-            </div>
-            <div class="progress rounded-0" style="height: 7px;">
-            <div class="progress-bar" role="progressbar" style="width: 37%;" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-
-        <div class="progress-wrap mb-4">
-            <div class="d-flex">
-            <span>MySQL</span>
-            <span class="ml-auto">42%</span>
-            </div>
-            <div class="progress rounded-0" style="height: 7px;">
-            <div class="progress-bar" role="progressbar" style="width: 42%;" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-
-        <div class="progress-wrap mb-4">
-            <div class="d-flex">
-            <span>Ruby on Rails</span>
-            <span class="ml-auto">60%</span>
-            </div>
-            <div class="progress rounded-0" style="height: 7px;">
-            <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-        </div>
-      </div>
+      <p class="lead">Lorem ipsum Exercitation culpa qui dolor consequat exercitation fugiat laborum ex ea eiusmod ad do aliqua occaecat nisi ad irure sunt id pariatur Duis laboris amet exercitation veniam labore consectetur ea id quis eiusmod.</p>
     </div>
-    </div>
+
+  </div>
+</div> <!-- /section-intro -->
+
+<div class="row about-content">
+
+  <div class="col-six tab-full">
+
+    <h3>Profile</h3>
+    <p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p>
+
+    <ul class="info-list">
+      <li>
+        <strong>Fullname:</strong>
+        <span>Juan Dela Cruz</span>
+      </li>
+      <li>
+        <strong>Birth Date:</strong>
+        <span>September 28, 1987</span>
+      </li>
+      <li>
+        <strong>Job:</strong>
+        <span>Freelancer, Frontend Developer</span>
+      </li>
+      <li>
+        <strong>Website:</strong>
+        <span>www.kardswebsite.com</span>
+      </li>
+      <li>
+        <strong>Email:</strong>
+        <span>me@kardswebsite.com</span>
+      </li>
+
+    </ul> <!-- /info-list -->
+
+  </div>
+
+  <div class="col-six tab-full">
+
+    <h3>Skills</h3>
+    <p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p>
+
+    <ul class="skill-bars">
+        <li>
+        <div class="progress percent90"><span>90%</span></div>
+        <strong>HTML5</strong>
+        </li>
+        <li>
+        <div class="progress percent85"><span>85%</span></div>
+        <strong>CSS3</strong>
+        </li>
+        <li>
+        <div class="progress percent70"><span>70%</span></div>
+        <strong>JQuery</strong>
+        </li>
+        <li>
+        <div class="progress percent95"><span>95%</span></div>
+        <strong>PHP</strong>
+        </li>
+        <li>
+
+        <div class="progress percent75"><span>75%</span></div>
+        <strong>Wordpress</strong>
+        </li>
+
+    </ul> <!-- /skill-bars -->
+
+  </div>
+
 </div>
+
+<div class="row button-section">
+  <div class="col-twelve">
+    <a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
+    <a href="#" title="Download CV" class="button button-primary">Download CV</a>
+  </div>
+</div>
+
+</section> <!-- /process-->
+
+<!-- resume Section
+================================================== -->
+<section id="resume" class="grey-section">
+
+  <div class="row section-intro">
+    <div class="col-twelve">
+
+      <h5>Resume</h5>
+      <h1>More of my credentials.</h1>
+
+      <p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+
+    </div>
+  </div> <!-- /section-intro-->
+
+  <div class="row resume-timeline">
+
+    <div class="col-twelve resume-header">
+
+      <h2>Work Experience</h2>
+
+    </div> <!-- /resume-header -->
+
+    <div class="col-twelve">
+
+      <div class="timeline-wrap">
+
+        <div class="timeline-block">
+
+          <div class="timeline-ico">
+            <i class="fa fa-graduation-cap"></i>
+          </div>
+
+          <div class="timeline-header">
+            <h3>UI Designer</h3>
+            <p>July 2015 - Present</p>
+          </div>
+
+          <div class="timeline-content">
+            <h4>Awesome Studio</h4>
+            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
+          </div>
+
+        </div> <!-- /timeline-block -->
+
+        <div class="timeline-block">
+
+          <div class="timeline-ico">
+            <i class="fa fa-graduation-cap"></i>
+          </div>
+
+          <div class="timeline-header">
+            <h3>Front-end Developer</h3>
+            <p>July 2014 - June 2015</p>
+          </div>
+
+          <div class="timeline-content">
+            <h4>Super Cool Agency</h4>
+            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
+          </div>
+
+        </div> <!-- /timeline-block -->
+
+        <div class="timeline-block">
+
+          <div class="timeline-ico">
+            <i class="fa fa-graduation-cap"></i>
+          </div>
+
+          <div class="timeline-header">
+            <h3>Web Designer</h3>
+            <p>May 2013 - June 2014</p>
+          </div>
+
+          <div class="timeline-content">
+            <h4>Great Designs Studio</h4>
+            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
+          </div>
+
+        </div> <!-- /timeline-block -->
+
+      </div> <!-- /timeline-wrap -->
+
+    </div> <!-- /col-twelve -->
+
+  </div> <!-- /resume-timeline -->
+
+  <div class="row resume-timeline">
+
+    <div class="col-twelve resume-header">
+
+      <h2>Education</h2>
+
+    </div> <!-- /resume-header -->
+
+    <div class="col-twelve">
+
+      <div class="timeline-wrap">
+
+        <div class="timeline-block">
+
+          <div class="timeline-ico">
+            <i class="fa fa-briefcase"></i>
+          </div>
+
+          <div class="timeline-header">
+            <h3>Master Degree</h3>
+            <p>July 2015 - Present</p>
+          </div>
+
+          <div class="timeline-content">
+            <h4>University of Life</h4>
+            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
+          </div>
+
+        </div> <!-- /timeline-block -->
+
+        <div class="timeline-block">
+
+          <div class="timeline-ico">
+            <i class="fa fa-briefcase"></i>
+          </div>
+
+          <div class="timeline-header">
+            <h3>Bachelor Degree</h3>
+            <p>July 2014 - June 2015</p>
+          </div>
+
+          <div class="timeline-content">
+            <h4>State Design University</h4>
+            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
+          </div>
+
+        </div> <!-- /timeline-block -->
+
+        <div class="timeline-block">
+
+          <div class="timeline-ico">
+            <i class="fa fa-briefcase"></i>
+          </div>
+
+          <div class="timeline-header">
+            <h3>Bachelor Degree</h3>
+            <p>May 2013 - June 2014</p>
+          </div>
+
+          <div class="timeline-content">
+            <h4>Design College</h4>
+            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
+          </div>
+
+        </div> <!-- /timeline-block -->
+
+      </div> <!-- /timeline-wrap -->
+
+    </div> <!-- /col-twelve -->
+
+  </div> <!-- /resume-timeline -->
+
+</section> <!-- /features -->
