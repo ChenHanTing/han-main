@@ -1,9 +1,23 @@
 // Place all the styles related to the resume controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/************************ 導覽列 ************************/
 .navbar {
     margin-bottom: 0px;
   }
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 2.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+/************************ carousel ************************/
 
 .carousel-item{
     height: 600px;
@@ -50,13 +64,20 @@
  *
  * -------------------------------------------------------------------
  */
- html {
+
+html {
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 }
 
+html, body {
+	height: 100%;
+}
 body {
-	margin: 0;
+	font-family: "STHeiti", serif;
+	font-size: 1.7rem;
+	line-height: 3rem;
+	color: #6e6e6e;
 }
 
 article,
@@ -3391,6 +3412,7 @@ textarea {
   * -------------------------------------------------------------------
   */
  footer {
+     padding-top: 3rem;
      padding-bottom: 3rem;
      font-size: 1.4rem;
      font-family: "poppins-regular", sans-serif;

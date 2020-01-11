@@ -1,88 +1,95 @@
-<%#= render 'layouts/carousel' %>
+<%# render 'layouts/carousel' %>
 <%= stylesheet_link_tag 'resume' %>
 
-<!-- about section
-================================================== -->
+<!-- ================= mobile specific metas ================= -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- ================= about section ================= -->
 <section id="about">
 
-<div class="row section-intro">
-  <div class="col-twelve">
-
-    <h5>About</h5>
-    <h1>Let me introduce myself.</h1>
-
-    <div class="intro-info">
-
-      <%= image_tag("model.jpg", alt: "Profile Picture") %>
-
-      <p class="lead">Lorem ipsum Exercitation culpa qui dolor consequat exercitation fugiat laborum ex ea eiusmod ad do aliqua occaecat nisi ad irure sunt id pariatur Duis laboris amet exercitation veniam labore consectetur ea id quis eiusmod.</p>
+  <div class="row section-intro">
+    <div class="col-twelve">
+      <h5>About</h5>
+      <h1>About me</h1>
+      <div class="intro-info">
+        <%= image_tag("me4.png", alt: "Profile Picture") %>
+        <p class="lead">
+          I was graduated from NTPU for my bachelor degree, and NCHU for my master degree. I majored in EE, but I love software more.
+          I learned Ruby on Rails since January 2019, and I have an work experience for about 4 months.
+        </p>
+      </div>
     </div>
-
-  </div>
-</div> <!-- /section-intro -->
+  </div> <!-- /section-intro -->
 
 <div class="row about-content">
 
   <div class="col-six tab-full">
 
     <h3>Profile</h3>
-    <p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p>
+    <p>
+      我是陳漢庭，今年25歲，是剛出社會的新鮮人。興趣是跳舞，舞齡從大一開始到現在。
+      目前跟著一位  師父座下修行，練習以靜以定面對生活上任何事情，練習在每個地方都能夠做到團結共心不對立。
+    </p>
+
+    <p>
+      研究所畢業以後，開始接觸Ruby on Rails的框架，慢慢從後端探索網路世界，以及慢慢了解前端。
+    </p>
 
     <ul class="info-list">
       <li>
         <strong>Fullname:</strong>
-        <span>Juan Dela Cruz</span>
+        <span>Chen, Han-Ting</span>
       </li>
       <li>
         <strong>Birth Date:</strong>
-        <span>September 28, 1987</span>
+        <span>May 5, 1994</span>
       </li>
       <li>
-        <strong>Job:</strong>
-        <span>Freelancer, Frontend Developer</span>
+        <strong>Github:</strong>
+        <span>https://github.com/ChenHanTing</span>
       </li>
       <li>
         <strong>Website:</strong>
-        <span>www.kardswebsite.com</span>
+        <span>hanting.herokuapp.com</span>
       </li>
       <li>
         <strong>Email:</strong>
-        <span>me@kardswebsite.com</span>
+        <span>k445566778899k@gmail.com</span>
       </li>
-
-    </ul> <!-- /info-list -->
-
+    </ul>
   </div>
 
   <div class="col-six tab-full">
 
     <h3>Skills</h3>
-    <p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p>
+    <p>
+      從接觸到到職期間，習得Rails的基本用法，像是如何使用別人的專案、簡單或稍微複雜的CRUD、如何打api等等。
+      前端部分以JS和jQuery入門，後來接觸的票才慢慢開始了解html語法，像是Form表單包含的屬性等等。
+    </p>
+
+    <p>
+      CSS部分在職時只使用Bootstrap，直到離職後才有時間閱覽網路上的範例，學習其他人排版的方法。
+    </p>
 
     <ul class="skill-bars">
         <li>
-        <div class="progress percent90"><span>90%</span></div>
-        <strong>HTML5</strong>
+          <div class="progress percent40"><span>40%</span></div>
+          <strong>HTML5, CSS3, JS, JQuery</strong>
         </li>
         <li>
-        <div class="progress percent85"><span>85%</span></div>
-        <strong>CSS3</strong>
+          <div class="progress percent75"><span>75%</span></div>
+          <strong>Ruby on Rails</strong>
         </li>
         <li>
-        <div class="progress percent70"><span>70%</span></div>
-        <strong>JQuery</strong>
+          <div class="progress percent60"><span>60%</span></div>
+          <strong>Git, Github, Gitlab</strong>
         </li>
         <li>
-        <div class="progress percent95"><span>95%</span></div>
-        <strong>PHP</strong>
-        </li>
-        <li>
-
-        <div class="progress percent75"><span>75%</span></div>
-        <strong>Wordpress</strong>
+          <div class="progress percent40"><span>40%</span></div>
+          <strong>MySQL, Mongodb, redis</strong>
         </li>
 
-    </ul> <!-- /skill-bars -->
+    </ul>
 
   </div>
 
@@ -90,8 +97,13 @@
 
 <div class="row button-section">
   <div class="col-twelve">
-    <a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
-    <a href="#" title="Download CV" class="button button-primary">Download CV</a>
+    <a href="https://github.com/ChenHanTing/note" title="My Note" class="button stroke smoothscroll">My note</a>
+    <a href="/cv.pdf" title="Download CV" class="button button-primary">Download CV</a>
+  </div>
+
+  <div class="col-twelve">
+    <a href="https://github.com/ChenHanTing/side-project" title="Side Project" class="button button-primary">Side Project</a>
+    <a href="https://chenhanting.blogspot.com/" title="Blog" class="button stroke smoothscroll">Blog</a>
   </div>
 </div>
 
@@ -100,160 +112,146 @@
 <!-- resume Section
 ================================================== -->
 <section id="resume" class="grey-section">
-
   <div class="row section-intro">
     <div class="col-twelve">
 
       <h5>Resume</h5>
-      <h1>More of my credentials.</h1>
+      <h1>My credentials.</h1>
 
-      <p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+      <p class="lead">The following is my working experience and Education.</p>
 
     </div>
   </div> <!-- /section-intro-->
 
   <div class="row resume-timeline">
-
     <div class="col-twelve resume-header">
-
       <h2>Work Experience</h2>
-
     </div> <!-- /resume-header -->
 
     <div class="col-twelve">
-
       <div class="timeline-wrap">
 
         <div class="timeline-block">
-
           <div class="timeline-ico">
             <i class="fa fa-graduation-cap"></i>
           </div>
 
           <div class="timeline-header">
-            <h3>UI Designer</h3>
-            <p>July 2015 - Present</p>
+            <h3>Back-end Developer</h3>
+            <p>Sep. 2019 - Jan. 2020</p>
           </div>
 
           <div class="timeline-content">
-            <h4>Awesome Studio</h4>
-            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
+            <h4>JVD</h4>
+            <p>
+              接3個遊戲及重構1個遊戲：<br>
+              對接行為為登入、創帳號、查看錢包餘額、金錢轉入、金錢轉出、撈取遊戲紀錄等等。
+            </p>
+            <p>
+              資訊站：<br>
+              某間公司預計開放論壇提供玩家討論，經承接後，負責的部分為資訊站的後台實作。
+            </p>
+            <p>
+              小任務：<br>
+              - 將專案加入選填樣式<br>
+              - 將前後台數字部分加入千分位符<br>
+              - 將取得的遊戲紀錄，分成未結算與已結算進行排序<br>
+              - 將表單加入防呆<br>
+              - 遊戲帳號依據最後登入時間（使用ahoy）進行排序
+            </p>
+            <p>
+              詳情請看：<a href="https://github.com/ChenHanTing/note" title="note">My note</a>
+            </p>
           </div>
-
-        </div> <!-- /timeline-block -->
-
-        <div class="timeline-block">
-
-          <div class="timeline-ico">
-            <i class="fa fa-graduation-cap"></i>
-          </div>
-
-          <div class="timeline-header">
-            <h3>Front-end Developer</h3>
-            <p>July 2014 - June 2015</p>
-          </div>
-
-          <div class="timeline-content">
-            <h4>Super Cool Agency</h4>
-            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
-          </div>
-
-        </div> <!-- /timeline-block -->
-
-        <div class="timeline-block">
-
-          <div class="timeline-ico">
-            <i class="fa fa-graduation-cap"></i>
-          </div>
-
-          <div class="timeline-header">
-            <h3>Web Designer</h3>
-            <p>May 2013 - June 2014</p>
-          </div>
-
-          <div class="timeline-content">
-            <h4>Great Designs Studio</h4>
-            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
-          </div>
-
-        </div> <!-- /timeline-block -->
+        </div>
 
       </div> <!-- /timeline-wrap -->
-
     </div> <!-- /col-twelve -->
-
   </div> <!-- /resume-timeline -->
 
   <div class="row resume-timeline">
-
     <div class="col-twelve resume-header">
-
       <h2>Education</h2>
-
     </div> <!-- /resume-header -->
 
     <div class="col-twelve">
-
       <div class="timeline-wrap">
-
         <div class="timeline-block">
-
           <div class="timeline-ico">
             <i class="fa fa-briefcase"></i>
           </div>
 
           <div class="timeline-header">
             <h3>Master Degree</h3>
-            <p>July 2015 - Present</p>
+            <p>Sep. 2016 - Jan. 2019</p>
           </div>
 
           <div class="timeline-content">
-            <h4>University of Life</h4>
-            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
-          </div>
+            <h4>NCHU</h4>
+            <p>
+              系所：電機工程學系研究所<br/>
+              碩一期末：<a href="/PLL2G.pdf" title="PLL">2GHz 震盪頻率的簡單鎖相迴路</a><br/>
+              畢業論文：<a href="/thesis.pdf" title="thesis">基於SketchUp建立的深度學習資料庫</a><br/>
+              畢業 code：<a href="https://github.com/ChenHanTing/thesis" title="code">基於SketchUp建立的深度學習資料庫</a>
+            </p>
 
+            <p>
+              碩班為實驗室方向主要為數位類比轉換器，為類比電路的領域。碩二開始轉為深度學習，實現語言為python，框架為Keras。
+              深度學習研究方向從簡單的分類、回歸問題，慢慢探討CNN, RCNN, GaN等領域。深度學習資料庫的部分，虛擬資料主要使用SketchUp，
+              由於SketchUp主要以Ruby開發，因此才與Ruby結緣，加上當時開始學會使用爬蟲，對網頁方面有初步的認識。
+            </p>
+          </div>
         </div> <!-- /timeline-block -->
 
         <div class="timeline-block">
-
           <div class="timeline-ico">
             <i class="fa fa-briefcase"></i>
           </div>
 
           <div class="timeline-header">
             <h3>Bachelor Degree</h3>
-            <p>July 2014 - June 2015</p>
+            <p>Sep. 2012 - July 2016</p>
           </div>
 
           <div class="timeline-content">
-            <h4>State Design University</h4>
-            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
+            <h4>NTPU</h4>
+            <p>
+              系所：電機系<br/>
+              社團：熱舞社、如來實證社<br/>
+              專題：鎖相迴路（遺失）<br/>
+              參與：第一屆電機營總召、第二屆電機營隊輔長、熱舞社器材
+            </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        </div> <!-- /timeline-block -->
+<footer>
+  <div class="row">
 
-        <div class="timeline-block">
+    <div class="col-six tab-full pull-right social">
 
-          <div class="timeline-ico">
-            <i class="fa fa-briefcase"></i>
+      <ul class="footer-social">
+        <li><a href="https://www.facebook.com/profile.php?id=100000397072220"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="https://www.instagram.com/__hanting__/?hl=zh-tw"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="https://www.pinterest.com/hanting4rails/"><i class="fa fa-pinterest"></i></a></li>
+        <li><a href="https://github.com/ChenHanTing"><i class="fa fa-github"></i></a></li>
+      </ul>
+
+    </div>
+
+    <div class="col-six tab-full">
+      <div class="copyright">
+          <span>© Copyright Kards 2016.</span>
+          <span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
           </div>
+      </div>
 
-          <div class="timeline-header">
-            <h3>Bachelor Degree</h3>
-            <p>May 2013 - June 2014</p>
-          </div>
+      <div id="go-top">
+          <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+      </div>
 
-          <div class="timeline-content">
-            <h4>Design College</h4>
-            <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
-          </div>
-
-        </div> <!-- /timeline-block -->
-
-      </div> <!-- /timeline-wrap -->
-
-    </div> <!-- /col-twelve -->
-
-  </div> <!-- /resume-timeline -->
-
-</section> <!-- /features -->
+    </div> <!-- /row -->
+</footer>

@@ -10,7 +10,7 @@
     <%= favicon_link_tag asset_path('diary.ico') %>
   </head>
 
-  <body> 
+  <body>
     <%= render "layouts/navbar" %>
 
     <% if alert %>
@@ -28,7 +28,7 @@
         <%= notice %>
       </div>
     <% end %>
-    
+
     <%= yield %>
     <%#= render "layouts/footer" %>
   </body>
