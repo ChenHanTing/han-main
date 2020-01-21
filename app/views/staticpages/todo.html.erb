@@ -2,9 +2,9 @@
   // .ready or .click
   // 參考網址：https://fullstack.qzy.camp/posts/1296
   // 參考網址：https://engmeter.blogspot.com/2015/03/jqueryjquery.html
-  // $(document).ready(function(){...}); //寫法1，全稱 
-  // $(function(){...});                 //寫法2，簡寫 
-  // jQuery(function($){...});           //寫法3，簡寫    
+  // $(document).ready(function(){...}); //寫法1，全稱
+  // $(function(){...});                 //寫法2，簡寫
+  // jQuery(function($){...});           //寫法3，簡寫
   $(document).ready(function(){
       $("#which-weekly").html("第<%= weekly_num %>篇");
       $("#which-song").html("第<%= song_num %>首");
@@ -15,11 +15,13 @@
   })
 </script>
 
-<% content_for :page_title,  "Todo daily" %>
+<%= stylesheet_link_tag 'tododaily' %>
+
+<% content_for :page_title, "Todo daily" %>
 <%# https://www.w3schools.com/bootstrap4/bootstrap_tables.asp %>
 <div class="container">
-  <h2>每日必須做</h2>
-  <p>明師在世的每一天都很幸福，因此依教奉行每天都很重要。請務必要好好依教奉行🙏</p>            
+  <h2 class="title">每日必須做</h2>
+  <p class="subtitle">明師在世的每一天都很幸福，因此依教奉行每天都很重要。請務必要好好依教奉行🙏</p>
   <table class="table  table-hover">
     <thead>
       <tr>
@@ -34,7 +36,7 @@
         <td class="text-nowrap">禪行週報</td>
         <td id="which-weekly" class="text-nowrap"></td>
         <td id="title-weekly" ></td>
-        <td id="link-weekly" class="text-nowrap"></td>        
+        <td id="link-weekly" class="text-nowrap"></td>
       </tr>
       <tr>
         <td class="text-nowrap">聽佛曲</td>
@@ -42,13 +44,8 @@
         <td id="title-song"></td>
         <td id="link-song" class="text-nowrap"></td>
       </tr>
-      <tr>
-        <td class="text-nowrap">心得見證</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
     </tbody>
   </table>
   <!-- <button id="renew-click" type="button" class="btn btn-primary">請按</button> -->
+
 </div>

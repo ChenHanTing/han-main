@@ -17,4 +17,5 @@ Rails.application.config.assets.precompile += %w[ckeditor/config.js
                                                  card.css
                                                  testimonial.css
                                                  resume.css
+                                                 tododaily.css
                                                 ]
