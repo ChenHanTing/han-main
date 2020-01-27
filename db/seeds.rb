@@ -6,6 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Idea.create(
+  [
+    {
+      title: 'A new cake recipe',
+      body: 'Made of chocolate'
+    },
+    {
+      title: 'A twitter client idea',
+      body: 'Only for replying to mentions and DMs'
+    },
+    {
+      title: 'A novel set in Italy',
+      body: 'A mafia crime drama starring Berlusconi'
+    },
+    {
+      title: 'Card game design',
+      body: 'Like Uno but involves drinking'
+    }
+  ]
+)
+
 User.create(username: 'chenruru', password: 'as789123456',
             email: 'wss200086@gmail.com', admin: true)
 User.create(username: 'chenhanhan', password: 'as789123456',

@@ -1,5 +1,7 @@
 zh-TW:
   hello: 哈囉
+  error:
+    login_user_or_password: "登入的使用者或密碼"
   notice:
     update_success: 更新成功！
     create_success: 創建成功！
@@ -28,11 +30,12 @@ zh-TW:
     login: 登入
     signup: 註冊
     logout: 登出
-    resume: 履歷
+    profile: 個人頁面
     chatroom: 聊天室
     template: 版型
     card: Card
     testimonial: 推薦書
+    ideaboard: 記事版
   lab_forum:
     add_q: 新增問題
     all_qs: 所有問題

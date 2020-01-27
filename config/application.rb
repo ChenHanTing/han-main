@@ -22,5 +22,12 @@ module DiaryApp
     config.i18n.default_locale = "zh-TW"
     # use default locale when translation missing
     # config.i18n.fallbacks = "zh-TW"
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
+      end
+    end
   end
 end

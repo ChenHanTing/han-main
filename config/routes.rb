@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       get 'ping', to: 'base#ping'
       get 'ping_auth', to: 'base#ping_auth'
       get 'info', to: 'base#info'
+
+      resources :ideas
     end
   end
 
@@ -40,7 +42,7 @@ Rails.application.routes.draw do
         resources :comments
         get 'status', on: :member
 
-        resources :likes, only: [:create]
+        resources :likes, only: :create
       end
     end
 
