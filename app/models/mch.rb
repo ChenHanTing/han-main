@@ -16,6 +16,7 @@
 
 class Mch < ApplicationRecord
   include ImportSheets
+  include Import::Sheets::Strategy
 
   # SHEET_COLUMN: 存放工作表的欄位名稱
   # HEADER: Excel表的標題行
@@ -29,11 +30,6 @@ class Mch < ApplicationRecord
     '中類': 'cc3',
     '小類': 'cc4'
   }.freeze
-
-  # Example:
-  # file = File.open('MCH.xlsx')
-  # file = File.open('smsheets.xlsx')
-  # Mch.import_sheets(file)
 
   # Mch.run_script('smsheets.xlsx')
   def self.run_script(file_name)
@@ -49,5 +45,12 @@ class Mch < ApplicationRecord
     spreadsheet.each_with_pagename do |_name, sheet|
       puts("Header: #{sheet.row(1)}")
     end
+  end
+
+  # Mch.new.sty_flow('example.xlsx')
+  def sty_flow(file_name)
+    sheet_info = strategy_sheets(file_name)
+    column_info = strategy_columns(self, sheet_info)
+    data = strategy_array(sheet_info, column_info)
   end
 end
