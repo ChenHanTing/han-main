@@ -22,35 +22,27 @@ class Mch < ApplicationRecord
   # HEADER: Excel表的標題行
   SHEET_COLUMN = 'c1'
   CODE_COLUMN = 'cs'
-  HEADER = {
-    '大類名稱': 'c2',
-    '中類名稱': 'c3',
-    '小類名稱': 'c4',
-    '大類': 'cc2',
-    '中類': 'cc3',
-    '小類': 'cc4'
-  }.freeze
+  HEADER = %w[MCH 大類名稱 中類名稱 小類名稱 大類 中類 小類].freeze
 
-  # Mch.run_script('smsheets.xlsx')
-  def self.run_script(file_name)
-    file = File.open(file_name)
-    import_sheets(file)
-  end
+  # # Mch.run_script('smsheets.xlsx')
+  # def self.run_script(file_name)
+  #   file = File.open(file_name)
+  #   import_sheets(file)
+  # end
 
-  # Example
-  # Mch.inspect_sheetheader('smsheets.xlsx')
-  def self.inspect_sheetheader(file_name)
-    file = File.open(file_name)
-    spreadsheet = open_spreadsheet(file)
-    spreadsheet.each_with_pagename do |_name, sheet|
-      puts("Header: #{sheet.row(1)}")
-    end
-  end
+  # # Example
+  # # Mch.inspect_sheetheader('smsheets.xlsx')
+  # def self.inspect_sheetheader(file_name)
+  #   file = File.open(file_name)
+  #   spreadsheet = open_spreadsheet(file)
+  #   spreadsheet.each_with_pagename do |_name, sheet|
+  #     puts("Header: #{sheet.row(1)}")
+  #   end
+  # end
 
-  # Mch.new.sty_flow('example.xlsx')
-  def sty_flow(file_name)
-    sheet_info = strategy_sheets(file_name)
-    column_info = strategy_columns(self, sheet_info)
-    data = strategy_array(sheet_info, column_info)
+  # Mch.import_sheets('example.xlsx')
+  def self.import_sheets(file_name)
+    handler = Importsheets.new(self, file_name).sty_flow
+    handler.each { |item| find_or_create_by!(item) }
   end
 end

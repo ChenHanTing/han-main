@@ -13,14 +13,8 @@
 #
 
 class Category < ApplicationRecord
-  include Import::Sheets::Strategy
-
   # 欲處理的欄位寫進HEADER
-  HEADER = {
-    'EC-大分類': 'ec_big',
-    'EC-中分類': 'ec_medium',
-    'EC-小分類': 'ec_small'
-  }.freeze
+  HEADER = %w[EC-大分類 EC-中分類 EC-小分類].freeze
 
   belongs_to :parent, class_name: 'Category', foreign_key: 'parent_id', optional: true
   has_many :children, class_name: 'Category', foreign_key: 'parent_id'
@@ -31,11 +25,18 @@ class Category < ApplicationRecord
     Flow.demo_flow
   end
 
-  # Category.new.sty_flow('example.xlsx')
-  def sty_flow(file_name)
-    strategy_sheets(file_name)
-    strategy_columns(self)
-    strategy_array
-    binding.pry
+  def self.initialize
+    find_or_create_by!(name: '自訂商品目錄')
+    find_or_create_by!(name: '其他目錄')
+  end
+
+  # Category.import_sheets('example.xlsx')
+  def self.import_sheets(file_name)
+    handler = Importsheets.new(self, file_name).sty_flow
+    handler.each do |item|
+      parent = find_by(path: item.dig(:path).split('/')[0...-1].join('/'))
+      parent = find_by(name: '自訂商品目錄') if parent.nil?
+      find_or_create_by!(item.merge!(parent: parent))
+    end
   end
 end
