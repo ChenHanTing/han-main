@@ -9,7 +9,7 @@ class Importsheets
     @file_name = file_name
     # In rails convention, the first col always place `id`,
     # and the last two cols always place 'updated at' & `created at`
-    @db_cols = cls.column_names[1..-3].map(&:to_sym) if cls.present?
+    # @db_cols = cls.column_names[1..-3].map(&:to_sym) if cls.present?
   end
 
   def print_info
@@ -58,17 +58,16 @@ class Importsheets
   def sty_mch_handler
     sty_demo_info
     self.sty_data_handler = []
-    c1, c2, c3, c4, cs = @db_cols
 
     sty_raw_data.each do |ele|
       next if ele['MCH'].nil?
 
       code = [ele['MCH'], ele['大類'], ele['中類'], ele['小類']]
-      data = { c1 => ele['MCH'],
-               c2 => ele['大類名稱'],
-               c3 => ele['中類名稱'],
-               c4 => ele['小類名稱'],
-               cs => code.join('') }
+      data = { c1: ele['MCH'],
+               c2: ele['大類名稱'],
+               c3: ele['中類名稱'],
+               c4: ele['小類名稱'],
+               cs: code.join('') }
 
       # 0, 1, 2, 3
       # 注意有雷：當key異動時，sty_data_handler的key也會跟著異動
@@ -90,6 +89,5 @@ class Importsheets
 
   def sty_demo_info
     puts 'HELLO, I AM DATA HANDLER'
-    puts "DB COLUMN: #{@db_cols}"
   end
 end

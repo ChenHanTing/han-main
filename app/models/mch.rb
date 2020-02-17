@@ -16,12 +16,8 @@
 
 class Mch < ApplicationRecord
   include ImportSheets
-  include Import::Sheets::Strategy
 
-  # SHEET_COLUMN: 存放工作表的欄位名稱
   # HEADER: Excel表的標題行
-  SHEET_COLUMN = 'c1'
-  CODE_COLUMN = 'cs'
   HEADER = %w[MCH 大類名稱 中類名稱 小類名稱 大類 中類 小類].freeze
 
   # # Mch.run_script('smsheets.xlsx')
