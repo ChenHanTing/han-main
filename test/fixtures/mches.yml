@@ -7,7 +7,7 @@
 #  c2         :string(255)
 #  c3         :string(255)
 #  c4         :string(255)
-#  cs         :string(255)
+#  code       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

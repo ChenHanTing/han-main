@@ -4,12 +4,12 @@
 #
 # Table name: categories
 #
-#  id         :bigint           not null, primary key
-#  name       :string(255)
-#  path       :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  parent_id  :integer
+#  id          :bigint           not null, primary key
+#  description :string(255)
+#  path        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  parent_id   :integer
 #
 
 class Category < ApplicationRecord
@@ -25,17 +25,17 @@ class Category < ApplicationRecord
     Flow.demo_flow
   end
 
-  def self.initialize
-    find_or_create_by!(name: '自訂商品目錄')
-    find_or_create_by!(name: '其他目錄')
+  def self.seed
+    find_or_create_by!(description: '自訂商品目錄')
+    find_or_create_by!(description: '其他目錄')
   end
 
   # Category.import_sheets('example.xlsx')
   def self.import_sheets(file_name)
-    handler = Importsheets.new(self, file_name).sty_flow
+    handler = CategorySheets.new(self, file_name).sty_flow
     handler.each do |item|
       parent = find_by(path: item.dig(:path).split('/')[0...-1].join('/'))
-      parent = find_by(name: '自訂商品目錄') if parent.nil?
+      parent = find_by(description: '自訂商品目錄') if parent.nil?
       find_or_create_by!(item.merge!(parent: parent))
     end
   end

@@ -7,7 +7,7 @@ class CreateMches < ActiveRecord::Migration[5.2]
       t.string :c2
       t.string :c3
       t.string :c4
-      t.string :cs
+      t.string :code
 
       t.timestamps
     end
