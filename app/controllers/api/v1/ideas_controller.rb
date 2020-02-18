@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Api::V1
   class IdeasController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-      @ideas = Idea.order("created_at DESC")
+      @ideas = Idea.order('created_at DESC')
       render json: @ideas
     end
 
@@ -32,5 +34,11 @@ module Api::V1
     def idea_params
       params.require(:idea).permit(:title, :body)
     end
-	end
+
+    # 驗證該 token 是否符合格式
+    def token_format_valid?(authentication_token)
+      base58_alphabet = ('0'..'9').to_a + ('A'..'Z').to_a + ('a'..'z').to_a - %w[0 O I l]
+      (authentication_token.split('') - base58_alphabet).blank? && authentication_token.size == 24
+    end
+  end
 end
