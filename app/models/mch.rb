@@ -15,12 +15,13 @@
 #
 
 class Mch < ApplicationRecord
+  has_many :category_mches
   # HEADER: Excel表的標題行
   HEADER = %w[MCH 大類名稱 中類名稱 小類名稱 大類 中類 小類].freeze
 
   # Mch.import_sheets('example.xlsx')
   def self.import_sheets(file_name)
-    handler = MchSheets.new(self, file_name).sty_flow
+    handler = ImportSheets::Mch.new(self, file_name).sty_flow
     handler.each { |item| find_or_create_by!(item) }
   end
 end

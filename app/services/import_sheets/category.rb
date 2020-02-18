@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CategorySheets < Import::Sheets
+class ImportSheets::Category < ImportSheets::Base
   def sty_category_handler
     sty_demo_info
     self.sty_data_handler = []

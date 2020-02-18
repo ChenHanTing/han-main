@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Import::Sheets
-  include Import::Strategy
+class ImportSheets::Base
+  include ImportSheets::Strategy
 
   def initialize(cls, file_name)
     @demo = 'DEMO INFORMATION'
@@ -19,7 +19,7 @@ class Import::Sheets
   def sty_flow
     sty_init
     get_sty_flow.each do |k, v|
-      go_method = "sty_#{@cls.to_s.downcase}_#{k}".to_sym
+      go_method = "sty_#{@cls.to_s.underscore}_#{k}".to_sym
       go_method = v unless respond_to?(go_method)
       send(go_method) if go_method.present?
     end

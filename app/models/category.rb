@@ -19,6 +19,7 @@ class Category < ApplicationRecord
   belongs_to :parent, class_name: 'Category', foreign_key: 'parent_id', optional: true
   has_many :children, class_name: 'Category', foreign_key: 'parent_id'
   has_many :grandchildren, through: :children, source: :children
+  has_many :category_mches
 
   # Category.new.demo_cls
   def demo_cls
@@ -32,7 +33,7 @@ class Category < ApplicationRecord
 
   # Category.import_sheets('example.xlsx')
   def self.import_sheets(file_name)
-    handler = CategorySheets.new(self, file_name).sty_flow
+    handler = ImportSheets::Category.new(self, file_name).sty_flow
     handler.each do |item|
       parent = find_by(path: item.dig(:path).split('/')[0...-1].join('/'))
       parent = find_by(description: '自訂商品目錄') if parent.nil?

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Import
+module ImportSheets
   module Strategy
     attr_accessor :sty_demo, :sty_info
 

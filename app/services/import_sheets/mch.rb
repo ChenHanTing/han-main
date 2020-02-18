@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MchSheets < Import::Sheets
+class ImportSheets::Mch < ImportSheets::Base
   def sty_mch_handler
     sty_demo_info
     self.sty_data_handler = []
