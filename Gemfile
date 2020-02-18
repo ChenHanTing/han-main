@@ -76,6 +76,7 @@ gem 'sinatra'
 
 # devise 相關套件
 gem 'devise'
+gem 'devise-encryptable'
 gem 'devise-i18n'
 
 # models 加註解

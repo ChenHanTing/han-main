@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -35,8 +37,7 @@ class User < ApplicationRecord
 
   validates_presence_of :username
   validates_uniqueness_of :email, :username
-  validates_format_of :email, :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
-
+  validates_format_of :email, with: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
 
   # 賦值(set)
   attr_writer :login
@@ -46,8 +47,8 @@ class User < ApplicationRecord
     def find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       if login = conditions.delete(:login)
-        where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }]).first
-      elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+        where(conditions.to_h).where(['lower(username) = :value OR lower(email) = :value', { value: login.downcase }]).first
+      elsif conditions.key?(:username) || conditions.key?(:email)
         where(conditions.to_h).first
       end
     end
@@ -72,7 +73,7 @@ class User < ApplicationRecord
     Rails.cache.write(
       token,
       {
-        user_id: id,
+        user_id: id
       },
       expires_in: 6.hours
     )
@@ -81,8 +82,19 @@ class User < ApplicationRecord
   end
 
   def gravatar_url
-    gravatar_id = Digest::MD5::hexdigest(email).downcase
+    gravatar_id = Digest::MD5.hexdigest(email).downcase
 
     "https://gravatar.com/avatar/#{gravatar_id}.png"
+  end
+
+  def valid_password?(password)
+    # 基本上密碼不會是空值
+    return false if encrypted_password.blank?
+
+    # 比對舊系統密碼
+    Devise.secure_compare(
+      Devise::Encryptable::Encryptors::Sha1.digest(password, nil, password_salt, nil),
+      encrypted_password
+    )
   end
 end

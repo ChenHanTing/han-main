@@ -138,6 +138,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-encryptable (0.2.0)
+      devise (>= 2.1.0)
     devise-i18n (1.9.0)
       devise (>= 4.7.1)
     errbase (0.2.0)
@@ -365,6 +367,7 @@ DEPENDENCIES
   ckeditor!
   coffee-rails (~> 4.2)
   devise
+  devise-encryptable
   devise-i18n
   file_validators
   font-awesome-rails
