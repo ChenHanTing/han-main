@@ -76,7 +76,7 @@ module ImportSheets
           puts Hash[[header, spreadsheet.row(i)].transpose].slice(*column).to_s
           sty_raw_data
             .append(Hash[[header, spreadsheet.row(i)].transpose]
-             .slice(*column))
+            .slice(*column))
         end
       end
 

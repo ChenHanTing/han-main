@@ -87,14 +87,15 @@ class User < ApplicationRecord
     "https://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
-  def valid_password?(password)
-    # 基本上密碼不會是空值
-    return false if encrypted_password.blank?
+  # 多了這一段會改變devise的加密方式
+  # def valid_password?(_password)
+  #   # 基本上密碼不會是空值
+  #   return false if encrypted_password.blank?
 
-    # 比對舊系統密碼
-    Devise.secure_compare(
-      Devise::Encryptable::Encryptors::Sha1.digest(password, nil, password_salt, nil),
-      encrypted_password
-    )
-  end
+  #   # # 比對舊系統密碼
+  #   # Devise.secure_compare(
+  #   #   Devise::Encryptable::Encryptors::Sha1.digest(password, nil, password_salt, nil),
+  #   #   encrypted_password
+  #   # )
+  # end
 end
