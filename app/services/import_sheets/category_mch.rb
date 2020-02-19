@@ -5,9 +5,11 @@ class ImportSheets::CategoryMch < ImportSheets::Base
     self.sty_data_handler = []
 
     sty_raw_data.each do |i|
-      code = i.values[0..3].join('')
-      path = i.values[4..6].join('/')
-      next if code.blank? || path.blank?
+      code = i.values[0..3]
+      path = i.values[4..6]
+      next if code.nil? || path.nil?
+      next if code.any?(&:nil?) || path.any?(&:nil?)
+      next if path.any? { |e| ['#REF!', '#NA'].include?(e) }
 
       sty_data_handler.append(code: code, path: path)
     end
