@@ -22,6 +22,7 @@ module Devise
         #   puts encoded
         # end
 
+        # 這是devise建議覆寫的地方（在initializers）
         def self.digest(password, _stretches, salt, _pepper)
           bytes = ''
           password.each_char { |c| bytes << c + "\x00" }
