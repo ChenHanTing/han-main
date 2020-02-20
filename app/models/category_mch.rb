@@ -17,8 +17,8 @@
 #
 
 class CategoryMch < ApplicationRecord
-  belongs_to :category
-  belongs_to :mch
+  belongs_to :category, optional: true
+  belongs_to :mch, optional: true
 
   # 不需要，因為有 belongs_to
   # validates_presence_of :category_id

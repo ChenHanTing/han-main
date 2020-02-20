@@ -70,13 +70,17 @@ module ImportSheets
       sheet_info = sty_sheet_info
       column_info = sty_column_info
       spreadsheet = open_spreadsheet(sheet_info.first)
+
       column_info.each do |sheet, column|
         (2..spreadsheet.last_row).each do |i|
           header = spreadsheet.sheet(sheet).row(1)
-          puts Hash[[header, spreadsheet.row(i)].transpose].slice(*column).to_s
+
           sty_raw_data
             .append(Hash[[header, spreadsheet.row(i)].transpose]
             .slice(*column))
+
+          # 比較直接存與先存進hash再存進DB的資料筆數差異
+          # @cls.find_or_create_by!(detail: Hash[[header, spreadsheet.row(i)].transpose].to_json)
         end
       end
 

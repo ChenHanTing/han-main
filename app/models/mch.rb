@@ -10,6 +10,7 @@
 #  c3         :string(255)
 #  c4         :string(255)
 #  code       :string(255)
+#  path       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -17,7 +18,7 @@
 class Mch < ApplicationRecord
   has_many :category_mches
   # HEADER: Excel表的標題行
-  HEADER = %w[MCH 大類名稱 中類名稱 小類名稱 大類 中類 小類].freeze
+  HEADER = %w[MCH 大類名稱 中類名稱 小類名稱 大類 中類 小類 EC-大分類 EC-中分類 EC-小分類].freeze
 
   # Mch.import_sheets('example.xlsx')
   def self.import_sheets(file_name)

@@ -8,18 +8,21 @@ class ImportSheets::Mch < ImportSheets::Base
     sty_raw_data.each do |ele|
       next if ele['MCH'].nil?
 
-      code = [ele['MCH'], ele['大類'], ele['中類'], ele['小類']]
+      code = [ele['MCH'].to_s, ele['大類'].to_s, ele['中類'].to_s, ele['小類'].to_s]
+      path = [ele['EC-大分類'], ele['EC-中分類'], ele['EC-小分類']]
       data = { c1: ele['MCH'],
                c2: ele['大類名稱'],
                c3: ele['中類名稱'],
                c4: ele['小類名稱'],
-               code: code.join('') }
+               code: code.join(''),
+               path: path }
 
       # 0, 1, 2, 3
       # 注意有雷：當key異動時，sty_data_handler的key也會跟著異動
       # 解決方法：先轉成陣列（line 79），再轉為hash(line 85)
       (0..3).each do |i|
         unless i.zero?
+          path = nil
           code[(4 - i)] = nil
           data[:"c#{5 - i}"] = nil
           data[:code] = code.join('')

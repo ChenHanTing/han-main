@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_233843) do
+ActiveRecord::Schema.define(version: 2020_02_20_055716) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -146,6 +146,15 @@ ActiveRecord::Schema.define(version: 2020_02_18_233843) do
     t.index ["mch_id"], name: "index_category_mches_on_mch_id"
   end
 
+  create_table "check_sheets_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "path"
+    t.string "mch_path"
+    t.json "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
@@ -206,6 +215,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_233843) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "path"
   end
 
   create_table "room_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
