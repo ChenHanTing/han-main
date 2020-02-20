@@ -14,27 +14,9 @@ module ImportSheets
     DEFAULT_STRATEGY = {
       sheets: :strategy_sheets,
       columns: :strategy_columns,
-      data: :strategy_data
+      build_data: :strategy_array,
+      handler: nil
     }.freeze
-
-    DEFAULT_DATA_STRATEGY = {
-      raw: :strategy_raw,
-      handler: nil,
-      clean: :strategy_clean
-    }.freeze
-
-    def sty_inner_flow(file, sheet, element, column)
-      self.sty_sheet = sheet
-      self.sty_file = file
-      self.sty_ele = element
-      self.sty_col = column
-
-      get_sty_inner_flow.each do |k, v|
-        go_method = "sty_#{@cls.to_s.underscore}_#{k}".to_sym
-        go_method = v unless respond_to?(go_method)
-        send(go_method) if go_method.present?
-      end
-    end
 
     # Initialize `self.sty_info`
     def sty_init
@@ -46,13 +28,6 @@ module ImportSheets
       return self.class::STRATEGY if self.class.const_defined?(:STRATEGY)
 
       DEFAULT_STRATEGY
-    end
-
-    # If there is no custom strategy, it will run default strategy
-    def get_sty_inner_flow
-      return self.class::STRATEGY if self.class.const_defined?(:DATA_STRATEGY)
-
-      DEFAULT_DATA_STRATEGY
     end
 
     # output example
@@ -89,35 +64,27 @@ module ImportSheets
       end
     end
 
-    def strategy_data
+    def strategy_array
+      self.sty_raw_data = []
+
       sheet_info = sty_sheet_info
       column_info = sty_column_info
       spreadsheet = open_spreadsheet(sheet_info.first)
 
       column_info.each do |sheet, column|
-        (2..spreadsheet.last_row).each do |ele|
-          # 需要 ele, column
-          sty_inner_flow(spreadsheet, sheet, ele, column)
+        (2..spreadsheet.last_row).each do |i|
+          header = spreadsheet.sheet(sheet).row(1)
+
+          sty_raw_data
+            .append(Hash[[header, spreadsheet.row(i)].transpose]
+            .slice(*column))
+
           # 比較直接存與先存進hash再存進DB的資料筆數差異
           # @cls.find_or_create_by!(detail: Hash[[header, spreadsheet.row(i)].transpose].to_json)
         end
       end
-    end
 
-    def strategy_raw
-      self.sty_raw_data =
-        Hash[[sty_file.sheet(sty_sheet).row(1), sty_file.row(sty_ele)]
-        .transpose]
-        .slice(*sty_col)
-    end
-
-    def strategy_clean
-      self.sty_col = nil
-      self.sty_ele = nil
-      self.sty_col = nil
-      self.sty_file = nil
-      self.sty_raw_data = nil
-      self.sty_data_handler = nil
+      sty_raw_data.uniq!
     end
 
     # The following method is run for background
@@ -152,8 +119,6 @@ module ImportSheets
     # The following is getter and setter
     # Ruby Getters and Setters
     # ref: https://dev.to/k_penguin_sato/ruby-getters-and-setters-1p30
-
-    # used for strategy
     def sty_sheet_info
       sty_info[:sheet_info]
     end
@@ -184,39 +149,6 @@ module ImportSheets
 
     def sty_data_handler=(data_handler)
       sty_info[:data_handler] = data_handler
-    end
-
-    # used for inner strategy
-    def sty_ele
-      sty_info[:ele]
-    end
-
-    def sty_ele=(ele)
-      sty_info[:ele] = ele
-    end
-
-    def sty_col
-      sty_info[:col]
-    end
-
-    def sty_col=(col)
-      sty_info[:col] = col
-    end
-
-    def sty_sheet
-      sty_info[:sheet]
-    end
-
-    def sty_sheet=(sheet)
-      sty_info[:sheet] = sheet
-    end
-
-    def sty_file
-      sty_info[:file]
-    end
-
-    def sty_file=(file)
-      sty_info[:file] = file
     end
 
     # This is for demo.

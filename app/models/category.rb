@@ -33,11 +33,6 @@ class Category < ApplicationRecord
 
   # Category.import_sheets('example.xlsx')
   def self.import_sheets(file_name)
-    handler = ImportSheets::Category.new(self, file_name).sty_flow
-    handler.each do |item|
-      parent = find_by(path: item.dig(:path).split('/')[0...-1].join('/'))
-      parent = find_by(description: '自訂商品目錄') if parent.nil?
-      find_or_create_by!(item.merge!(parent: parent))
-    end
+    ImportSheets::Category.new(self, file_name).sty_flow
   end
 end

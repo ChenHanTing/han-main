@@ -17,7 +17,6 @@ class CheckSheetsInfo < ApplicationRecord
   # Mch.import_sheets('example.xlsx')
   def self.import_sheets(file_name)
     delete_all
-    handler = ImportSheets::CheckSheetsInfo.new(self, file_name).sty_flow
-    handler.each { |item| find_or_create_by!(item) }
+    ImportSheets::CheckSheetsInfo.new(self, file_name).sty_flow
   end
 end

@@ -15,4 +15,12 @@ namespace :import_sheets do
   task category_mch: :environment do
     CategoryMch.import_sheets(ENV['file'])
   end
+
+  desc 'A task used for import xlsx file to Mch/Category/CategoryMch database.'
+  task category_bundler: :environment do
+    file = ENV['file']
+    Mch.import_sheets(file)
+    Category.import_sheets(file)
+    CategoryMch.import_sheets(file)
+  end
 end

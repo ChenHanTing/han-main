@@ -23,8 +23,6 @@ class ImportSheets::Base
       go_method = v unless respond_to?(go_method)
       send(go_method) if go_method.present?
     end
-
-    sty_data_handler
   end
 
   def sty_demo_info

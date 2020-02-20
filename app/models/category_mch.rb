@@ -28,10 +28,6 @@ class CategoryMch < ApplicationRecord
 
   # CategoryMch.import_sheets('example.xlsx')
   def self.import_sheets(file_name)
-    handler = ImportSheets::CategoryMch.new(self, file_name).sty_flow
-    handler.each do |ele|
-      find_or_create_by!(mch: Mch.find_by(code: ele[:code].join('')),
-                         category: Category.find_by(path: ele[:path].join('/')))
-    end
+    ImportSheets::CategoryMch.new(self, file_name, Mch, Category).sty_flow
   end
 end

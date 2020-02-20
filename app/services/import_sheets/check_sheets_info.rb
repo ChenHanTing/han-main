@@ -2,18 +2,16 @@
 
 class ImportSheets::CheckSheetsInfo < ImportSheets::Base
   def sty_check_sheets_info_handler
-    self.sty_data_handler = []
+    code = [sty_raw_data['MCH'], sty_raw_data['大類'], sty_raw_data['中類'], sty_raw_data['小類']]
+    path = [sty_raw_data['EC-大分類'], sty_raw_data['EC-中分類'], sty_raw_data['EC-小分類']]
+    mch_path = [sty_raw_data['MCH'], sty_raw_data['大類名稱'], sty_raw_data['中類名稱'], sty_raw_data['小類名稱']]
+    sty_data_handler = {
+      code: code.join(''),
+      path: path.join('/'),
+      mch_path: mch_path.join('/'),
+      detail: sty_raw_data.to_json
+    }
 
-    sty_raw_data.each do |item|
-      code = [item['MCH'], item['大類'], item['中類'], item['小類']]
-      path = [item['EC-大分類'], item['EC-中分類'], item['EC-小分類']]
-      mch_path = [item['MCH'], item['大類名稱'], item['中類名稱'], item['小類名稱']]
-      sty_data_handler.append(code: code.join(''),
-                              path: path.join('/'),
-                              mch_path: mch_path.join('/'),
-                              detail: item.to_json)
-    end
-
-    sty_data_handler
+    @cls.find_or_create_by!(sty_data_handler)
   end
 end

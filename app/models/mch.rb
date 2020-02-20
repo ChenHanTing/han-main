@@ -22,7 +22,6 @@ class Mch < ApplicationRecord
 
   # Mch.import_sheets('example.xlsx')
   def self.import_sheets(file_name)
-    handler = ImportSheets::Mch.new(self, file_name).sty_flow
-    handler.each { |item| find_or_create_by!(item) }
+    ImportSheets::Mch.new(self, file_name).sty_flow
   end
 end
