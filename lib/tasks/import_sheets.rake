@@ -16,6 +16,13 @@ namespace :import_sheets do
     CategoryMch.import_sheets(ENV['file'])
   end
 
+  desc 'A task used for reset Mch/Category/CategoryMch database.'
+  task category_reset: :environment do
+    CategoryMch.delete_all
+    Mch.delete_all
+    Category.where.not(parent_id: nil).delete_all
+  end
+
   desc 'A task used for import xlsx file to Mch/Category/CategoryMch database.'
   task category_bundler: :environment do
     file = ENV['file']

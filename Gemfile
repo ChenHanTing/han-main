@@ -23,9 +23,9 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -38,12 +38,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'rubocop'
 
-# 安裝bootstrap
-
-# bootstrap 3
-# gem 'bootstrap-sass', '~> 3.4.1'
-# gem 'sassc-rails', '>= 2.1.0'
-
 # bootstrap 4
 gem 'bootstrap', '~> 4.4.1'
 
@@ -52,14 +46,14 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'simple_form'
 
-# 下列為 datetime-picker
+# datetime-picker
 gem 'bootstrap4-datetime-picker-rails'  # Tempus Dominus
 gem 'momentjs-rails'                    # moment.js
 
-# ckeditor 相關套件
+# rich text editor
 gem 'ckeditor', github: 'galetahub/ckeditor'
-# gem 'ckeditor', '4.2.4'
 gem 'mini_magick'
+gem 'trix-rails', '~> 0.11.4.1'
 
 # 提示窗套件
 # https://github.com/CodeSeven/toastr
@@ -82,8 +76,6 @@ gem 'devise-i18n'
 # models 加註解
 gem 'annotate'
 
-gem 'redis'
-
 # 匯入excel表單
 gem 'roo'
 
@@ -97,24 +89,20 @@ gem 'rack-cors', require: 'rack/cors'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'mysql2', '0.5.2'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
-  # Use sqlite3 as the database for Active Record
-  # gem 'sqlite3'
-  gem 'mysql2', '0.5.2'
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'web-console', '>= 3.3.0'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'meta_request'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
@@ -123,6 +111,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'factory_bot_rails'
+  gem 'ffaker'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
 end
 
 # 如何處理pg無法bundle的問題

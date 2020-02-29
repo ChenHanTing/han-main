@@ -1,0 +1,88 @@
+<script>
+  $(function(){
+    $('.fa').tooltip({
+      placement : 'top'
+    });
+  })
+</script>
+
+<div class="col-6 col-md-4 col-sm-12" id="card_<%= lab_forum.id %>">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="mr-auto p-2">
+            <h5 class="card-title">
+              <%= lab_forum.question.capitalize %>
+            </h5>
+          </div>
+          <div class="p-2">
+            <% if lab_forum.solved == false %>
+              <%= link_to 'Open', status_admin_lab_forum_path(lab_forum), remote: true,
+                  class: 'btn btn-success btn-sm', id: "card-btn-#{lab_forum.id}" %>
+            <% else %>
+              <%= link_to 'Closed', status_admin_lab_forum_path(lab_forum), remote: true,
+                  class: 'btn btn-danger btn-sm', id: "card-btn-#{lab_forum.id}" %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="d-flex">
+          <div class="p-2">User: <%= lab_forum.user.username.capitalize %></div>
+          <div class="ml-auto p-2">
+            <% if clicked(lab_forum.id) %>
+              <%= link_to (fa_icon "thumbs-up"), admin_lab_forum_likes_path(lab_forum),
+                  { method: :post,
+                    class: 'thumb-clicked',
+                    id: "like-btn-#{lab_forum.id}",
+                    remote: true
+                    } %>
+            <% else %>
+              <%= link_to (fa_icon "thumbs-up"), admin_lab_forum_likes_path(lab_forum),
+                  { method: :post,
+                    id: "like-btn-#{lab_forum.id}",
+                    class: 'thumb',
+                    remote: true
+                    } %>
+            <% end %>
+
+          </div>
+        </div>
+
+        <p class="card-text">
+          <small class="text-muted">
+            <span class="icon"><i class="fa fa-eye"></i></span>
+            <span class="vote_count">?</span>&emsp;
+            <% if clicked(lab_forum.id) %>
+              <span class="icon"><i class="fa fa-heart heart_clicked" id="heart-<%= lab_forum.id %>"></i></span>
+            <% else %>
+              <span class="icon"><i class="fa fa-heart" id="heart-<%= lab_forum.id %>"></i></span>
+            <% end %>
+            <span class="vote_count" id="like-num-<%= lab_forum.id %>">
+              <%= LabForum.find_by(id: lab_forum.id).click %>
+            </span>&emsp;
+            <span class="icon"><i class="fa fa-comment"></i></span>
+            <span class="vote_count">?</span>
+          </small>
+        </p>
+
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated at
+          <%= distance_of_time_in_words(lab_forum.updated_at, Time.current) %>
+        </small><br/>
+        <small class="text-muted">
+          <% if user_signed_in? && ( lab_forum.user == current_user ) %>
+            <%= link_to (fa_icon "eye"), admin_lab_forum_path(lab_forum), title: t('lab_forum.inspect') %>&emsp;
+            <%= link_to (fa_icon "edit"),
+                        edit_admin_lab_forum_path(lab_forum),
+                        title: t('lab_forum.edit'),
+                        remote: true %>&emsp;
+            <%= link_to (fa_icon "trash"), admin_lab_forum_path(lab_forum), remote: true,
+                  method: "delete", data: { confirm: "Are you sure?" }, title: t('lab_forum.delete') %>
+          <% else %>
+            <%= link_to (fa_icon "eye"), admin_lab_forum_path(lab_forum), title: t('lab_forum.inspect') %>
+          <% end %>
+        </small>
+      </div>
+    </div>
+  </div>

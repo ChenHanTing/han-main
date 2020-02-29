@@ -1,0 +1,17 @@
+<% content_for :page_title, "lab_forum" %>
+
+<div class="container">
+  <h1><%= t('lab_forum.all_qs') %></h1>
+  <h4>
+    <%= link_to t('lab_forum.add_q'),
+            new_admin_lab_forum_path,
+            class: 'btn btn-link',
+            remote: true %>
+  </h4>
+  <div class="card-group" id="lab_forums">
+    <%= render @lab_forums %>
+  </div>
+</div>
+
+<div id='new_container'></div>
+<div id='edit_container'></div>

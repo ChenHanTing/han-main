@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-8">
+    <div  class="group"><h2><%= title %></h2></div>
+      <%= simple_form_for @lab_forum, url: url do |f| %>
+        <%= f.input :question %>
+        <%= f.input :description, as: :ckeditor, input_html: { ckeditor: { height: 400 } } %>
+        <%= f.input :category, as: :radio_buttons, collection: LabForum::CATEGORY, wrapper: :horizontal_collection_inline %>
+        <%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to 'Back', admin_lab_forums_path, class: 'btn' %>
+    </div>
+  <div class="col-4">
+</div>

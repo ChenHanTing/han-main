@@ -2,12 +2,7 @@
 
 module ImportSheets
   module Strategy
-    attr_accessor :sty_demo, :sty_info
-
-    # This is for demo
-    def demo_method
-      self.sty_demo = 'TEST!'
-    end
+    attr_accessor :sty_info
 
     # Define default strategy
     # It would be valid if you want to write custom strategy in model.
@@ -19,16 +14,19 @@ module ImportSheets
 
     DEFAULT_DATA_STRATEGY = {
       raw: :strategy_raw,
-      handler: nil,
-      clean: :strategy_clean
+      handler: nil
     }.freeze
 
-    def sty_inner_flow(file, sheet, element, column)
-      self.sty_sheet = sheet
-      self.sty_file = file
-      self.sty_ele = element
-      self.sty_col = column
+    def sty_flow
+      self.sty_info = init_deep_hash
+      get_sty_flow.each do |k, v|
+        go_method = "sty_#{@cls.to_s.underscore}_#{k}".to_sym
+        go_method = v unless respond_to?(go_method)
+        send(go_method) if go_method.present?
+      end
+    end
 
+    def sty_inner_flow
       get_sty_inner_flow.each do |k, v|
         go_method = "sty_#{@cls.to_s.underscore}_#{k}".to_sym
         go_method = v unless respond_to?(go_method)
@@ -36,7 +34,6 @@ module ImportSheets
       end
     end
 
-    # Initialize `self.sty_info`
     def sty_init
       self.sty_info ||= init_deep_hash
     end
@@ -59,9 +56,6 @@ module ImportSheets
     # ["example.xlsx", ["s1", "s2", "s3", "s4", "s5", "s6"]]
     def strategy_sheets
       spreadsheet = open_spreadsheet(@file_name)
-
-      # first: file name
-      # second: file sheets' name
       self.sty_sheet_info = [@file_name, spreadsheet.sheets]
     end
 
@@ -95,11 +89,13 @@ module ImportSheets
       spreadsheet = open_spreadsheet(sheet_info.first)
 
       column_info.each do |sheet, column|
-        (2..spreadsheet.last_row).each do |ele|
-          # 需要 ele, column
-          sty_inner_flow(spreadsheet, sheet, ele, column)
-          # 比較直接存與先存進hash再存進DB的資料筆數差異
-          # @cls.find_or_create_by!(detail: Hash[[header, spreadsheet.row(i)].transpose].to_json)
+        (2..spreadsheet.last_row).each do |element|
+          self.sty_sheet = sheet
+          self.sty_file = spreadsheet
+          self.sty_ele = element
+          self.sty_col = column
+
+          sty_inner_flow
         end
       end
     end
@@ -111,19 +107,6 @@ module ImportSheets
         .slice(*sty_col)
     end
 
-    def strategy_clean
-      self.sty_col = nil
-      self.sty_ele = nil
-      self.sty_col = nil
-      self.sty_file = nil
-      self.sty_raw_data = nil
-      self.sty_data_handler = nil
-    end
-
-    # The following method is run for background
-
-    # The method is to open designated file.
-    # The method will raise the error if the file extension isn't csv/xls/xlsx
     def open_spreadsheet(file_name)
       file_path = File.expand_path(file_name)
       file = File.open(file_path)
@@ -136,24 +119,10 @@ module ImportSheets
       end
     end
 
-    # Initialize the hash
-    #
-    # a = Hash.new { |h, k| h[k] = Hash.new(&h.default_proc) }
-    # a[:b] = 1
-    # a           # =>  {:b => 1}
-    # a[:b] = Hash.new { |h, k| h[k] = Hash.new(&h.default_proc) }
-    # a           # => {:b => {}}
-    # a[:b][:b] = 2
-    # a           # => {:b => {:b => 2}}
     def init_deep_hash
       Hash.new { |h, k| h[k] = Hash.new(&h.default_proc) }
     end
 
-    # The following is getter and setter
-    # Ruby Getters and Setters
-    # ref: https://dev.to/k_penguin_sato/ruby-getters-and-setters-1p30
-
-    # used for strategy
     def sty_sheet_info
       sty_info[:sheet_info]
     end
@@ -178,15 +147,6 @@ module ImportSheets
       sty_info[:raw_data] = raw_data
     end
 
-    def sty_data_handler
-      sty_info[:data_handler]
-    end
-
-    def sty_data_handler=(data_handler)
-      sty_info[:data_handler] = data_handler
-    end
-
-    # used for inner strategy
     def sty_ele
       sty_info[:ele]
     end
@@ -217,13 +177,6 @@ module ImportSheets
 
     def sty_file=(file)
       sty_info[:file] = file
-    end
-
-    # This is for demo.
-    class Flow
-      def self.demo_flow
-        puts 'First flow.'
-      end
     end
   end
 end

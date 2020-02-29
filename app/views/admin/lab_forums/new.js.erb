@@ -1,0 +1,4 @@
+$('#new_container').html('<%= j render 'modal',
+                                form_type: @lab_forum,
+                                url: admin_lab_forum_path %>');
+$('#lab_forum').modal('show');

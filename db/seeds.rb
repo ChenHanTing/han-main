@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -30,21 +32,25 @@ Idea.create(
 User.create(username: 'chenruru', password: 'as789123456',
             email: 'wss200086@gmail.com', admin: true)
 User.create(username: 'chenhanhan', password: 'as789123456',
+            email: 'k445566778899k@gmail.com', admin: true)
+User.create(username: 'Han', password: 'as789123456',
             email: 'han@jvdiamondtech.com', admin: true)
+User.create(username: 'HanTing', password: 'as789123456',
+            email: 'hantingchen@eslite.com', admin: true)
 
 LabForum.create(question: 'First Question', description: 'Default Description',
-                category: 'others', user: User.first)
+                category: 'others', user: User.find_by(username: 'chenhanhan'))
 LabForum.create(question: 'Second Question', description: 'Default Description',
-                category: 'others', user: User.second)
+                category: 'others', user: User.find_by(username: 'chenruru'))
 
 Comment.create(content: 'First Content', commentable: LabForum.first,
-               user: User.first)
+               user: User.find_by(username: 'chenhanhan'))
 Comment.create(content: 'Second Content', commentable: LabForum.first,
-               user: User.second)
+               user: User.find_by(username: 'chenruru'))
 Comment.create(content: 'Third Content', commentable: LabForum.second,
-               user: User.first)
+               user: User.find_by(username: 'chenhanhan'))
 Comment.create(content: 'Forth Content', commentable: LabForum.second,
-               user: User.second)
+               user: User.find_by(username: 'chenruru'))
 
 Like.create(expression: 1, expressable: LabForum.first,
             user: User.first)
@@ -57,3 +63,6 @@ Todo.create(content: 'Shower', user: User.first,
             complete_time: Time.current)
 Todo.create(content: 'Learning Ruby on Rails', user: User.second,
             complete_time: Time.current)
+
+Category.create(description: '自訂商品目錄')
+Category.create(description: '其他目錄')
