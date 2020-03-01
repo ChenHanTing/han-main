@@ -4,7 +4,7 @@
 #
 #  id               :bigint           not null, primary key
 #  expressable_type :string(255)
-#  expression       :integer          default(0)
+#  expression       :integer          default("0")
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  expressable_id   :bigint

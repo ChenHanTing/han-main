@@ -1,0 +1,7 @@
+<section class="container">
+  <%= render partial: 'form',
+            locals: { title: '編輯問題類型',
+                      icon_code: 'edit',
+                      url: admin_question_type_path(@question_type),
+                      method: :patch } %>
+</section>

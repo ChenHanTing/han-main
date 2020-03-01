@@ -55,36 +55,22 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'mini_magick'
 gem 'trix-rails', '~> 0.11.4.1'
 
-# 提示窗套件
-# https://github.com/CodeSeven/toastr
+gem 'file_validators'
+gem 'rails-i18n'
+gem 'sinatra'
 gem 'toastr-rails'
 
-# 處理 file 相關的驗證
-gem 'file_validators'
-
-# 國際化
-gem 'rails-i18n'
-
-# 在 rails 使用 sinatra
-gem 'sinatra'
-
-# devise 相關套件
 gem 'devise'
 gem 'devise-encryptable'
 gem 'devise-i18n'
 
-# models 加註解
 gem 'annotate'
-
-# 匯入excel表單
-gem 'roo'
-
-# Explore your data with SQL.
-# Easily create charts and dashboards, and share them with your team.
-# https://github.com/ankane/blazer
 gem 'blazer'
-
+gem 'globalize'
+gem 'kaminari'
 gem 'rack-cors', require: 'rack/cors'
+gem 'ransack'
+gem 'roo'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

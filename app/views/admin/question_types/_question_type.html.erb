@@ -1,0 +1,8 @@
+<tr>
+  <td class="project-actions">
+    <%= link_to edit_admin_question_type_path(question_type), class: 'fa fa-edit icon_link no-text' do %>
+    <% end %>
+  </td>
+  <td><%= question_type.name %></td>
+  <td><%= t("type_of_questions.status.#{question_type.status}") %></td>
+</tr>

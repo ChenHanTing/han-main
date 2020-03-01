@@ -44,6 +44,8 @@ Rails.application.routes.draw do
 
       resources :likes, only: :create
     end
+
+    resources :question_types, except: :show
   end
 
   scope module: 'assignment' do

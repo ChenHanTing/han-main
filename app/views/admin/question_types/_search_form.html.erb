@@ -1,0 +1,33 @@
+<%= simple_form_for :search, method: :get, url: admin_question_types_path do |f| %>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= f.label :status_eq, '狀態' %>
+          <%= f.input :status_eq, as: :select, class: 'custom-select',
+                      label: false, label_method: :second, value_method: :first,
+                      collection: type_of_question_statuses,
+                      selected: @search_params[:status_eq]
+          %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= f.label :name_cont, '問題類型名稱' %>
+          <%= f.input :name_cont, label: false, input_html: { value: @search_params[:name_cont] } %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+      <label >&nbsp;</label>
+        <div class="button-group">
+          <div class="btn-group">
+            <%= f.submit '查詢', class: 'btn btn-secondary' %>
+          </div>
+          <div class="btn-group">
+            <%= link_to '新增', new_admin_question_type_path, class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

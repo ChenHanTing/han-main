@@ -66,6 +66,10 @@ en:
     edit: Edit
     delete: Delete
     inspect: Inspect
+  question_types:
+    status:
+      active: "Active"
+      disable: "Disable"
   simple_form:
     labels:
       lab_forum:

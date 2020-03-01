@@ -4,10 +4,10 @@
 #
 #  id          :bigint           not null, primary key
 #  category    :string(255)
-#  click       :integer          default(0)
+#  click       :integer          default("0")
 #  description :text(65535)
 #  question    :string(255)
-#  solved      :boolean          default(FALSE)
+#  solved      :boolean          default("0")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer

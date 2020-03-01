@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: mches
+#
+#  id         :bigint           not null, primary key
+#  c1         :string(255)
+#  c2         :string(255)
+#  c3         :string(255)
+#  c4         :string(255)
+#  code       :string(255)
+#  path       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Mch, type: :model do

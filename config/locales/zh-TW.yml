@@ -66,6 +66,10 @@ zh-TW:
     edit: 編輯
     delete: 刪除
     inspect: 檢視
+  question_types:
+    status:
+      active: 啟用
+      disable: 停用
   simple_form:
     labels:
       lab_forum:

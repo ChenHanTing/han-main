@@ -5,8 +5,8 @@
 #  id            :bigint           not null, primary key
 #  complete_time :datetime
 #  content       :text(65535)
-#  priority      :integer          default("low")
-#  status        :boolean          default(FALSE)
+#  priority      :integer          default("0")
+#  status        :boolean          default("0")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  user_id       :bigint
