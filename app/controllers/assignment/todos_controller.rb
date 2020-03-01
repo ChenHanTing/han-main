@@ -1,8 +1,8 @@
-class Assignment::TodolistsController < ApplicationController
-  # layout "admin"
+# frozen_string_literal: true
 
+class Assignment::TodosController < ApplicationController
   before_action :find_todos, only: %i[edit update destroy show status]
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   # 若非後台人員，即會出現登入阻擋
   # before_action :required
@@ -21,26 +21,24 @@ class Assignment::TodolistsController < ApplicationController
     @todo.user = current_user
 
     if @todo.save
-      redirect_to todolists_path, notice: I18n.t('notice.create_success')
+      redirect_to assignment_todos_path, notice: I18n.t('notice.create_success')
     else
       render :new
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
-    @todo.destroy if @todo
-    redirect_to todolists_path, notice: I18n.t('notice.deleted')
+    @todo&.destroy
+    redirect_to assignment_todos_path, notice: I18n.t('notice.deleted')
   end
 
   def update
     if @todo.update(todo_params)
-      redirect_to todolists_path, notice: I18n.t('notice.update_success')
+      redirect_to assignment_todos_path, notice: I18n.t('notice.update_success')
     else
       render :edit
     end

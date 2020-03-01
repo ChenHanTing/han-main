@@ -48,8 +48,8 @@ Rails.application.routes.draw do
     resources :question_types, except: :show
   end
 
-  scope module: 'assignment' do
-    resources :todolists do
+  namespace :assignment do
+    resources :todos do
       get 'status', on: :member
     end
   end

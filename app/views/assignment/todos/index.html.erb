@@ -4,7 +4,7 @@
       placement : 'top'
     });
   })
-</script>  
+</script>
 
 <% content_for :page_title, "TODO" %>
 
@@ -14,7 +14,7 @@
       <h1><%= t('todolist.all_todo') %></h1>
     </div>
     <div class="p-2 bd-highlight">
-      <a href="<%= new_todolist_path %>" class="addtodo"><i class="fa fa-plus"></i></a>
+      <a href="<%= new_assignment_todo_path %>" class="addtodo"><i class="fa fa-plus"></i></a>
     </div>
   </div>
 
@@ -24,7 +24,7 @@
         <% @todos.each do |todo| %>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="blog-details">
-              <div class="d-flex align-items-start flex-column" style="height: 200px;">               
+              <div class="d-flex align-items-start flex-column" style="height: 200px;">
                 <div class="mb-auto p-2"><h5><%= todo.content %></h5></div>
                 <div class="p-2 text-muted"><%= t('todolist.priority') %>: <%= todo.priority %></div>
               </div>
@@ -33,24 +33,24 @@
             <div class="card-body">
               <div class="row">
                 <div class="d-flex flex-row col-lg-1 col-md-1 mb-1">
-                  <%= link_to (fa_icon "eye", class: "text-muted"), todolist_path(todo), title: t('todolist.inspect') %>
+                  <%= link_to (fa_icon "eye", class: "text-muted"), assignment_todo_path(todo), title: t('todolist.inspect') %>
                 </div>
 
                 <div class="d-flex flex-row col-lg-1 col-md-1 mb-1">
-                  <%= link_to (fa_icon "edit", class: "text-muted"), edit_todolist_path(todo), title: t('todolist.edit') %>
+                  <%= link_to (fa_icon "edit", class: "text-muted"), edit_assignment_todo_path(todo), title: t('todolist.edit') %>
                 </div>
-                
+
                 <div class="d-flex flex-row col-lg-1 col-md-1 mb-1">
-                  <%= link_to (fa_icon "trash", class: "text-muted"), todolist_path(todo), method: :delete, title: t('todolist.delete') %>
+                  <%= link_to (fa_icon "trash", class: "text-muted"), assignment_todo_path(todo), method: :delete, title: t('todolist.delete') %>
                 </div>
 
                 <div class="d-flex flex-row-reverse col-lg-8 col-md-8 mb-8">
                   <% if todo.status == false %>
-                    <%= link_to t('todolist.undone'), status_todolist_path(todo), remote: true, class: 'btn btn-danger btn-sm', id: "btn-#{todo.id}" %>
+                    <%= link_to t('todolist.undone'), status_assignment_todo_path(todo), remote: true, class: 'btn btn-danger btn-sm', id: "btn-#{todo.id}" %>
                   <% else %>
-                    <%= link_to t('todolist.done'), status_todolist_path(todo), remote: true, class: 'btn btn-success btn-sm', id: "btn-#{todo.id}" %>
-                  <% end %> 
-                </div>                  
+                    <%= link_to t('todolist.done'), status_assignment_todo_path(todo), remote: true, class: 'btn btn-success btn-sm', id: "btn-#{todo.id}" %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

@@ -11,9 +11,9 @@
         <hr>
         <p>Posted on <%= @todo.created_at.to_s[0..-4] %></p>
         <% if @todo.status == false %>
-          <%= link_to  t('todolist.undone'), status_todolist_path(@todo), remote: true, class: 'btn btn-danger btn-sm', id: "btn-#{@todo.id}" %>
+          <%= link_to  t('todolist.undone'), status_assignment_todo_path(@todo), remote: true, class: 'btn btn-danger btn-sm', id: "btn-#{@todo.id}" %>
         <% else %>
-          <%= link_to  t('todolist.done'), status_todolist_path(@todo), remote: true, class: 'btn btn-success btn-sm', id: "btn-#{@todo.id}" %>
+          <%= link_to  t('todolist.done'), status_assignment_todo_path(@todo), remote: true, class: 'btn btn-success btn-sm', id: "btn-#{@todo.id}" %>
         <% end %>
         <hr>
         <p class="lead"><%= @todo.priority %></p>
@@ -37,9 +37,9 @@
       </div>
       <div class="modal-body">
         <% if @todo.status == false %>
-          <%= link_to  t('todolist.undone'), status_todolist_path(@todo), remote: true, class: 'btn btn-danger btn-sm', id: "btn-#{@todo.id}" %>
+          <%= link_to  t('todolist.undone'), status_assignment_todo_path(@todo), remote: true, class: 'btn btn-danger btn-sm', id: "btn-#{@todo.id}" %>
         <% else %>
-          <%= link_to  t('todolist.done'), status_todolist_path(@todo), remote: true, class: 'btn btn-success btn-sm', id: "btn-#{@todo.id}" %>
+          <%= link_to  t('todolist.done'), status_assignment_todo_path(@todo), remote: true, class: 'btn btn-success btn-sm', id: "btn-#{@todo.id}" %>
         <% end %>
 
         <h5 class="mt-4">
