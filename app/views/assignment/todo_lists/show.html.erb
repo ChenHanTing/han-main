@@ -1,0 +1,9 @@
+<div class="container">
+  <p>
+    <strong>Name:</strong>
+    <%= @todo_list.name %>
+  </p>
+
+  <%= link_to 'Edit', edit_assignment_todo_list_path(@todo_list) %> |
+  <%= link_to 'Back', assignment_todo_lists_path %>
+</div>

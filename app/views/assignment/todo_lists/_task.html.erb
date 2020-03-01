@@ -1,0 +1,19 @@
+<tr>
+  <td>
+    <%= f.input_field :_destroy, as: :hidden %>
+    <%= link_to (fa_icon 'trash'), '#', class: 'remove_record' %>
+  </td>
+  <td><%= f.input :completed, label: false, :as => :select %></td>
+  <td><%= f.input :name, label: false %></td>
+  <td>
+    <div class="input-group" data-target-input="nearest">
+      <%= f.text_field :due, id: "complete_time",
+                             class: "form-control datepicker",
+                             data: { target: '#complete_time'},
+                             value: f.object.due %>
+      <div class="input-group-append" data-target="#complete_time" data-toggle="datetimepicker">
+          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
+  </td>
+</tr>

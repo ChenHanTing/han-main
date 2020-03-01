@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :assignment do
+    resources :todo_lists
+  end
   mount Ckeditor::Engine => '/ckeditor'
 
   authenticate :user, ->(user) { user.admin? } do
