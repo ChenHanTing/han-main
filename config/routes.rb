@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     end
 
     resources :question_types, except: :show
+    resources :member_login_histories, only: :index
   end
 
   namespace :assignment do
