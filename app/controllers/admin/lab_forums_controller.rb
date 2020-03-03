@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class Admin::LabForumsController < ApplicationController
+class Admin::LabForumsController < Admin::BaseController
   before_action :find_labforum, only: %i[edit update destroy show status]
-  before_action :authenticate_user!
-  layout 'admin'
 
   def index
     @lab_forums = LabForum.all.order(id: :desc)

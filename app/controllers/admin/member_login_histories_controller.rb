@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::MemberLoginHistoriesController < ApplicationController
+class Admin::MemberLoginHistoriesController < Admin::BaseController
   def index
     @member_login_histories = MemberLoginHistory.all
                                                 .order(updated_at: :DESC)

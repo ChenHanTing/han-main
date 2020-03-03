@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Assignment::TodosController < ApplicationController
+class Assignment::TodosController < Assignment::BaseController
   before_action :find_todos, only: %i[edit update destroy show status]
   before_action :authenticate_user!
 

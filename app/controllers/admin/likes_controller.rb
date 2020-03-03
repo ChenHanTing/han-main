@@ -1,4 +1,6 @@
-class Admin::LikesController < ApplicationController
+# frozen_string_literal: true
+
+class Admin::LikesController < Admin::BaseController
   # 跳過ActionController::InvalidAuthenticityToken
   # skip_before_action :verify_authenticity_token
   before_action :authenticate_user!

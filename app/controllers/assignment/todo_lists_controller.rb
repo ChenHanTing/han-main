@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Assignment
-  class TodoListsController < ApplicationController
+  class TodoListsController < Assignment::BaseController
     before_action :set_todo_list, only: %i[show edit update destroy]
 
     def index

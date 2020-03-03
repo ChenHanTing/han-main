@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::CommentsController < ApplicationController
+class Admin::CommentsController < Admin::BaseController
   before_action :authenticate_user!
 
   def create
