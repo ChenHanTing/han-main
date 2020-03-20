@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     resources :todos do
       get 'status', on: :member
     end
+    resources :items_imports, only: %i[new create]
   end
 
   get 'bmi', to: 'bmi#index'
