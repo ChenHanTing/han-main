@@ -6,8 +6,14 @@ module Assignment
       @items_import = ItemsImport.new
     end
 
+    # https://medium.com/@JasonCodes/ruby-on-rails-importing-from-excel-1504fd99a35e
+    #
+    # Ruby on Rails 4 - CSV import - no implicit conversion into string
+    # https://stackoverflow.com/questions/30395750/ruby-on-rails-4-csv-import-no-implicit-conversion-into-string/30395981
+    #
     def create
-      binding.pry
+      @sheet_val = ImportSheets::Promotion.new(self.class, items_import_params[:file].path).sty_flow.to_json
+      #
       # <ActionController::Parameters {"utf8"=>"✓", "authenticity_token"=>
       # "GPKscLyw/+WHNbetdfrKCL8NHWx3siBHskdOwSyung061JfEYT76ijeagDUi6JjCfXKNhEPgmQ3PN/O5WKw/yw==",
       # "items_import"=>{"file"=>#<ActionDispatch::Http::UploadedFile:0x00007f984a5d6c88
@@ -16,16 +22,12 @@ module Assignment
       # name=\"items_import[file]\"; filename=\"GBA\xE9\xBB\x91.jpg\"\r\nContent-Type: image/jpeg\r\n">},
       # "commit"=>"Import File", "locale"=>"zh-TW", "controller"=>"assignment/items_imports", "action"=>"create"}
       # permitted: false>
+    end
 
-      # https://medium.com/@JasonCodes/ruby-on-rails-importing-from-excel-1504fd99a35e
-      #
-      # @items_import = ItemsImport.new(params[:items_import])
-      #
-      # if @items_import.save
-      #   redirect_to items_path
-      # else
-      #   render :new
-      # end
+    private
+
+    def items_import_params
+      params.require(:items_import).permit(:file)
     end
   end
 end

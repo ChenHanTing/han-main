@@ -20,15 +20,17 @@ module ImportSheets
     def sty_flow
       self.sty_info = init_deep_hash
       get_sty_flow.each do |k, v|
-        go_method = "sty_#{@cls.to_s.underscore}_#{k}".to_sym
+        go_method = "sty_#{@cls.to_s.demodulize.underscore}_#{k}".to_sym
         go_method = v unless respond_to?(go_method)
         send(go_method) if go_method.present?
       end
+
+      sty_data_handler
     end
 
     def sty_inner_flow
       get_sty_inner_flow.each do |k, v|
-        go_method = "sty_#{@cls.to_s.underscore}_#{k}".to_sym
+        go_method = "sty_#{@cls.to_s.demodulize.underscore}_#{k}".to_sym
         go_method = v unless respond_to?(go_method)
         send(go_method) if go_method.present?
       end
@@ -177,6 +179,14 @@ module ImportSheets
 
     def sty_file=(file)
       sty_info[:file] = file
+    end
+
+    def sty_data_handler
+      sty_info[:data_handler]
+    end
+
+    def sty_data_handler=(data_handler)
+      sty_info[:data_handler] = data_handler
     end
   end
 end

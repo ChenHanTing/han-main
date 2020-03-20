@@ -11,9 +11,9 @@
   <li>That way your user has a better chance of successful import</li>
 </ul>
 
-<h5>Select File</h5>
+<h3>Select File</h3>
 
-<%= form_for [:assignment, @items_import] do |f| %>
+<%= form_for [:assignment, @items_import], remote: true do |f| %>
   <% if @items_import.errors.any? %>
     <%= pluralize(@items_import.errors.count, "error") %> prevented us from
     importing your spreadsheet. Please update your spreadsheet and try agin.
@@ -27,3 +27,126 @@
   <%= f.file_field :file %>
   <%= f.submit "Import File" %>
 <% end %>
+
+<br />
+
+<table class="table table-hover table-striped table-sm" id="dataTable">
+  <thead class="thead" id="addTable">
+    <tr>
+      <th>內容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
+
+<br />
+
+<div id="vueTable">
+  <div class="row">
+    <div class="col-md-2 col-sm-2">
+      <div class="form-group">
+        <input type="text" class="form-control" id="content">
+      </div>
+    </div>
+
+    <div class="col-md col-sm">
+      <div class="form-group">
+        <button type="button"
+                class="btn btn-primary"
+                id="minimum_discount_add_btn"
+                @click="addItem">
+        加入
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 col-sm-10">
+      <table class="table table-hover table-striped table-sm">
+        <thead class="thead" id="addTable">
+          <tr>
+            <th>
+              <input type="checkbox" v-model="chkAll" @change="chkAllEvent" />
+            </th>
+            <th>內容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in hanItems">
+            <td>
+              <input type="checkbox" v-model="item.isChecked" />
+            </td>
+            <td>{{ item.content }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-sm-2">
+      <div class="form-group">
+        <button type="button" class="btn btn-dark" @click="removeItem">
+          勾選移除
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group col-xs-12">
+    <input
+      type="button"
+      value="提交"
+      class="btn btn-primary"
+      v-on:click="submitResult"
+    />
+    {{ result }}
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+<script>
+let dataTable = new Vue({
+  el: "#vueTable",
+  data: {
+    newData: new String(),
+    result: new Array(),
+    hanItems: new Array(),
+    chkAll: false,
+  },
+  methods: {
+    addItem: function() {
+      const content = document.getElementById('content').value;
+      if (!content) {
+        return;
+      }
+      this.hanItems.push({ content, isChecked: false });
+    },
+
+    removeItem: function() {
+      this.hanItems = this.hanItems.filter(item => !item.isChecked);
+    },
+
+    chkAllEvent: function() {
+      let isChecked = this.chkAll; // 全選或全不選
+      this.hanItems.forEach(item => item.isChecked = isChecked);
+    },
+
+    submitResult: function(){
+      this.result = new Array();
+
+      this.hanItems.forEach(element => {
+        const { content } = element;
+
+        if (!element.isChecked)
+          this.result.push(JSON.stringify({ "content": content }));
+      });
+    }
+  },
+});
+</script>
