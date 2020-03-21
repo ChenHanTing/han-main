@@ -28,8 +28,9 @@
           class="new_items_import"
           id="new_items_import_vue"
           enctype="multipart/form-data"
-          action="/assignment/items_imports"
+          action="/assignment/items_imports.json"
           accept-charset="UTF-8"
+          data-remote="true"
           method="post"
         >
           <input
@@ -44,6 +45,7 @@
             name="commit"
             value="Import File"
             data-disable-with="Import File"
+            @click.prevent="importFile"
           />
         </form>
       </div>
@@ -89,7 +91,7 @@
         type="button"
         value="提交"
         class="btn btn-primary"
-        v-on:click="submitResult"
+        @click="submitResult"
       />
       {{ result }}
     </div>
@@ -156,7 +158,51 @@ export default {
         .then(function(response) {
           console.log(response.data);
           JSON.parse(response.data).forEach(item => {
-            mainItems.push({
+            // mainItems.push({
+            //   content: item.content,
+            //   isChecked: false
+            // });
+          });
+          // this.hanItems.push({ content, isChecked: false });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    importFile() {
+      const axios = require("axios");
+      const excelfile = document.querySelector("#items_import_file_vue");
+      const excelContent = excelfile.files[0];
+
+      if (
+        !excelContent.type.match(
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+      ) {
+        console.log("不符合上傳格式");
+        return;
+      }
+
+      // 檔案大小判斷
+      if (excelContent.size > 5000000) {
+        console.log("檔案不能超過 5 MB");
+        return;
+      }
+
+      // axios post 的 url 記得更換你自己的 api url
+      let formData = new FormData();
+      formData.append("items_import[file]", excelContent);
+
+      this.$http
+        .post("/assignment/items_imports.json", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        .then(function(response) {
+          console.log(response.data);
+          JSON.parse(response.data).forEach(item => {
+            this.hanItems.push({
               content: item.content,
               isChecked: false
             });
