@@ -59,10 +59,10 @@ Rails.application.routes.draw do
     resources :items_imports, only: %i[new create]
   end
 
-  get 'bmi', to: 'bmi#index'
-  post 'bmi', to: 'bmi#result'
+  # get 'bmi', to: 'bmi#index'
+  # post 'bmi', to: 'bmi#result'
 
-  get 'name', to: 'name#index'
-  post 'name', to: 'name#post_result'
-  get 'username', to: 'name#get_result'
+  # get 'name', to: 'name#index'
+  # post 'name', to: 'name#post_result'
+  # get 'username', to: 'name#get_result'
 end

@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class NameController < ApplicationController
   # 跳過ActionController::InvalidAuthenticityToken
   skip_before_action :verify_authenticity_token
 
-  def index
-  end
+  def index; end
 
   def get_result
-    @username = "#{params[:username]}"
+    @username = params[:username].to_s
 
     respond_to do |format|
       format.html { render 'get_result' }
