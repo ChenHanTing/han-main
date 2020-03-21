@@ -1,10 +1,12 @@
 (<%= @sheet_val.html_safe %>).forEach(item => {
-  const table = document.getElementById("dataTable");
+  const table = document.getElementById("jsTable");
   const row = table.insertRow(-1);
   const cell = row.insertCell(0);
   console.log(item);
   cell.innerHTML = item["content"];
 });
+
+console.log(dataTable);
 
 (<%= @sheet_val.html_safe %>).forEach(item => {
   const { content, isChecked } = item;

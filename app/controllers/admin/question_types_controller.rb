@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
-  class QuestionTypesController < Admin::BaseController
+  class QuestionTypesController < BaseController
     before_action :set_question_type, only: %i[show edit update]
 
     def index
