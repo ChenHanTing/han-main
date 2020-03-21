@@ -2,6 +2,8 @@
 
 module Assignment
   class ItemsImportsController < BaseController
+    skip_before_action :verify_authenticity_token
+
     def new
       @items_import = ItemsImport.new
     end
@@ -13,6 +15,11 @@ module Assignment
     #
     def create
       @sheet_val = ImportSheets::Promotion.new(self.class, items_import_params[:file].path).sty_flow.to_json
+
+      respond_to do |format|
+        format.js
+        format.json { render json: @sheet_val.to_json }
+      end
     end
 
     private

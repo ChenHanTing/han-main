@@ -92,6 +92,7 @@ module ImportSheets
     # The method is to open designated file.
     # The method will raise the error if the file extension isn't csv/xls/xlsx
     def open_spreadsheet(file_name)
+      binding.pry
       file_path = File.expand_path(file_name)
       file = File.open(file_path)
 

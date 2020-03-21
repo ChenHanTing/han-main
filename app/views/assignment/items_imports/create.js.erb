@@ -5,10 +5,3 @@
   console.log(item);
   cell.innerHTML = item["content"];
 });
-
-console.log(dataTable);
-
-(<%= @sheet_val.html_safe %>).forEach(item => {
-  const { content, isChecked } = item;
-  dataTable.hanItems.push({ content, isChecked: false });
-});

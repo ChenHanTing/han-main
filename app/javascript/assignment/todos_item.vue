@@ -1,7 +1,6 @@
 <template>
   <div>
     <h3>Add Item</h3>
-    <p>現在還不知道怎麼使用ajax改變vue的狀態</p>
     <div class="row">
       <div class="col-md-4 col-sm-4">
         <div class="form-group">
@@ -27,15 +26,19 @@
       <div class="col-md-10 col-sm-10">
         <form
           class="new_items_import"
-          id="new_items_import"
+          id="new_items_import_vue"
           enctype="multipart/form-data"
           action="/assignment/items_imports"
           accept-charset="UTF-8"
-          data-remote="true"
           method="post"
         >
-          <input name="utf8" type="hidden" value="✓" />
-          <input type="file" name="items_import[file]" id="items_import_file" />
+          <input
+            type="file"
+            name="items_import[file]"
+            id="items_import_file_vue"
+            data-target="file-uploader"
+            @change="fileUploader"
+          />
           <input
             type="submit"
             name="commit"
@@ -97,6 +100,7 @@
 export default {
   data: function() {
     return {
+      file: new String(),
       newData: new String(),
       result: new Array(),
       hanItems: new Array(),
@@ -104,6 +108,65 @@ export default {
     };
   },
   methods: {
+    fileUploader(e) {
+      // 判斷拖拉上傳或點擊上傳的 event
+      const files = e.target.files || e.dataTransfer.files;
+
+      // 預防檔案為空檔
+      if (!files.length) {
+        this.dragging = false;
+        return;
+      }
+
+      this.createFile(this.hanItems, files[0]);
+    },
+    createFile(mainItems, file) {
+      const axios = require("axios");
+      // 附檔名判斷
+      console.log(file.type);
+      if (
+        !file.type.match(
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+      ) {
+        console.log("不符合上傳格式");
+        this.dragging = false;
+        return;
+      }
+
+      // 檔案大小判斷
+      if (file.size > 5000000) {
+        console.log("檔案不能超過 5 MB");
+        this.dragging = false;
+        return;
+      }
+
+      this.file = file;
+      this.dragging = false;
+      // axios post 的 url 記得更換你自己的 api url
+      let formData = new FormData();
+      formData.append("items_import[file]", this.file);
+
+      axios
+        .post("/assignment/items_imports.json", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        .then(function(response) {
+          console.log(response.data);
+          JSON.parse(response.data).forEach(item => {
+            mainItems.push({
+              content: item.content,
+              isChecked: false
+            });
+          });
+          // this.hanItems.push({ content, isChecked: false });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
     addItem() {
       const content = document.getElementById("content").value;
       if (!content) {
