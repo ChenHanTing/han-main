@@ -11,6 +11,11 @@ module Assignment
     def index
       # @todos = current_user.todos.all.order(id: :desc) unless current_user.todos
       @todos = Todo.where(user: current_user).order(id: :desc)
+
+      respond_to do |format|
+        format.html
+        format.xlsx
+      end
     end
 
     def new

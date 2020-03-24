@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Buttons") do |sheet|
+  sheet.add_row ["ID", "內容", "優先順序", "建立時間"]
+  @todos.each do |r|
+    sheet.add_row [r.id, r.content, r.priority, r.created_at]
+  end
+end

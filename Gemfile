@@ -71,6 +71,9 @@ gem 'kaminari'
 gem 'rack-cors', require: 'rack/cors'
 gem 'ransack'
 gem 'roo'
+gem 'rubyzip'
+gem 'axlsx'
+gem 'axlsx_rails'
 
 gem 'audited'
 
