@@ -22,6 +22,18 @@ module Assignment
       end
     end
 
+    def excel_template
+      @template = [
+        { content: "'2631146634002" },
+        { content: "'2633001796009" },
+        { content: "'2631142373004" }
+      ]
+
+      respond_to do |format|
+        format.xlsx
+      end
+    end
+
     private
 
     def items_import_params

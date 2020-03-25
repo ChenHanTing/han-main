@@ -24,31 +24,32 @@
 
     <div class="row">
       <div class="col-md-10 col-sm-10">
-        <form
-          class="new_items_import"
-          id="new_items_import_vue"
-          enctype="multipart/form-data"
-          action="/assignment/items_imports.json"
-          accept-charset="UTF-8"
-          data-remote="true"
-          method="post"
+        <input
+          type="file"
+          name="items_import[file]"
+          id="items_import_file_vue"
+          data-target="file-uploader"
+          accept=".xlsx, .xls, .csv"
+          @change="fileUploader"
+        />
+        <input
+          type="submit"
+          name="commit"
+          value="匯入"
+          class="btn btn-info"
+          data-disable-with="Import File"
+          @click.prevent="importFile"
+        />
+        <a
+          class="btn btn-dark"
+          rel="nofollow"
+          data-method="get"
+          href="/assignment/items_imports/excel_template.xlsx"
+          id="example_minimum_discount_file"
+          ref="example_minimum_discount_file"
         >
-          <input
-            type="file"
-            name="items_import[file]"
-            id="items_import_file_vue"
-            data-target="file-uploader"
-            accept=".xlsx, .xls, .csv"
-            @change="fileUploader"
-          />
-          <input
-            type="submit"
-            name="commit"
-            value="Import File"
-            data-disable-with="Import File"
-            @click.prevent="importFile"
-          />
-        </form>
+          匯入範本下載
+        </a>
       </div>
     </div>
 
@@ -161,15 +162,17 @@ export default {
           }
         })
         .then(response => {
+          // 先印東西即可
+
           console.log(response);
           console.log(response.data);
 
-          JSON.parse(response.data).forEach(item => {
-            this.hanItems.push({
-              content: item.content,
-              isChecked: false
-            });
-          });
+          // JSON.parse(response.data).forEach(item => {
+          //   this.hanItems.push({
+          //     content: item.content,
+          //     isChecked: false
+          //   });
+          // });
         })
         .catch(function(error) {
           console.log(error);

@@ -1,0 +1,8 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "content") do |sheet|
+  sheet.add_row ["content"]
+  @template.each do |r|
+    sheet.add_row [r[:content]]
+  end
+end
