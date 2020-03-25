@@ -12,23 +12,3 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-import Vue from "vue";
-import App from "../assignment/todos_item.vue";
-import VueResource from "vue-resource";
-
-Vue.use(VueResource);
-
-document.addEventListener("DOMContentLoaded", () => {
-  const axios = require("axios");
-  const el = "#dataTable";
-
-  Vue.http.headers.common["X-CSRF-Token"] = document
-    .getElementsByName("csrf-token")[0]
-    .getAttribute("content");
-
-  const dataTable = new Vue({
-    el,
-    render: h => h(App)
-  });
-});

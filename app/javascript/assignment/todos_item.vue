@@ -38,6 +38,7 @@
             name="items_import[file]"
             id="items_import_file_vue"
             data-target="file-uploader"
+            accept=".xlsx, .xls, .csv"
             @change="fileUploader"
           />
           <input
@@ -99,6 +100,8 @@
 </template>
 
 <script>
+import axios from "../packs/axios_utils";
+
 export default {
   data: function() {
     return {
@@ -123,7 +126,6 @@ export default {
       this.createFile(this.hanItems, files[0]);
     },
     createFile(mainItems, file) {
-      const axios = require("axios");
       // 附檔名判斷
       console.log(file.type);
       if (
@@ -145,32 +147,35 @@ export default {
 
       this.file = file;
       this.dragging = false;
-      // axios post 的 url 記得更換你自己的 api url
+
       let formData = new FormData();
       formData.append("items_import[file]", this.file);
 
+      // 踩雷：這邊要寫 arrow function，不然`this.hanItems`無法辨識
+      // header 可以不用寫，在 axios_utils 已經定義好了
+      // response有data, status...等資訊
       axios
         .post("/assignment/items_imports.json", formData, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
         })
-        .then(function(response) {
+        .then(response => {
+          console.log(response);
           console.log(response.data);
+
           JSON.parse(response.data).forEach(item => {
-            // mainItems.push({
-            //   content: item.content,
-            //   isChecked: false
-            // });
+            this.hanItems.push({
+              content: item.content,
+              isChecked: false
+            });
           });
-          // this.hanItems.push({ content, isChecked: false });
         })
         .catch(function(error) {
           console.log(error);
         });
     },
     importFile() {
-      const axios = require("axios");
       const excelfile = document.querySelector("#items_import_file_vue");
       const excelContent = excelfile.files[0];
 
@@ -189,17 +194,18 @@ export default {
         return;
       }
 
-      // axios post 的 url 記得更換你自己的 api url
       let formData = new FormData();
       formData.append("items_import[file]", excelContent);
 
-      this.$http
+      axios
         .post("/assignment/items_imports.json", formData, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
         })
-        .then(function(response) {
+
+        // 踩雷：這邊要寫 arrow function，不然`this.hanItems`無法辨識
+        .then(response => {
           console.log(response.data);
           JSON.parse(response.data).forEach(item => {
             this.hanItems.push({
@@ -207,7 +213,6 @@ export default {
               isChecked: false
             });
           });
-          // this.hanItems.push({ content, isChecked: false });
         })
         .catch(function(error) {
           console.log(error);
