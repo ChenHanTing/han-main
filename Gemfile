@@ -66,14 +66,16 @@ gem 'devise-i18n'
 
 gem 'annotate'
 gem 'blazer'
+gem 'caxlsx'
+gem 'caxlsx_rails'
 gem 'globalize'
 gem 'kaminari'
 gem 'rack-cors', require: 'rack/cors'
 gem 'ransack'
 gem 'roo'
 gem 'rubyzip'
-gem 'axlsx'
-gem 'axlsx_rails'
+
+gem 'faker'
 
 gem 'audited'
 

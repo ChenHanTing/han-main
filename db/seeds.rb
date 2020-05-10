@@ -66,3 +66,16 @@ Todo.create(content: 'Learning Ruby on Rails', user: User.second,
 
 Category.create(description: '自訂商品目錄')
 Category.create(description: '其他目錄')
+
+30.times do
+  company = Company.new(name: Faker::Company.name)
+  next unless company.save
+
+  SecureRandom.random_number(100).times do
+    company.employees.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      phone_number: Faker::PhoneNumber.phone_number
+    )
+  end
+end

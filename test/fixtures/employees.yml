@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: employees
+#
+#  id           :bigint           not null, primary key
+#  first_name   :string(255)
+#  last_name    :string(255)
+#  phone_number :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  company_id   :bigint
+#
+# Indexes
+#
+#  index_employees_on_company_id  (company_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
+#
+
+one:
+  company: one
+  last_name: MyString
+  first_name: MyString
+  phone_number: MyString
+
+two:
+  company: two
+  last_name: MyString
+  first_name: MyString
+  phone_number: MyString

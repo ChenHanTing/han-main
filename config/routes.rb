@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :members
+  resources :employees
+  resources :companies
   namespace :assignment do
     resources :todo_lists
   end
