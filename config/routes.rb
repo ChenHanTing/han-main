@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+
   resources :members
   resources :employees
   resources :companies
@@ -71,4 +73,7 @@ Rails.application.routes.draw do
   # get 'name', to: 'name#index'
   # post 'name', to: 'name#post_result'
   # get 'username', to: 'name#get_result'
+  #
+
+  mount Sidekiq::Web => '/sidekiq'
 end

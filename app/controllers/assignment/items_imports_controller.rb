@@ -15,6 +15,7 @@ module Assignment
     #
     def create
       @sheet_val = ImportSheets::Promotion.new(self.class, items_import_params[:file].path).sty_flow.to_json
+      AddEndangeredWorker.perform_async(@sheet_val)
 
       respond_to do |format|
         format.js
